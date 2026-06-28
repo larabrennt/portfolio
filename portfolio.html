@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lara Luise Brenner</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; font-size: 11pt; color: #000; background: #fff; }
+img { display:block; max-width:100%; height:auto; }
+
+#tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 22px;
+  background: buttonface;
+  border-top: 1px solid windowframe;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 4px;
+  gap: 2px;
+  z-index: 1000;
+}
+.tab {
+  font: 8pt Arial;
+  padding: 2px 8px 1px 8px;
+  background: buttonface;
+  border: 1px solid windowframe;
+  border-bottom: none;
+  cursor: default;
+  color: windowtext;
+  white-space: nowrap;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  border-radius: 2px 2px 0 0;
+}
+.tab:hover { background: threedhighlight; }
+.tab.active {
+  background: window;
+  border-bottom: 1px solid window;
+  margin-bottom: -1px;
+  height: 19px;
+}
+
+.sheet { display: none; padding: 32px 40px 48px; min-height: calc(100vh - 22px); }
+.sheet.active { display: block; }
+
+p { line-height: 1.6; margin-bottom: 10pt; max-width: 700px; }
+
+h1 {
+  font-size: 11pt;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16pt;
+}
+
+.note { font-style: italic; margin: 16px 0; max-width: 700px; line-height: 1.6; }
+
+.photo-row {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+.photo-row img {
+  flex: 1;
+  min-width: 0;
+  object-fit: cover;
+  aspect-ratio: 3/4;
+}
+
+.placeholder {
+  background: #f0f0f0;
+  border: 1px dashed #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 9pt Arial;
+  color: #555;
+  text-align: center;
+  padding: 20px;
+}
+.placeholder-video { height: 260px; margin: 20px 0; max-width: 700px; }
+
+.pdf-embed {
+  width: 100%;
+  max-width: 900px;
+  height: 80vh;
+  border: 1px solid #ccc;
+  margin: 16px 0;
+}
+
+table.cv {
+  border-collapse: collapse;
+  font: 10pt Arial;
+  margin-bottom: 16pt;
+  max-width: 720px;
+}
+table.cv td {
+  padding: 3px 12px 3px 0;
+  vertical-align: top;
+  border-bottom: 1px solid #e8e8e8;
+}
+table.cv td:first-child {
+  width: 120px;
+  white-space: nowrap;
+  font-size: 9pt;
+}
+table.cv tr.section-head td {
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 9pt;
+  padding-top: 14px;
+  border-bottom: 1px solid #000;
+}
+
+table.events {
+  border-collapse: collapse;
+  font: 10pt Arial;
+  max-width: 820px;
+  margin-bottom: 16pt;
+}
+table.events td {
+  padding: 4px 16px 4px 0;
+  vertical-align: top;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 9.5pt;
+}
+table.events td:first-child {
+  width: 100px;
+  font-size: 9pt;
+  white-space: nowrap;
+}
+table.events tr.section-head td {
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 9pt;
+  padding-top: 14px;
+  border-bottom: 1px solid #000;
+}
+</style>
+</head>
+<body>
+
+<!-- SHEET 1: I WANT TO WORK AT CUE -->
+<div class="sheet active" id="s1">
+<h1>Bewerbung um eine Stelle als Studentische Hilfskraft — CUE, TU Berlin</h1>
+<p>Lara Luise Brenner &nbsp;·&nbsp; lara.brenner@posteo.com &nbsp;·&nbsp; 015777797700</p>
+<br>
+<p>Sehr geehrte Menschen bei CUE,</p>
+<p>ich bewerbe mich um eine Stelle als Studentische Hilfskraft an Ihrem Lehrstuhl. Mein Interesse an der Arbeit von CUE geht aus meiner bisherigen Auseinandersetzung mit den ökologischen und sozialen Dimensionen städtischer Räume hervor — einem Interesse, das mein Studium, mein Engagement und meine Praxis von Anfang an geprägt hat.</p>
+<p>Im Laufe meines Studiums wurde mir immer deutlicher, dass Architektur für mich nicht nur eine gestalterische Disziplin ist, sondern ein Werkzeug, um gesellschaftliche Strukturen sichtbar zu machen und mitzugestalten. Ich engagiere mich seit mehreren Semestern im studentischen Kollektiv perspektiv;wechsel, das ich mitgegründet habe. Unsere Vortragsreihen und Veranstaltungen setzen sich kritisch mit intersektional feministischen Fragen von Stadtwahrnehmung, Rezeption und Machtverhältnissen im gebauten Raum auseinander. Diese Arbeit hat mein Denken und mein Entwerfen stark geprägt — und mir gezeigt, wie produktiv kollektive Prozesse für den Diskurs und die Praxis der Architektur sein können.</p>
+<p>Ich sehe Gestaltung, Organisation und Politik nicht als getrennte Felder, sondern als ineinander verschränkte Ebenen der Verantwortung. In meiner derzeitigen Tätigkeit als Werkstudentin bei ZRS Architekten bin ich in der Ausführungsplanung tätig und habe dabei großes Interesse an Detailfragen zu materialgerechtem Konstruieren, Bestandserfassung und Schadenskartierung entwickelt. Parallel dazu arbeite ich im Masterstudium an kartographischen und raum-zeitlichen Methoden zur Analyse städtischer Ökosysteme — zuletzt im Rahmen eines Transekts durch die Panketalniederung.</p>
+<p>Arbeiten wie das Böden-Berlins-Seminar (SoSe 2025) zeigen, dass die raum-zeitliche Kartierung von Böden als kritische Praxis an der TU verankert ist. Mein Transekt durch die Panketalniederung versteht sich als Anschluss an diese Fragen — mit dem Fokus auf hydrologische Geschichte, Eigentumsverhältnisse und ökologische Bewohnbarkeit.</p>
+<p>Neben Feminismus ist für mich vor allem Nachhaltigkeit ein Thema, zu dem ich mich fortlaufend weiterbilde. Der Bausektor ist am menschengemachten Klimawandel schwer mitverantwortlich und dringend reformationsbedürftig. In der Zukunft möchte ich mich genau dieser Aufgabe widmen und mich für nachhaltigere Städte einsetzen.</p>
+<p>Ich freue mich sehr auf die Möglichkeit, Teil des Diskurses bei CUE zu werden.</p>
+<p>Mit freundlichen Grüßen<br>Lara Luise Brenner</p>
+</div>
+
+<!-- SHEET 2: SPACE TIME TRANSECT -->
+<div class="sheet" id="s2">
+<h1>Space Time Transect</h1>
+<p style="font-size:9pt; margin-bottom:4px">mit Eliott Croubalian &nbsp;·&nbsp; SS 2026 &nbsp;·&nbsp; Semesterprojekt, laufende Arbeit</p>
+
+<img src="Transect_compressed_A2_acrobat-7.jpg" alt="Space-Time Transect drawing" style="width:100%; margin: 20px 0;">
+
+<div class="photo-row">
+  <img src="IMG_6909.jpg" alt="Begehung Panke — bare feet in water">
+  <img src="361A5F8C-AA9B-47CB-9034-93A739BD99F6-3.jpg" alt="Fundstücke — field specimens">
+  <img src="BF39C335-6EBB-41ED-AF19-46555667780D-2.jpg" alt="Infrastruktur — two researchers at manhole">
+</div>
+
+<video controls style="width:100%; max-width:700px; margin: 20px 0;">
+  <source src="Transect_video.mp4" type="video/mp4">
+  <p>Video nicht verfügbar. Bitte Datei <em>Transect_video.mp4</em> in denselben Ordner legen.</p>
+</video>
+
+<p>Das Transekt wurde als raum-zeitliches Kartierungsinstrument entwickelt, das geologische Schichtungen, Eigentumsverhältnisse, Vegetationsgeschichte und hydrologische Spuren gleichzeitig lesbar macht. Es durchquert die Panketalniederung und die Barnim Hochfläche und operiert mit historischen Karten von 1888 bis 2025.</p>
+<p class="note">Midterm-Stand, SS 2026. Das Projekt ist noch nicht abgeschlossen.</p>
+</div>
+
+<!-- SHEET 3: ES REGNET -->
+<div class="sheet" id="s3">
+<h1>Es regnet, die Erde wird nass.</h1>
+<p style="font-size:9pt; margin-bottom:16px">mit Manuel Rademaker</p>
+
+<img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.jpg" alt="Es regnet, die Erde wird nass — axonometric render" style="max-width:700px; margin-bottom: 20px;">
+
+<p class="note">Eingereicht beim Wettbewerb <em>30 Quadratmeter Baukultur</em>. Das Projekt hat nicht gewonnen.</p>
+</div>
+
+<!-- SHEET 4: SCHLIESS DIE LÜCKE NICHT -->
+<div class="sheet" id="s4">
+<h1>Schließ die Lücke nicht!</h1>
+
+<object data="Brenner_schliess_die_luecke_NICHT-4.pdf" type="application/pdf" class="pdf-embed">
+  <p>PDF kann nicht angezeigt werden. Bitte <a href="Brenner_schliess_die_luecke_NICHT-4.pdf">hier herunterladen</a>.</p>
+</object>
+
+<p class="note">Stegreif im Fach <em>Strategien für nachhaltiges Planen und Bauen</em>. Die Aufgabe lautete: In einer ost-west ausgerichteten Baulücke (4,0 m Breite, 22,5 m Länge, umgebende Bebauung 4 Geschosse zzgl. Satteldach) ca. 160 m² Wohnfläche zu entwerfen — darunter eine Wohnung für 4 Personen (100–130 m²) mit nicht einsehbarem Freiberbereich sowie eine separat vermietbare Einliegerwohnung (30–60 m²). Ziel war es, innerhalb schwieriger Parameter Strategien für gut belichteten, energieeffizienten Wohnraum zu entwickeln. Meine Abgabe wurde als nicht benotbar eingestuft und als nicht bearbeitet eingetragen.</p>
+</div>
+
+<!-- SHEET 5: MAPPING DAMAGE -->
+<div class="sheet" id="s5">
+<h1>Mapping Damage</h1>
+<p style="font-size:9pt; margin-bottom:16px">ZRS Architekten Ingenieure, Berlin</p>
+
+<object data="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.pdf" type="application/pdf" class="pdf-embed">
+  <p>PDF kann nicht angezeigt werden. Bitte <a href="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.pdf">hier herunterladen</a>.</p>
+</object>
+
+<div class="placeholder placeholder-video">
+  ▶ &nbsp; Platzhalter: Video der Point Cloud<br>
+  <span style="font-size:8pt">Datei einsetzen: pointcloud.mp4</span>
+</div>
+
+<img src="image_ZRS_1-Large-3.jpg" alt="ZRS Gebäude Foto 1" style="max-width:700px; margin-bottom:12px;">
+<img src="image_ZRS_2-Large-4.jpg" alt="ZRS Gebäude Foto 2" style="max-width:700px; margin-bottom:12px;">
+<img src="Image_ZRS_3-Large-5.jpg" alt="ZRS Gebäude Foto 3" style="max-width:700px; margin-bottom:20px;">
+
+<p>Schadenskartierung auf Grundlage eines Schadensberichts und eigener Begehung des Gebäudes. Kartographische Auswertung und Darstellung der Schäden als Teil meiner Werkstudententätigkeit bei ZRS Architekten Ingenieure, Berlin.</p>
+</div>
+
+<!-- SHEET 6: CURRICULUM VITAE -->
+<div class="sheet" id="s6">
+<h1>Lara Luise Brenner</h1>
+<p style="font-size:9pt">*18.07.2000 in Neuruppin &nbsp;·&nbsp; Wiesenstr. 38, 14473 Potsdam &nbsp;·&nbsp; lara.brenner@posteo.com &nbsp;·&nbsp; 015777797700</p>
+<br>
+
+<table class="cv">
+  <tr class="section-head"><td colspan="2">Bildung</td></tr>
+  <tr><td>2025–</td><td>M.Arch. Architektur, Technische Universität Berlin</td></tr>
+  <tr><td>WS 2022</td><td>Erasmus+ Auslandssemester, Politecnico di Milano</td></tr>
+  <tr><td>2020–2025</td><td>B.Arch. Architektur und Städtebau, FH Potsdam &nbsp; Abschlussnote 1,1</td></tr>
+  <tr><td>2019–2020</td><td>Vorbereitungsstudium MINTgrün, TU Berlin</td></tr>
+  <tr><td>2016–2017</td><td>Schuljahresaufenthalt Japan, Präfektur Niigata, Shibata (AFS)</td></tr>
+  <tr><td>2012–2019</td><td>Abitur 1,3, Evangelisches Gymnasium Hermannswerder, Potsdam</td></tr>
+
+  <tr class="section-head"><td colspan="2">Praxis</td></tr>
+  <tr><td>seit 11/2023</td><td>Werkstudentin, ZRS Architekten Ingenieure, Berlin<br><span style="font-size:9pt">Ausführungsplanung, Gründachplanung, energetische Sanierung in Holzbauweise, Visualisierung, Point Cloud Processing</span></td></tr>
+  <tr><td>08–10/2023</td><td>Pflichtpraktikum, ZRS Architekten Ingenieure, Berlin</td></tr>
+  <tr><td>2018–2023</td><td>Nebenjob, Boulderhalle 7a+</td></tr>
+
+  <tr class="section-head"><td colspan="2">Engagement</td></tr>
+  <tr><td>seit 2021</td><td>Gründungsmitglied, Kollektiv perspektiv;wechsel, FH Potsdam</td></tr>
+  <tr><td>2023–2024</td><td>Gewähltes Mitglied im Fachbereichsrat (FB2), FH Potsdam</td></tr>
+  <tr><td>SS 2023</td><td>Beratendes Mitglied im Fachbereichsrat (FB2), FH Potsdam</td></tr>
+  <tr><td>2016–2018</td><td>Teamerin, AFS Interkulturelle Begegnungen</td></tr>
+  <tr><td>2015–2019</td><td>Zertifizierte Schulsanitäterin</td></tr>
+  <tr><td>2013–2019</td><td>Layoutverantwortliche, Schülerzeitung „Der Tornowgraph"</td></tr>
+
+  <tr class="section-head"><td colspan="2">Auszeichnungen</td></tr>
+  <tr><td>2025</td><td>Ehrenamtspreis der Fördergesellschaft der FH Potsdam (als Teil von perspektiv;wechsel)</td></tr>
+  <tr><td>2023–2024</td><td>Deutschlandstipendium</td></tr>
+  <tr><td>SS 2023</td><td>3. Preis, Studierendenwettbewerb „Campuswohnen", FH Potsdam</td></tr>
+
+  <tr class="section-head"><td colspan="2">Software</td></tr>
+  <tr><td></td><td>ArchiCAD +++, Vectorworks +++, Blender +++, Cinema 4D ++ (Corona), QGIS ++, InDesign ++, Photoshop ++, Affinity +, Illustrator +, Nomad Sculpt ++, Procreate +++, DaVinci Resolve ++, Premiere Pro +, Microsoft Office +++</td></tr>
+
+  <tr class="section-head"><td colspan="2">Sprachen</td></tr>
+  <tr><td></td><td>Deutsch (Muttersprache), Englisch (C1), Japanisch (N4), Italienisch (A1), Latinum</td></tr>
+</table>
+
+<br>
+<table class="events">
+  <tr class="section-head"><td colspan="3">Veranstaltungen — Kollektiv perspektiv;wechsel, 2022</td></tr>
+  <tr><td>24.05.2022</td><td>Gendergerechte Stadtplanung</td><td>Sophia Lenz (M. Urbane Zukunft)</td></tr>
+  <tr><td>30.05.2022</td><td>Design für alle — nicht nur barrierefrei</td><td>Matthias Knigge (Grauwert)</td></tr>
+  <tr><td>07.06.2022</td><td>Postcolonial Potsdam</td><td>Alexandra Wuest (Postcolonial Potsdam)</td></tr>
+  <tr><td>22.11.2022</td><td>HANDWERK × ARCHITEKTUR</td><td>Isabelle Vivianne; Jenny Hamerla &amp; Isabel Schmidt (Baufachfrauen)</td></tr>
+  <tr><td>29.11.2022</td><td>Gendergerechte Stadtplanung — Einblicke aus der Praxis</td><td>Dr. Mary Dellenbaugh-Losse (Urban Policy)</td></tr>
+  <tr><td>13.12.2022</td><td>Whose city? Obdachlosigkeit, Architektur und die Stadt</td><td>Dr. Daniel Talesnik (Architekturhistoriker)</td></tr>
+
+  <tr class="section-head"><td colspan="3">Veranstaltungen — Kollektiv perspektiv;wechsel, 2023</td></tr>
+  <tr><td>25.04.2023</td><td>Architektur und Mensch: Raum, Wahrnehmung, Körper, Gesundheit</td><td>Alexandra Correll &amp; Dr. Mathias Ballestrem (Forum Neurourbanistik)</td></tr>
+  <tr><td>02.05.2023</td><td>Baustelle Gleichstellung — Podiumsdiskussion</td><td>Karin Hartmann; Katja Melan &amp; Dagmar Chrobok-Dohmann (AG Gleichstellung)</td></tr>
+  <tr><td>23.05.2023</td><td>Bezahlbar und Klimagerecht wohnen</td><td>Dr. Lisa Vollmer (Leibnizinstitut für Raumbezogene Sozialforschung)</td></tr>
+  <tr><td>24.10.2023</td><td>Realitätscheck Lehmbau</td><td>Dipl.-Ing. Ulrich Röhlen</td></tr>
+  <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
+  <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
+  <tr><td>05.12.2023</td><td>Participative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
+
+  <tr class="section-head"><td colspan="3">Veranstaltungen — Kollektiv perspektiv;wechsel, 2024</td></tr>
+  <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino; Etta Seifert; Nicole Fienke; Magdalena Karbach (ZRS)</td></tr>
+
+  <tr class="section-head"><td colspan="3">Auf dem Podium — Reihe Nachhaltiges Bauen, FH Potsdam</td></tr>
+  <tr><td>11.10.2023</td><td>Schwammstadt</td><td>Prof. Maren Brakebusch, Dr. Darla Nickel (Regenwasseragentur), Friederike Böttcher</td></tr>
+  <tr><td>24.04.2024</td><td>Geothermie — Die Wärme der Zukunft kommt aus der Erde</td><td>Eckard Veil (EWP), Prof. Dr. Ingo Sass (GFZ Potsdam)</td></tr>
+  <tr><td>19.06.2024</td><td>Urban Biodiversität — Die Natur der Zukunft wächst in der Stadt</td><td>Marco Schmidt (BBSR), Claus Herrmann (hochC Landschaftsarchitekten)</td></tr>
+  <tr><td>09.10.2024</td><td>Baukultur — Die Baustoffe der Zukunft sind wiederverwendet</td><td>Carolina Mojto (Freiraum in der Box), Prof. Dr.-Ing. Klaus Pistol (FHP)</td></tr>
+  <tr><td>04.12.2024</td><td>Umbaukultur — von der grauen zur goldenen Energie</td><td>Reiner Nagel (Bundesstiftung Baukultur), Prof. Silke Straub-Beutin, Frank Schönert (Hütten und Paläste)</td></tr>
+</table>
+</div>
+
+<!-- TAB BAR -->
+<div id="tabbar">
+  <div class="tab active" onclick="show('s1',this)">I want to work at CUE</div>
+  <div class="tab" onclick="show('s2',this)">Space Time Transect</div>
+  <div class="tab" onclick="show('s3',this)">Es regnet die Erde wird nass</div>
+  <div class="tab" onclick="show('s4',this)">Schließ die Lücke nicht</div>
+  <div class="tab" onclick="show('s5',this)">Mapping Damage</div>
+  <div class="tab" onclick="show('s6',this)">Curriculum Vitae</div>
+</div>
+
+<script>
+function show(id, el) {
+  document.querySelectorAll('.sheet').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
