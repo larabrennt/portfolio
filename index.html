@@ -165,14 +165,14 @@ table.events tr.section-head td {
 <h1>Space Time Transect</h1>
 <p style="font-size:9pt; margin-bottom:4px">mit Eliott Croubalian &nbsp;·&nbsp; SS 2026 &nbsp;·&nbsp; Semesterprojekt, laufende Arbeit</p>
 
-<div style="position:relative; max-width:700px; margin:20px 0; cursor:pointer;" onclick="this.querySelector('video').paused ? (this.querySelector('video').play(), this.querySelector('.play-btn').style.display='none') : this.querySelector('video').pause()">
+<div style="position:relative; margin:20px 0; cursor:pointer;" onclick="this.querySelector('video').paused ? (this.querySelector('video').play(), this.querySelector('.play-btn').style.display='none') : this.querySelector('video').pause()">
   <video id="tv" style="width:100%; display:block;">
     <source src="Transect_video.mp4" type="video/mp4">
   </video>
   <div class="play-btn" style="
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
     width:56px; height:56px; border-radius:50%;
-    background:rgba(0,0,0,0.45);
+    background:#000;
     display:flex; align-items:center; justify-content:center;
     pointer-events:none;
   ">
