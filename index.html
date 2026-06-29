@@ -326,38 +326,34 @@ function show(id, el) {
 }
 </script>
 <script>
-// Swipe navigation
 (function(){
   const tabs = ['s1','s2','s3','s4','s5','s6'];
   let startX = 0;
-  let startY = 0;
 
   document.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  });
+    if (e.touches.length === 2) {
+      startX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    }
+  }, { passive: true });
 
   document.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = e.changedTouches[0].clientY - startY;
+    if (e.changedTouches.length < 2) return;
+    const endX = (e.changedTouches[0].clientX + e.changedTouches[1].clientX) / 2;
+    const dx = endX - startX;
 
-    // nur horizontal swipe zählt (nicht versehentlich beim scrollen)
-    if (Math.abs(dx) < 50) return;           // zu kurz
-    if (Math.abs(dy) > Math.abs(dx)) return; // eher vertikal → scrollen
+    if (Math.abs(dx) < 50) return;
 
     const active = document.querySelector('.sheet.active').id;
     const i = tabs.indexOf(active);
 
     if (dx < 0 && i < tabs.length - 1) {
-      // swipe links → nächster tab
       const next = tabs[i + 1];
       show(next, document.querySelector(`[onclick="show('${next}',this)"]`));
     } else if (dx > 0 && i > 0) {
-      // swipe rechts → vorheriger tab
       const prev = tabs[i - 1];
       show(prev, document.querySelector(`[onclick="show('${prev}',this)"]`));
     }
-  });
+  }, { passive: true });
 })();
 </script>
 </body>
