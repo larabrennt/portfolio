@@ -325,37 +325,6 @@ function show(id, el) {
   window.scrollTo(0,0);
 }
 </script>
-<script>
-(function(){
-  const tabs = ['s1','s2','s3','s4','s5','s6'];
-  let startX = 0;
-
-  document.addEventListener('touchstart', e => {
-    if (e.touches.length === 2) {
-      startX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-    }
-  }, { passive: true });
-
-  document.addEventListener('touchend', e => {
-    if (e.changedTouches.length < 2) return;
-    const endX = (e.changedTouches[0].clientX + e.changedTouches[1].clientX) / 2;
-    const dx = endX - startX;
-
-    if (Math.abs(dx) < 50) return;
-
-    const active = document.querySelector('.sheet.active').id;
-    const i = tabs.indexOf(active);
-
-    if (dx < 0 && i < tabs.length - 1) {
-      const next = tabs[i + 1];
-      show(next, document.querySelector(`[onclick="show('${next}',this)"]`));
-    } else if (dx > 0 && i > 0) {
-      const prev = tabs[i - 1];
-      show(prev, document.querySelector(`[onclick="show('${prev}',this)"]`));
-    }
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>
 
