@@ -79,9 +79,10 @@ h1 {
 .photo-row {
   --row-height: 320px;
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
   gap: 1vw;
   margin: 20px 0;
-  align-items: stretch;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
@@ -90,6 +91,7 @@ h1 {
 .photo-row img,
 .photo-row video,
 .comp-wrap {
+  display: block;
   height: var(--row-height);
   width: auto;
   flex: 1 1 0;
@@ -99,7 +101,6 @@ h1 {
 
 .photo-row img,
 .photo-row video {
-  display: block;
   object-fit: contain;
 }
 
@@ -110,9 +111,9 @@ h1 {
 }
 
 .comp-wrap video {
-  height: 100%;
-  width: auto;
   display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
