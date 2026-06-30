@@ -144,12 +144,12 @@ table.events tr.section-head td {
 <!-- SIDEBAR -->
 <div id="sidebar">
   <div id="sidebar-header">APPLICATION<br>Lara Luise Brenner<br>Chair for Transitioning Urban Ecosystems</div>
-  <button class="tab" onclick="goToSheet('s1')">I WANT TO WORK AT CUE</button>
-  <button class="tab" onclick="goToSheet('s2')">SPACE TIME TRANSECT</button>
-  <button class="tab" onclick="goToSheet('s3')">ES REGNET, DIE ERDE WIRD NASS</button>
-  <button class="tab" onclick="goToSheet('s4')">DON'T YOU CLOSE THE GAP</button>
-  <button class="tab" onclick="goToSheet('s5')">MAPPING DAMAGE</button>
-  <button class="tab" onclick="goToSheet('s6')">CURRICULUM VITAE</button>
+  <button class="tab" onclick="goToSheet('s1')">I want to work at CUE</button>
+  <button class="tab" onclick="goToSheet('s2')">Space TIme Transect</button>
+  <button class="tab" onclick="goToSheet('s3')">Es Regnet, die Erde wird nass</button>
+  <button class="tab" onclick="goToSheet('s4')">Don't you close the Gap</button>
+  <button class="tab" onclick="goToSheet('s5')">Mapping Damage</button>
+  <button class="tab" onclick="goToSheet('s6')">Curriculum Vitae</button>
 </div>
 
 <!-- CONTENT -->
@@ -196,12 +196,12 @@ table.events tr.section-head td {
   </video>
 </div>
 
-<div style="position:relative; margin:20px 0; cursor:pointer;" onclick="var v=this.querySelector('video'); v.paused?(v.play(),this.querySelector('.pb').style.display='none'):v.pause()">
+  <div style="position:relative; margin:20px 0; cursor:pointer;" onclick="var v=this.querySelector('video'); var o=this.querySelector('.pb'); v.paused?(v.play(),o.style.display='none'):(v.pause(),o.style.display='flex')">
   <video style="width:100%; display:block;">
-    <source src="Transect_video.mp4" type="video/mp4">
+    <source src="comp.mp4" type="video/mp4">
   </video>
-  <div class="pb" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:56px; height:56px; display:flex; align-items:center; justify-content:center; pointer-events:none;">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" filter="drop-shadow(0 0 2px rgba(0,0,0,0.6))"><polygon points="5,3 19,12 5,21"/></svg>
+  <div class="pb" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:flex; align-items:center; justify-content:center; pointer-events:none; color:#fff; font:10pt Arial; letter-spacing:0.08em; text-transform:uppercase; text-shadow:0 0 2px rgba(0,0,0,0.6);">
+    PRESS HERE TO PLAY
   </div>
 </div>
 
