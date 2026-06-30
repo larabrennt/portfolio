@@ -5,42 +5,52 @@
 <title>Lara Luise Brenner</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; }
+body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; display: flex; }
 img { display:block; max-width:100%; height:auto; }
 
-#tabbar {
+#sidebar {
   position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 32px;
-  background: #000;
-  display: flex;
-  align-items: flex-end;
-  padding: 0 4px;
-  gap: 0;
-  z-index: 1000;
-}
-.tab {
-  font: 10pt Arial;
-  padding: 2px 8px 2px 8px;
-  background: #000;
-  border: none;
-  cursor: default;
-  color: #fff;
-  white-space: nowrap;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  user-select: none;
-}
-.tab:hover { background: #333; }
-.tab.active {
+  top: 0; left: 0;
+  width: 220px;
+  height: 100vh;
   background: #fff;
-  color: #000;
-  margin-bottom: -1px;
-  height: 26px;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 24px 16px;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
-.sheet { display: block; padding: 48px 40px 80px; min-height: 100vh; }
+#sidebar-header {
+  font: 10pt Arial;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  color: #000;
+}
+
+.tab {
+  font: 10pt Arial;
+  color: #000;
+  background: #fff;
+  border: none;
+  text-align: left;
+  padding: 4px 0;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+}
+.tab:hover { color: #555; }
+.tab.active { color: #0000ff; }
+
+#content {
+  margin-left: 220px;
+  width: calc(100% - 220px);
+}
+
+.sheet { display: block; padding: 48px 40px 80px; min-height: 100vh; border-bottom: 1px solid #e0e0e0; }
 
 p { line-height: 1.6; margin-bottom: 10pt; max-width: 700px; }
 a { color: #000; }
@@ -66,19 +76,6 @@ h1 {
   object-fit: cover;
   aspect-ratio: 3/4;
 }
-
-.placeholder {
-  background: #f0f0f0;
-  border: 1px dashed #999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 10pt Arial;
-  color: #555;
-  text-align: center;
-  padding: 20px;
-}
-.placeholder-video { height: 260px; margin: 20px 0; max-width: 700px; }
 
 @keyframes pulse {
   0%, 100% { transform: translate(-50%,-50%) scale(1); }
@@ -144,63 +141,77 @@ table.events tr.section-head td {
 </head>
 <body>
 
-<!-- SHEET 1: I WANT TO WORK AT CUE -->
-<div class="sheet" id="s1">
-<h1>Bewerbung um eine Stelle als Studentische Hilfskraft — CUE, TU Berlin</h1>
-<p>Lara Luise Brenner &nbsp;·&nbsp; <a href="mailto:lara.brenner@posteo.com">lara.brenner@posteo.com</a> &nbsp;·&nbsp; 015777797700</p>
-<br>
-<p>Sehr geehrte Menschen bei CUE,</p>
-<p>ich bewerbe mich um eine Stelle als Studentische Hilfskraft an Ihrem Lehrstuhl. Mein Interesse an der Arbeit von CUE geht aus meiner bisherigen Auseinandersetzung mit den ökologischen und sozialen Dimensionen städtischer Räume hervor — einem Interesse, das mein Studium, mein Engagement und meine Praxis von Anfang an geprägt hat.</p>
-<p>Im Laufe meines Studiums wurde mir immer deutlicher, dass Architektur für mich nicht nur eine gestalterische Disziplin ist, sondern ein Werkzeug, um gesellschaftliche Strukturen sichtbar zu machen und mitzugestalten. Ich engagiere mich seit mehreren Semestern im studentischen Kollektiv perspektiv;wechsel, das ich mitgegründet habe. Unsere Vortragsreihen und Veranstaltungen setzen sich kritisch mit intersektional feministischen Fragen von Stadtwahrnehmung, Rezeption und Machtverhältnissen im gebauten Raum auseinander. Diese Arbeit hat mein Denken und mein Entwerfen stark geprägt — und mir gezeigt, wie produktiv kollektive Prozesse für den Diskurs und die Praxis der Architektur sein können.</p>
-<p>Ich sehe Gestaltung, Organisation und Politik nicht als getrennte Felder, sondern als ineinander verschränkte Ebenen der Verantwortung. In meiner derzeitigen Tätigkeit als Werkstudentin bei ZRS Architekten bin ich in der Ausführungsplanung tätig und habe dabei großes Interesse an Detailfragen zu materialgerechtem Konstruieren, Bestandserfassung und Schadenskartierung entwickelt. Parallel dazu arbeite ich im Masterstudium an kartographischen und raum-zeitlichen Methoden zur Analyse städtischer Ökosysteme — zuletzt im Rahmen eines Transekts durch die Panketalniederung.</p>
-<p>Arbeiten wie das Böden-Berlins-Seminar (SoSe 2025) zeigen, dass die raum-zeitliche Kartierung von Böden als kritische Praxis an der TU verankert ist. Mein Transekt durch die Panketalniederung versteht sich als Anschluss an diese Fragen — mit dem Fokus auf hydrologische Geschichte, Eigentumsverhältnisse und ökologische Bewohnbarkeit.</p>
-<p>Neben Feminismus ist für mich vor allem Nachhaltigkeit ein Thema, zu dem ich mich fortlaufend weiterbilde. Der Bausektor ist am menschengemachten Klimawandel schwer mitverantwortlich und dringend reformationsbedürftig. In der Zukunft möchte ich mich genau dieser Aufgabe widmen und mich für nachhaltigere Städte einsetzen.</p>
-<p>Ich freue mich sehr auf die Möglichkeit, Teil des Diskurses bei CUE zu werden.</p>
-<p>Mit freundlichen Grüßen<br>Lara Luise Brenner</p>
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div id="sidebar-header">APPLICATION<br>Lara Luise Brenner<br>Chair for Transitioning Urban Ecosystems</div>
+  <button class="tab" onclick="scrollTo('s1')">I want to work at CUE</button>
+  <button class="tab" onclick="scrollTo('s2')">Space Time Transect</button>
+  <button class="tab" onclick="scrollTo('s3')">Es regnet, die Erde wird nass</button>
+  <button class="tab" onclick="scrollTo('s4')">Schließ die Lücke nicht</button>
+  <button class="tab" onclick="scrollTo('s5')">Mapping Damage</button>
+  <button class="tab" onclick="scrollTo('s6')">Curriculum Vitae</button>
 </div>
 
-<!-- SHEET 2: SPACE TIME TRANSECT -->
+<!-- CONTENT -->
+<div id="content">
+
+<!-- SHEET 1 -->
+<div class="sheet" id="s1">
+<h1>Application for a Student Research Assistant Position — CUE, TU Berlin</h1>
+<p>Lara Luise Brenner &nbsp;·&nbsp; <a href="mailto:lara.brenner@posteo.com">lara.brenner@posteo.com</a> &nbsp;·&nbsp; 015777797700</p>
+<br>
+<p>Dear team at CUE,</p>
+<p>I am applying for a student research assistant position at your chair. My interest in CUE's work stems from my ongoing engagement with the ecological and social dimensions of urban space — an interest that has shaped my studies, my activism, and my practice from the very beginning.</p>
+<p>Over the course of my studies, it became increasingly clear to me that architecture is not only a design discipline, but a tool for making social structures visible and helping to reshape them. For several semesters I have been involved in the student collective perspektiv;wechsel, which I co-founded. Our lecture series and events engage critically with intersectional feminist questions of urban perception, reception, and power relations in the built environment. This work has strongly shaped my thinking and my design practice — and shown me how productive collective processes can be for architectural discourse and practice.</p>
+<p>I do not see design, organisation, and politics as separate fields, but as mutually entangled levels of responsibility. In my current position as a working student at ZRS Architekten, I am involved in construction documentation and have developed a strong interest in questions of material-appropriate construction, building surveys, and damage mapping. Alongside this, I am working in my Master's programme on cartographic and spatio-temporal methods for analysing urban ecosystems — most recently through a transect of the Panketalniederung.</p>
+<p>Projects such as the Böden Berlins seminar (SoSe 2025) show that spatio-temporal soil mapping is established as a critical practice at TU Berlin. My transect through the Panketalniederung connects to these questions — focusing on hydrological history, land ownership, and ecological habitability.</p>
+<p>Beyond feminist urbanism, sustainability is a topic I continuously engage with. The construction sector bears significant responsibility for anthropogenic climate change and is urgently in need of reform. In the future, I want to dedicate myself to exactly this task and work towards more sustainable cities.</p>
+<p>I look forward very much to the possibility of becoming part of the discourse at CUE.</p>
+<p>Sincerely,<br>Lara Luise Brenner</p>
+</div>
+
+<!-- SHEET 2 -->
 <div class="sheet" id="s2">
 <h1>Space Time Transect</h1>
-<p style="font-size:10pt; margin-bottom:4px">mit Eliott Croubalian &nbsp;·&nbsp; SS 2026 &nbsp;·&nbsp; Semesterprojekt, laufende Arbeit</p>
+<p style="font-size:10pt; margin-bottom:4px">with Eliott Croubalian &nbsp;·&nbsp; SS 2026 &nbsp;·&nbsp; Semester project, ongoing</p>
 
-<div style="position:relative; margin:20px 0; cursor:pointer;" onclick="this.querySelector('video').paused ? (this.querySelector('video').play(), this.querySelector('.pb').style.display='none') : this.querySelector('video').pause()">
+<div style="position:relative; margin:20px 0; cursor:pointer;" onclick="var v=this.querySelector('video'); v.paused?(v.play(),this.querySelector('.pb').style.display='none'):v.pause()">
   <video style="width:100%; display:block;">
     <source src="Transect_video.mp4" type="video/mp4">
   </video>
-  <div class="pb" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:56px; height:56px; border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center; pointer-events:none;">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+  <div class="pb" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" filter="drop-shadow(0 0 2px rgba(0,0,0,0.6))"><polygon points="5,3 19,12 5,21"/></svg>
   </div>
 </div>
 
 <img src="Transect_compressed_A2_acrobat-7.png" alt="Space-Time Transect drawing" style="width:100%; margin: 20px 0;">
 
 <div class="photo-row">
-  <img src="IMG_6909.jpeg" alt="Begehung Panke — bare feet in water">
-  <img src="361A5F8C-AA9B-47CB-9034-93A739BD99F6-3.JPG" alt="Fundstücke — field specimens">
-  <img src="BF39C335-6EBB-41ED-AF19-46555667780D-2.JPG" alt="Infrastruktur — two researchers at manhole">
+  <img src="IMG_6909.jpeg" alt="Field survey Panke">
+  <img src="361A5F8C-AA9B-47CB-9034-93A739BD99F6-3.JPG" alt="Field specimens">
+  <img src="BF39C335-6EBB-41ED-AF19-46555667780D-2.JPG" alt="Infrastructure">
 </div>
 
-<p>Das Transekt wurde als raum-zeitliches Kartierungsinstrument entwickelt, das geologische Schichtungen, Eigentumsverhältnisse, Vegetationsgeschichte und hydrologische Spuren gleichzeitig lesbar macht. Es durchquert die Panketalniederung und die Barnim Hochfläche und operiert mit historischen Karten von 1888 bis 2025.</p>
-<p class="note">Midterm-Stand, SS 2026. Das Projekt ist noch nicht abgeschlossen.</p>
+<p>The transect was developed as a spatio-temporal mapping instrument that makes geological strata, land ownership patterns, vegetation history, and hydrological traces simultaneously legible. It traverses the Panketalniederung and the Barnim plateau, operating with historical maps from 1888 to 2025.</p>
+<p class="note">Midterm status, SS 2026. The project is not yet complete.</p>
 </div>
 
-<!-- SHEET 3: ES REGNET -->
+<!-- SHEET 3 -->
 <div class="sheet" id="s3">
-<h1>Es regnet, die Erde wird nass.</h1>
-<p style="font-size:10pt; margin-bottom:16px">mit Manuel Rademaker</p>
-<img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="Es regnet, die Erde wird nass — axonometric render" style="width:100%; margin-bottom: 20px;">
-<p class="note">Eingereicht beim Wettbewerb <em>30 Quadratmeter Baukultur</em>. Das Projekt hat nicht gewonnen.</p>
+<h1>It's raining, the earth becomes wet.</h1>
+<p style="font-size:10pt; margin-bottom:16px">with Manuel Rademaker</p>
+<img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="axonometric render" style="width:100%; margin-bottom: 20px;">
+<p class="note">Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project did not win.</p>
 </div>
 
-<!-- SHEET 4: SCHLIESS DIE LÜCKE NICHT -->
+<!-- SHEET 4 -->
 <div class="sheet" id="s4">
-<h1>Schließ die Lücke nicht!</h1>
-<img src="Brenner_schliess_die_luecke_NICHT-4.png" alt="luecke" style="width:100%; margin-bottom: 20px;">
-<p class="note">Stegreif im Fach <em>Strategien für nachhaltiges Planen und Bauen</em>. Die Aufgabe lautete: In einer ost-west ausgerichteten Baulücke (4,0 m Breite, 22,5 m Länge, umgebende Bebauung 4 Geschosse zzgl. Satteldach) ca. 160 m² Wohnfläche zu entwerfen — darunter eine Wohnung für 4 Personen (100–130 m²) mit nicht einsehbarem Freiberbereich sowie eine separat vermietbare Einliegerwohnung (30–60 m²). Ziel war es, innerhalb schwieriger Parameter Strategien für gut belichteten, energieeffizienten Wohnraum zu entwickeln. Meine Abgabe wurde als nicht benotbar eingestuft und als nicht bearbeitet eingetragen.</p>
+<h1>Don't close the gap!</h1>
+<img src="Brenner_schliess_die_luecke_NICHT-4.png" alt="Don't close the gap" style="width:100%; margin-bottom: 20px;">
+<p class="note">Stegreif project in the course <em>Strategies for Sustainable Planning and Construction</em>. The brief called for designing approx. 160 m² of residential floor space in an east–west oriented building gap (4.0 m wide, 22.5 m long, surrounding buildings 4 storeys plus pitched roof) — including an apartment for 4 people (100–130 m²) with a private outdoor area, and a separately rentable annexe apartment (30–60 m²). The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.</p>
 </div>
 
-<!-- SHEET 5: MAPPING DAMAGE -->
+<!-- SHEET 5 -->
 <div class="sheet" id="s5">
 <h1>Mapping Damage</h1>
 <p style="font-size:10pt; margin-bottom:16px">ZRS Architekten Ingenieure, Berlin</p>
@@ -225,10 +236,10 @@ table.events tr.section-head td {
   <img src="Image_ZRS_3-Large-5.png">
 </div>
 
-<p>Schadenskartierung auf Grundlage eines Schadensberichts und eigener Begehung des Gebäudes. Kartographische Auswertung und Darstellung der Schäden als Teil meiner Werkstudententätigkeit bei ZRS Architekten Ingenieure, Berlin.</p>
+<p>Damage mapping based on a structural survey report and personal inspection of the building. Cartographic analysis and representation of damage as part of my working student role at ZRS Architekten Ingenieure, Berlin.</p>
 </div>
 
-<!-- SHEET 6: CURRICULUM VITAE -->
+<!-- SHEET 6 -->
 <div class="sheet" id="s6">
 <div style="font-size:9pt; font-weight:bold; line-height:1.3; margin-bottom:2px;">LARA<br>BRENNER</div>
 <div style="font-size:9pt; margin-bottom:20px;">*18.07.2000 in Neuruppin &nbsp;·&nbsp; Wiesenstr. 38, 14473 Potsdam &nbsp;·&nbsp; <a href="mailto:lara.brenner@posteo.com">lara.brenner@posteo.com</a> &nbsp;·&nbsp; 015777797700</div>
@@ -237,105 +248,99 @@ table.events tr.section-head td {
   <thead>
     <tr>
       <th></th>
-      <th>Bildung</th>
-      <th>Praxis</th>
-      <th>Softwarekentnisse</th>
-      <th>Sprachkenntnisse</th>
+      <th>Education</th>
+      <th>Practice</th>
+      <th>Software</th>
+      <th>Languages</th>
       <th>Engagement</th>
-      <th>Auszeichnungen</th>
-      <th>Weiteres</th>
+      <th>Awards</th>
+      <th>Further</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td></td><td>Allgemeine Hochschulreife (Abitur)</td><td>August – Oktober 2023</td><td>ArchiCAD (+++), Vectorworks (+++),</td><td>Deutsch (Muttersprache)</td><td>seit 2021</td><td>2023 (Sommersemester)</td><td>2013 – 2019</td></tr>
-    <tr><td></td><td>Evangelisches Gymnasium Hermannswerder, Potsdam Abschlussnote: 1,3</td><td>Pflichtpraktikum bei ZRS Architekten Ingenieure,</td><td>Blender (+++), Cinema 4D (++)(Corona)</td><td>Englisch (C1)</td><td>Gründungsmitglied des Kollektivs perspektiv;wechsel</td><td>3. Preis im Studierendenwettbewerb „Campuswohnen" Fachhochschule Potsdam</td><td>Layoutverantwortliche der Schülerzeitung</td></tr>
-    <tr><td></td><td>2016 – 2017</td><td>Berlin</td><td>InDesign (++), Affinity (+), Photoshop (++), Illustrator(+)</td><td>Japanisch (N4)</td><td>2023 (Sommersemester)</td><td>2023 – 2024</td><td>Der Tornowgraph</td></tr>
-    <tr><td></td><td>Schuljahresaufenthalt in Japan</td><td>seit November 2023</td><td>Premiere Pro (+), DaVinci Resolve (++)</td><td>Italienisch (A1)</td><td>Beratendes Mitglied im Fachbereichsrat (FB2), Fachhochschule Potsdam</td><td>Deutschlandstipendium</td><td>2015 – 2019</td></tr>
-    <tr><td></td><td>Präfektur Niigata, Stadt Shibata (mit AFS)</td><td>Werkstudentin bei ZRS Architekten:</td><td>Nomad Sculpt (++), Procreate (+++)</td><td>Latinum</td><td>2023 – 2024</td><td>2025</td><td>Zertifizierte Schulsanitäterin</td></tr>
-    <tr><td></td><td>2019 – 2020</td><td>Ausführungsplanung, Gründachplanung,</td><td>Microsoft Office Suite (+++)</td><td></td><td>Gewähltes Mitglied im Fachbereichsrat (FB2), Fachhochschule Potsdam</td><td>Ehrenamtspreis der Fördergesellschaft der FH Potsdam als Teil von perspektiv;wechsel</td><td>2016 – 2018</td></tr>
-    <tr><td></td><td>Vorbereitungsstudium „MINTgrün"</td><td>Energetische Sanierung in Holzbauweise,</td><td>QGIS (++)</td><td></td><td></td><td></td><td>Teamerin bei AFS Interkulturelle Begegnungen</td></tr>
-    <tr><td></td><td>Technische Universität Berlin</td><td>Visualisierung, Point Cloud Processing</td><td></td><td></td><td></td><td></td><td>2018 – 2023</td></tr>
-    <tr><td></td><td>2020 – 2025</td><td></td><td></td><td></td><td></td><td></td><td>Nebenjob in der Boulderhalle 7a+</td></tr>
-    <tr><td></td><td>Bachelorstudium Architektur und Städtebau Fachhochschule Potsdam Abschlussnote: 1,1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td>Wintersemester 2022</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td>Erasmus+ Auslandssemester Politecnico di Milano</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>General university entrance qualification (Abitur)</td><td>August – October 2023</td><td>ArchiCAD (+++), Vectorworks (+++),</td><td>German (native)</td><td>since 2021</td><td>2023 (summer semester)</td><td>2013 – 2019</td></tr>
+    <tr><td></td><td>Evangelisches Gymnasium Hermannswerder, Potsdam. Grade: 1.3</td><td>Internship at ZRS Architekten Ingenieure,</td><td>Blender (+++), Cinema 4D (++)(Corona)</td><td>English (C1)</td><td>Co-founder of collective perspektiv;wechsel</td><td>3rd Prize, student competition "Campuswohnen", FH Potsdam</td><td>Layout editor, school newspaper</td></tr>
+    <tr><td></td><td>2016 – 2017</td><td>Berlin</td><td>InDesign (++), Affinity (+), Photoshop (++), Illustrator (+)</td><td>Japanese (N4)</td><td>2023 (summer semester)</td><td>2023 – 2024</td><td>Der Tornowgraph</td></tr>
+    <tr><td></td><td>Exchange year in Japan</td><td>since November 2023</td><td>Premiere Pro (+), DaVinci Resolve (++)</td><td>Italian (A1)</td><td>Advisory member, department council (FB2), FH Potsdam</td><td>Deutschlandstipendium scholarship</td><td>2015 – 2019</td></tr>
+    <tr><td></td><td>Niigata Prefecture, Shibata (AFS)</td><td>Working student at ZRS Architekten:</td><td>Nomad Sculpt (++), Procreate (+++)</td><td>Latin (Latinum)</td><td>2023 – 2024</td><td>2025</td><td>Certified school paramedic</td></tr>
+    <tr><td></td><td>2019 – 2020</td><td>Construction documentation, green roof planning,</td><td>Microsoft Office Suite (+++)</td><td></td><td>Elected member, department council (FB2), FH Potsdam</td><td>Volunteer Prize, Fördergesellschaft FH Potsdam, as part of perspektiv;wechsel</td><td>2016 – 2018</td></tr>
+    <tr><td></td><td>Foundation year "MINTgrün"</td><td>Energy-efficient timber retrofit,</td><td>QGIS (++)</td><td></td><td></td><td></td><td>Team leader, AFS Intercultural Encounters</td></tr>
+    <tr><td></td><td>Technische Universität Berlin</td><td>Visualisation, Point Cloud Processing</td><td></td><td></td><td></td><td></td><td>2018 – 2023</td></tr>
+    <tr><td></td><td>2020 – 2025</td><td></td><td></td><td></td><td></td><td></td><td>Part-time job, Boulderhalle 7a+</td></tr>
+    <tr><td></td><td>B.Arch. Architecture and Urban Design, FH Potsdam. Grade: 1.1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>Winter semester 2022</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>Erasmus+ exchange semester, Politecnico di Milano</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td></td><td>2025</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td>Masterstudium Architektur TU Berlin</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td>M.Arch. Architecture, TU Berlin</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
 
 <table class="events">
-  <tr class="section-head"><td colspan="3">Veranstaltungen — Kollektiv perspektiv;wechsel</td></tr>
-  <tr><td>24.05.2022</td><td>Gendergerechte Stadtplanung</td><td>Sophia Lenz (M. Urbane Zukunft)</td></tr>
-  <tr><td>30.05.2022</td><td>Design für alle — nicht nur barrierefrei</td><td>Matthias Knigge (Grauwert)</td></tr>
+  <tr class="section-head"><td colspan="3">Events — Collective perspektiv;wechsel</td></tr>
+  <tr><td>24.05.2022</td><td>Gender-equitable urban planning</td><td>Sophia Lenz (M. Urban Futures)</td></tr>
+  <tr><td>30.05.2022</td><td>Design for all — beyond accessibility</td><td>Matthias Knigge (Grauwert)</td></tr>
   <tr><td>07.06.2022</td><td>Postcolonial Potsdam</td><td>Alexandra Wuest (Postcolonial Potsdam)</td></tr>
-  <tr><td>22.11.2022</td><td>HANDWERK × ARCHITEKTUR</td><td>Isabelle Vivianne; Jenny Hamerla &amp; Isabel Schmidt (Baufachfrauen)</td></tr>
-  <tr><td>29.11.2022</td><td>Gendergerechte Stadtplanung — Einblicke aus der Praxis</td><td>Dr. Mary Dellenbaugh-Losse (Urban Policy)</td></tr>
-  <tr><td>13.12.2022</td><td>Whose city? Obdachlosigkeit, Architektur und die Stadt</td><td>Dr. Daniel Talesnik (Architekturhistoriker)</td></tr>
-  <tr><td>25.04.2023</td><td>Architektur und Mensch: Raum, Wahrnehmung, Körper, Gesundheit</td><td>Alexandra Correll &amp; Dr. Mathias Ballestrem (Forum Neurourbanistik)</td></tr>
-  <tr><td>02.05.2023</td><td>Baustelle Gleichstellung — Podiumsdiskussion</td><td>Karin Hartmann; Katja Melan &amp; Dagmar Chrobok-Dohmann (AG Gleichstellung)</td></tr>
-  <tr><td>23.05.2023</td><td>Bezahlbar und Klimagerecht wohnen</td><td>Dr. Lisa Vollmer (Leibnizinstitut für Raumbezogene Sozialforschung)</td></tr>
-  <tr><td>24.10.2023</td><td>Realitätscheck Lehmbau</td><td>Dipl.-Ing. Ulrich Röhlen</td></tr>
-  <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
-  <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
-  <tr><td>05.12.2023</td><td>Participative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-  <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino; Etta Seifert; Nicole Fienke; Magdalena Karbach (ZRS)</td></tr>
-  <tr class="section-head"><td colspan="3">Auf dem Podium — Reihe Nachhaltiges Bauen, FH Potsdam</td></tr>
-  <tr><td>11.10.2023</td><td>Schwammstadt</td><td>Prof. Maren Brakebusch, Dr. Darla Nickel (Regenwasseragentur), Friederike Böttcher</td></tr>
-  <tr><td>24.04.2024</td><td>Geothermie — Die Wärme der Zukunft kommt aus der Erde</td><td>Eckard Veil (EWP), Prof. Dr. Ingo Sass (GFZ Potsdam)</td></tr>
-  <tr><td>19.06.2024</td><td>Urban Biodiversität — Die Natur der Zukunft wächst in der Stadt</td><td>Marco Schmidt (BBSR), Claus Herrmann (hochC Landschaftsarchitekten)</td></tr>
-  <tr><td>09.10.2024</td><td>Baukultur — Die Baustoffe der Zukunft sind wiederverwendet</td><td>Carolina Mojto (Freiraum in der Box), Prof. Dr.-Ing. Klaus Pistol (FHP)</td></tr>
-  <tr><td>04.12.2024</td><td>Umbaukultur — von der grauen zur goldenen Energie</td><td>Reiner Nagel (Bundesstiftung Baukultur), Prof. Silke Straub-Beutin, Frank Schönert (Hütten und Paläste)</td></tr>
+  <tr><td>22.11.2022</td><td>CRAFT × ARCHITECTURE</td><td>Isabelle Vivianne; Jenny Hamerla &amp; Isabel Schmidt (Baufachfrauen)</td></tr>
+  <tr><td>29.11.2022</td><td>Gender-equitable urban planning — insights from practice</td><td>Dr. Mary Dellenbaugh-Losse (Urban Policy)</td></tr>
+  <tr><td>13.12.2022</td><td>Whose city? Homelessness, architecture and the city</td><td>Dr. Daniel Talesnik (architectural historian)</td></tr>
+  <tr><td>25.04.2023</td><td>Architecture and the human: space, perception, body, health</td><td>Alexandra Correll &amp; Dr. Mathias Ballestrem (Forum Neurourbanistik)</td></tr>
+  <tr><td>02.05.2023</td><td>Building site equality — panel discussion</td><td>Karin Hartmann; Katja Melan &amp; Dagmar Chrobok-Dohmann (AG Gleichstellung)</td></tr>
+  <tr><td>23.05.2023</td><td>Affordable and climate-just housing</td><td>Dr. Lisa Vollmer (Leibniz Institute for Research on Society and Space)</td></tr>
+  <tr><td>24.10.2023</td><td>Reality check: earthen construction</td><td>Dipl.-Ing. Ulrich Röhlen</td></tr>
+  <tr><td>07.11.2023</td><td>Child-friendly architecture</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
+  <tr><td>21.11.2023</td><td>Rural potential spaces — futures workshop Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
+  <tr><td>05.12.2023</td><td>Participatory planning</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
+  <tr><td>28.05.2024</td><td>Lessons from the building site — panel discussion</td><td>Claudia Alvino; Etta Seifert; Nicole Fienke; Magdalena Karbach (ZRS)</td></tr>
+  <tr class="section-head"><td colspan="3">On the panel — Sustainable Construction series, FH Potsdam</td></tr>
+  <tr><td>11.10.2023</td><td>Sponge city</td><td>Prof. Maren Brakebusch, Dr. Darla Nickel (Regenwasseragentur), Friederike Böttcher</td></tr>
+  <tr><td>24.04.2024</td><td>Geothermal energy — the heat of the future comes from the earth</td><td>Eckard Veil (EWP), Prof. Dr. Ingo Sass (GFZ Potsdam)</td></tr>
+  <tr><td>19.06.2024</td><td>Urban biodiversity — the nature of the future grows in the city</td><td>Marco Schmidt (BBSR), Claus Herrmann (hochC Landschaftsarchitekten)</td></tr>
+  <tr><td>09.10.2024</td><td>Building culture — the materials of the future are reused</td><td>Carolina Mojto (Freiraum in der Box), Prof. Dr.-Ing. Klaus Pistol (FHP)</td></tr>
+  <tr><td>04.12.2024</td><td>Retrofit culture — from grey to golden energy</td><td>Reiner Nagel (Bundesstiftung Baukultur), Prof. Silke Straub-Beutin, Frank Schönert (Hütten und Paläste)</td></tr>
 </table>
 </div>
 
-<!-- TAB BAR -->
-<div id="tabbar">
-  <div class="tab" onclick="show('s1',this)">I want to work at CUE</div>
-  <div class="tab" onclick="show('s2',this)">Space Time Transect</div>
-  <div class="tab" onclick="show('s3',this)">Es regnet die Erde wird nass</div>
-  <div class="tab" onclick="show('s4',this)">Schließ die Lücke nicht</div>
-  <div class="tab" onclick="show('s5',this)">Mapping Damage</div>
-  <div class="tab" onclick="show('s6',this)">Curriculum Vitae</div>
-</div>
+</div><!-- end #content -->
 
 <script>
-const tabs = ['s1','s2','s3','s4','s5','s6'];
+const sheetIds = ['s1','s2','s3','s4','s5','s6'];
 
-function show(id, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
+function scrollTo(id) {
   document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
 
 const observer = new IntersectionObserver((entries) => {
+  let best = null;
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const id = entry.target.id;
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      const tab = document.querySelector(`[onclick="show('${id}',this)"]`);
-      if (tab) tab.classList.add('active');
+      if (!best || entry.intersectionRatio > best.intersectionRatio) {
+        best = entry;
+      }
     }
   });
-}, { threshold: 0.3 });
+  if (best) setActive(best.target.id);
+}, { root: null, threshold: [0.1, 0.3, 0.5] });
 
 document.querySelectorAll('.sheet').forEach(s => observer.observe(s));
-document.querySelector('.tab').classList.add('active');
+
+function setActive(id) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', sheetIds[i] === id);
+  });
+}
+
+setActive('s1');
 
 document.addEventListener('keydown', e => {
-  const visibleSheet = [...document.querySelectorAll('.sheet')].find(s => {
+  const visible = [...document.querySelectorAll('.sheet')].reduce((best, s) => {
     const r = s.getBoundingClientRect();
-    return r.top < window.innerHeight * 0.7 && r.bottom > window.innerHeight * 0.3;
-  });
-  if (!visibleSheet) return;
-  const i = tabs.indexOf(visibleSheet.id);
-  if (e.key === 'ArrowRight' && i < tabs.length - 1) {
-    const next = tabs[i + 1];
-    show(next, document.querySelector(`[onclick="show('${next}',this)"]`));
-  } else if (e.key === 'ArrowLeft' && i > 0) {
-    const prev = tabs[i - 1];
-    show(prev, document.querySelector(`[onclick="show('${prev}',this)"]`));
-  }
+    const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+    return vis > (best.vis || 0) ? { el: s, vis } : best;
+  }, {});
+  if (!visible.el) return;
+  const i = sheetIds.indexOf(visible.el.id);
+  if (e.key === 'ArrowDown' && i < sheetIds.length - 1) scrollTo(sheetIds[i + 1]);
+  if (e.key === 'ArrowUp' && i > 0) scrollTo(sheetIds[i - 1]);
 });
 </script>
 </body>
