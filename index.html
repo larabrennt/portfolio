@@ -6,7 +6,7 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; display: flex; }
-img { display:block; max-width:100%; height:auto; }
+img, video { display:block; max-width:100%; height:auto; }
 
 #sidebar {
   position: fixed;
@@ -80,7 +80,7 @@ h1 {
   display: flex;
   gap: 1vw;
   margin: 20px 0;
-  align-items: stretch;
+  align-items: flex-start;
 }
 .photo-row img,
 .photo-row video,
@@ -88,11 +88,39 @@ h1 {
   flex: 1 1 0;
   min-width: 0;
   width: 100%;
-  aspect-ratio: 1 / 1;
 }
+.photo-row img,
 .photo-row video {
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.comp-wrap {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.comp-wrap video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+.pb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: #fff;
+  font: 10pt Arial;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 2px rgba(0,0,0,0.6);
 }
 
 table.cv-grid {
@@ -149,33 +177,6 @@ table.events tr.section-head td {
   font-size: 10pt;
   padding-top: 14px;
 }
-
-.comp-wrap {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-}
-.comp-wrap video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-.pb {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  color: #fff;
-  font: 10pt Arial;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-shadow: 0 0 2px rgba(0,0,0,0.6);
-}
 </style>
 </head>
 <body>
@@ -184,7 +185,7 @@ table.events tr.section-head td {
   <div id="sidebar-header">APPLICATION<br>Lara Luise Brenner<br>Chair for Transitioning Urban Ecosystems</div>
   <button class="tab" onclick="goToSheet('s1')">I want to work at CUE</button>
   <button class="tab" onclick="goToSheet('s2')">Space Time Transect</button>
-  <button class="tab" onclick="goToSheet('s3')">It's raining, the earth becomes wet.</button>
+  <button class="tab" onclick="goToSheet('s3')">As it rains, the soil becomes wet</button>
   <button class="tab" onclick="goToSheet('s4')">Don't close the gap!</button>
   <button class="tab" onclick="goToSheet('s5')">Mapping Damage</button>
   <button class="tab" onclick="goToSheet('s6')">Curriculum Vitae</button>
@@ -211,24 +212,12 @@ table.events tr.section-head td {
 <p style="font-size:10pt; margin-bottom:4px">with Eliott Croubalian &nbsp;·&nbsp; SS 2026 &nbsp;·&nbsp; Semester project, ongoing</p>
 
 <div class="photo-row" style="margin-bottom: 20px;">
-  <video autoplay loop muted playsinline>
-    <source src="01_Amazon.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="02_Havel.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="03_panke.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="04_Spree.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="05_spreewald.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="06_ganges.mp4" type="video/mp4">
-  </video>
+  <video autoplay loop muted playsinline><source src="01_Amazon.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="02_Havel.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="03_panke.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="04_Spree.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="05_spreewald.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="06_ganges.mp4" type="video/mp4"></video>
 </div>
 
 <div class="photo-row">
@@ -244,15 +233,9 @@ table.events tr.section-head td {
     </video>
     <div class="pb">PRESS HERE TO PLAY</div>
   </div>
-  <video autoplay loop muted playsinline>
-    <source src="time_maps.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="info_Maps.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="THEMES.mp4" type="video/mp4">
-  </video>
+  <video autoplay loop muted playsinline><source src="time_maps.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="info_Maps.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="THEMES.mp4" type="video/mp4"></video>
 </div>
 
 <img src="TRANSECT.png" alt="Space-Time Transect drawing" style="width:100%; margin: 20px 0;">
@@ -262,39 +245,17 @@ table.events tr.section-head td {
 </div>
 
 <div class="sheet" id="s3">
-<h1>As it rains the soil becomes wet</h1>
+<h1>As it rains, the soil becomes wet</h1>
 <p style="font-size:10pt; margin-bottom:16px">with Manuel Rademaker</p>
-<p class="note">
-<br>Es regnet, es regnet,
-<br>die Erde wird nass!
-<br>Und wenn's genug geregnet hat,
-<br>dann wächst auch wieder Gras!
-<p>(german nursery rhyme)</p>
-</div>
-
-<p>
-<br>Es regnet, die Erde wird nass.
-<br>I’m sitting here looking at this exposed patch of ground.
-<br>No Thing, no plan, only a beginning.
-<br>The ground is open again.
-<br>It could absorb water, hold roots, regulate temperature.
-<br>Already, a thin green film is spreading across the surface.
-<br>Accomplished through subtraction rather than addition.
-<br>The removed material lies beside me—enough to sit, rest, and stay.
-<br>Nothing here is complete.
-<br>No promises were given. It is a simple principle:
-<br>Exposing not condensing.
-<br>As it rains, the soil becomes wet.
-</div>
+<p class="note">Es regnet, es regnet,<br>die Erde wird nass!<br>Und wenn's genug geregnet hat,<br>dann wächst auch wieder Gras!<br><br>(German nursery rhyme)</p>
 <img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="axonometric render" style="width:100%; margin-bottom: 20px;">
-<p class="note">Submitted to the competition <em>30 Quadratmeter Baukultur</em>. The project was not chosen to become reality.</p>
+<p class="note">Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project was not chosen to become reality.</p>
 </div>
 
 <div class="sheet" id="s4">
-<h1>Don't you close the Gap!</h1>
+<h1>Don't close the gap!</h1>
 <img src="Brenner_schliess_die_luecke_NICHT-4.png" alt="Don't close the gap" style="width:100%; margin-bottom: 20px;">
-<p class="note">Stegreif project in the course <em>Strategien für nachhaltiges
-Planen und Bauen</em>. The brief called for designing approx. 160 m² of residential floor space in a building gap — including an apartment for 4 people with a private outdoor area, and a separately rentable annexe apartment. The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.</p>
+<p class="note">Stegreif project in the course <em>Strategies for Sustainable Planning and Construction</em>. The brief called for designing approx. 160 m² of residential floor space in a building gap — including an apartment for 4 people with a private outdoor area, and a separately rentable annexe apartment. The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.</p>
 </div>
 
 <div class="sheet" id="s5">
@@ -302,15 +263,9 @@ Planen und Bauen</em>. The brief called for designing approx. 160 m² of residen
 <p style="font-size:10pt; margin-bottom:16px">ZRS Architekten Ingenieure, Berlin</p>
 
 <div class="photo-row" style="margin-bottom: 20px;">
-  <video autoplay loop muted playsinline>
-    <source src="pointcloud.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="video_zrs_1.mp4" type="video/mp4">
-  </video>
-  <video autoplay loop muted playsinline>
-    <source src="video_zrs_2.mp4" type="video/mp4">
-  </video>
+  <video autoplay loop muted playsinline><source src="pointcloud.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="video_zrs_1.mp4" type="video/mp4"></video>
+  <video autoplay loop muted playsinline><source src="video_zrs_2.mp4" type="video/mp4"></video>
 </div>
 
 <img src="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.png" style="margin-bottom:12px;">
@@ -406,11 +361,7 @@ function toggleCompVideo(wrapper) {
 const observer = new IntersectionObserver((entries) => {
   let best = null;
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      if (!best || entry.intersectionRatio > best.intersectionRatio) {
-        best = entry;
-      }
-    }
+    if (entry.isIntersecting && (!best || entry.intersectionRatio > best.intersectionRatio)) best = entry;
   });
   if (best) setActive(best.target.id);
 }, { root: null, threshold: [0.1, 0.3, 0.5] });
@@ -418,9 +369,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.sheet').forEach(s => observer.observe(s));
 
 function setActive(id) {
-  document.querySelectorAll('.tab').forEach((t, i) => {
-    t.classList.toggle('active', sheetIds[i] === id);
-  });
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', sheetIds[i] === id));
 }
 
 setActive('s1');
