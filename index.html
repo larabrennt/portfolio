@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -78,14 +78,20 @@ h1 {
 
 .photo-row {
   display: flex;
-  gap: 12px;
+  gap: 1vw;
   margin: 20px 0;
+  align-items: stretch;
 }
 .photo-row img,
-.photo-row video {
-  flex: 1;
+.photo-row video,
+.comp-wrap {
+  flex: 1 1 0;
   min-width: 0;
-  width: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+.photo-row video {
+  display: block;
   object-fit: cover;
 }
 
@@ -146,13 +152,14 @@ table.events tr.section-head td {
 
 .comp-wrap {
   position: relative;
-  flex: 1;
-  min-width: 0;
   cursor: pointer;
+  overflow: hidden;
 }
 .comp-wrap video {
   width: 100%;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 .pb {
   position: absolute;
@@ -224,6 +231,12 @@ table.events tr.section-head td {
   </video>
 </div>
 
+<div class="photo-row">
+  <img src="IMG_6909.jpeg" alt="Field survey Panke">
+  <img src="BF39C335-6EBB-41ED-AF19-46555667780D-2.JPG" alt="Infrastructure">
+  <img src="361A5F8C-AA9B-47CB-9034-93A739BD99F6-3.JPG" alt="Field specimens">
+</div>
+
 <div class="photo-row" style="margin-bottom: 20px;">
   <div class="comp-wrap" onclick="toggleCompVideo(this)">
     <video>
@@ -244,12 +257,6 @@ table.events tr.section-head td {
 
 <img src="TRANSECT.png" alt="Space-Time Transect drawing" style="width:100%; margin: 20px 0;">
 
-<div class="photo-row">
-  <img src="IMG_6909.jpeg" alt="Field survey Panke">
-  <img src="361A5F8C-AA9B-47CB-9034-93A739BD99F6-3.JPG" alt="Field specimens">
-  <img src="BF39C335-6EBB-41ED-AF19-46555667780D-2.JPG" alt="Infrastructure">
-</div>
-
 <p>The transect was developed as a spatio-temporal mapping instrument that makes geological strata, land ownership patterns, vegetation history, and hydrological traces simultaneously legible. It traverses the Panketalniederung and the Barnim plateau, operating with historical maps from 1888 to 2025.</p>
 <p class="note">Midterm status, SS 2026. The project is not yet complete.</p>
 </div>
@@ -258,13 +265,14 @@ table.events tr.section-head td {
 <h1>It's raining, the earth becomes wet.</h1>
 <p style="font-size:10pt; margin-bottom:16px">with Manuel Rademaker</p>
 <img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="axonometric render" style="width:100%; margin-bottom: 20px;">
-<p class="note">Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project did not win.</p>
+<p class="note">Submitted to the competition <em>30 Quadratmeter Baukultur</em>. The project was not chosen to become reality.</p>
 </div>
 
 <div class="sheet" id="s4">
-<h1>Don't close the gap!</h1>
+<h1>Don't you close the Gap!</h1>
 <img src="Brenner_schliess_die_luecke_NICHT-4.png" alt="Don't close the gap" style="width:100%; margin-bottom: 20px;">
-<p class="note">Stegreif project in the course <em>Strategies for Sustainable Planning and Construction</em>. The brief called for designing approx. 160 m² of residential floor space in an east–west oriented building gap (4.0 m wide, 22.5 m long, surrounding buildings 4 storeys plus pitched roof) — including an apartment for 4 people (100–130 m²) with a private outdoor area, and a separately rentable annexe apartment (30–60 m²). The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.</p>
+<p class="note">Stegreif project in the course <em>Strategien für nachhaltiges
+Planen und Bauen</em>. The brief called for designing approx. 160 m² of residential floor space in a building gap — including an apartment for 4 people with a private outdoor area, and a separately rentable annexe apartment. The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.</p>
 </div>
 
 <div class="sheet" id="s5">
