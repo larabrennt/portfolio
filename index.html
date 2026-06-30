@@ -196,13 +196,25 @@ table.events tr.section-head td {
   </video>
 </div>
 
+
+<div class="photo-row" style="margin-bottom: 20px;">
   <div style="position:relative; margin:20px 0; cursor:pointer;" onclick="var v=this.querySelector('video'); var o=this.querySelector('.pb'); v.paused?(v.play(),o.style.display='none'):(v.pause(),o.style.display='flex')">
-  <video style="width:100%; display:block;">
+  <video style="width:flex; display:block;">
     <source src="comp.mp4" type="video/mp4">
   </video>
   <div class="pb" style="position:absolute; top:50%; left:50%; display:flex; align-items:center; justify-content:center; pointer-events:none; color:#fff; font:10pt Arial; letter-spacing:0.08em; text-transform:uppercase;">
     PRESS HERE TO PLAY
   </div>
+   <video autoplay loop muted playsinline style="flex:1; min-width:0; width:0;">
+    <source src="time_maps" type="video/mp4">
+  </video>
+   <video autoplay loop muted playsinline style="flex:1; min-width:0; width:0;">
+    <source src="info_maps.mp4" type="video/mp4">
+  <video autoplay loop muted playsinline style="flex:1; min-width:0; width:0;">
+    <source src="THEMES.mp4" type="video/mp4">
+  </video>
+</div>
+  
 </div>
 
 <img src="Transect_compressed_A2_acrobat-7.png" alt="Space-Time Transect drawing" style="width:100%; margin: 20px 0;">
