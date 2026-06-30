@@ -76,6 +76,33 @@ h1 {
   line-height: 1.6;
 }
 
+  .text-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  margin: 20px 0;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.text-row img {
+  width: 60%;
+  flex: 0 0 60%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.text-col {
+  width: 40%;
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
+.text-col p {
+  max-width: 100%;
+}
+
 .photo-row {
   display: flex;
   flex-direction: row;
@@ -226,9 +253,13 @@ table.events tr.section-head td {
 <div class="sheet" id="s3">
 <h1>As it rains, the soil becomes wet</h1>
 <p style="font-size:10pt; margin-bottom:16px">with Manuel Rademaker</p>
-<p class="note">Es regnet, es regnet,<br>die Erde wird nass!<br>Und wenn's genug geregnet hat,<br>dann wächst auch wieder Gras!<br><br>(German nursery rhyme)</p>
-<p>Es regnet, die Erde wird nass.<br>I’m sitting here looking at this exposed patch of ground.<br>No Thing, no plan, only a beginning.<br>The ground is open again.<br>It could absorb water, hold roots, regulate temperature.<br>Already, a thin green film is spreading across the surface.<br>Accomplished through subtraction rather than addition.<br>The removed material lies beside me—enough to sit, rest, and stay.<br>Nothing here is complete.<br>No promises were given. It is a simple principle:<br>Exposing not condensing.<br>As it rains, the soil becomes wet.</p>
-<img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="axonometric render" style="width:100%; margin-bottom: 20px;">
+  <div class="text-row">
+  <img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="Beschreibung">
+  <div class="text-col">
+    <p class="note">Es regnet, es regnet,<br>die Erde wird nass!<br>Und wenn's genug geregnet hat,<br>dann wächst auch wieder Gras!<br><br>(German nursery rhyme)</p>
+    <p>Es regnet, die Erde wird nass.<br>I’m sitting here looking at this exposed patch of ground.<br>No Thing, no plan, only a beginning.<br>The ground is open again.<br>It could absorb water, hold roots, regulate temperature.<br>Already, a thin green film is spreading across the surface.<br>Accomplished through subtraction rather than addition.<br>The removed material lies beside me—enough to sit, rest, and stay.<br>Nothing here is complete.<br>No promises were given. It is a simple principle:<br>Exposing not condensing.<br>As it rains, the soil becomes wet.</p>
+  </div>
+</div>
 <p class="note">Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project was not chosen to become reality.</p>
 </div>
 
