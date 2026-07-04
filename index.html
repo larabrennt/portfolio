@@ -392,6 +392,26 @@ function setActive(id) {
   });
 }
 
+function getMostVisibleSheet() {
+  let best = null;
+
+  document.querySelectorAll('.sheet').forEach(sheet => {
+    const r = sheet.getBoundingClientRect();
+    const visible = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0));
+
+    if (!best || visible > best.visible) {
+      best = { id: sheet.id, visible };
+    }
+  });
+
+  return best ? best.id : null;
+}
+
+function updateActiveTab() {
+  const id = getMostVisibleSheet();
+  if (id) setActive(id);
+}
+
 function goToSheet(id) {
   setActive(id);
   document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -409,28 +429,27 @@ function toggleCompVideo(wrapper) {
   }
 }
 
-const observer = new IntersectionObserver((entries) => {
-  let best = null;
-  entries.forEach(entry => {
-    if (entry.isIntersecting && (!best || entry.intersectionRatio > best.intersectionRatio)) {
-      best = entry;
-    }
-  });
-  if (best) setActive(best.target.id);
-}, { root: null, threshold: [0.1, 0.3, 0.5] });
-
-document.querySelectorAll('.sheet').forEach(s => observer.observe(s));
-
 setActive('s1');
+updateActiveTab();
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      updateActiveTab();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+window.addEventListener('resize', updateActiveTab);
 
 document.addEventListener('keydown', e => {
-  const visible = [...document.querySelectorAll('.sheet')].reduce((best, s) => {
-    const r = s.getBoundingClientRect();
-    const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
-    return vis > (best.vis || 0) ? { el: s, vis } : best;
-  }, {});
-  if (!visible.el) return;
-  const i = sheetIds.indexOf(visible.el.id);
+  const currentId = getMostVisibleSheet();
+  if (!currentId) return;
+
+  const i = sheetIds.indexOf(currentId);
   if (e.key === 'ArrowDown' && i < sheetIds.length - 1) goToSheet(sheetIds[i + 1]);
   if (e.key === 'ArrowUp' && i > 0) goToSheet(sheetIds[i - 1]);
 });
