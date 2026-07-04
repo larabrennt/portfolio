@@ -44,7 +44,8 @@ img, video { display:block; max-width:100%; height:auto; }
   line-height: 1.5;
 }
 .tab:hover { color: #555; }
-.tab.active { color: #0000ff; }
+.tab.active,
+.tab.active:hover { color: #0000ff; }
 
 #content {
   margin-left: 220px;
@@ -220,7 +221,6 @@ table.events tr.section-head td {
 <h1>Space Time Transect</h1>
 <p style="font-size:10pt; font-style: italic; margin-bottom:4px">with Eliott Croubalian &nbsp;</p>
 
-
 <div class="photo-row row-s2-videos" style="margin-bottom: none;">
   <video autoplay loop muted playsinline><source src="01_Amazon.mp4" type="video/mp4"></video>
   <video autoplay loop muted playsinline><source src="02_Havel.mp4" type="video/mp4"></video>
@@ -386,8 +386,15 @@ Planen und Bauen</em>. The brief called for designing approx. 160 m² of residen
 <script>
 const sheetIds = ['s1','s2','s3','s4','s5','s6'];
 
+function setActive(id) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', sheetIds[i] === id);
+  });
+}
+
 function goToSheet(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  setActive(id);
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function toggleCompVideo(wrapper) {
@@ -405,16 +412,14 @@ function toggleCompVideo(wrapper) {
 const observer = new IntersectionObserver((entries) => {
   let best = null;
   entries.forEach(entry => {
-    if (entry.isIntersecting && (!best || entry.intersectionRatio > best.intersectionRatio)) best = entry;
+    if (entry.isIntersecting && (!best || entry.intersectionRatio > best.intersectionRatio)) {
+      best = entry;
+    }
   });
   if (best) setActive(best.target.id);
 }, { root: null, threshold: [0.1, 0.3, 0.5] });
 
 document.querySelectorAll('.sheet').forEach(s => observer.observe(s));
-
-function setActive(id) {
-  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', sheetIds[i] === id));
-}
 
 setActive('s1');
 
