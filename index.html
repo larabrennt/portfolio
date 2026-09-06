@@ -198,7 +198,6 @@ h1 {
   height: 320px;
 }
 
-/* Built to fail row: can become as tall as 90% of the window */
 .row-built-to-fail {
   height: 90vh;
   max-height: 90vh;
@@ -214,11 +213,12 @@ h1 {
   justify-content: center;
   pointer-events: none;
   color: #ff0000;
-  font: 26pt Arial;
-  font-weight: bold;
+  font: 10pt Arial;
+  font-weight: normal;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-shadow: none;
+  white-space: nowrap;
 }
 
 /* CLICKABLE IMAGE CAROUSEL */
@@ -245,7 +245,7 @@ h1 {
   height: auto;
   max-width: 100%;
   max-height: 90vh;
-  margin: 0 auto;
+  margin: 0;
   object-fit: contain;
 }
 
@@ -270,20 +270,21 @@ h1 {
   border: none;
   background: transparent;
   color: #ff0000;
-  font: 26pt Arial;
-  font-weight: bold;
+  font: 10pt Arial;
+  font-weight: normal;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
 }
 
-.carousel-next:hover {
-  color: #0000ff;
+.carousel-next:hover,
+.carousel-next:focus {
+  color: #ff0000;
 }
 
 .carousel-next:focus-visible {
-  outline: 1px solid #0000ff;
+  outline: 1px solid #ff0000;
   outline-offset: 4px;
 }
 
@@ -366,11 +367,6 @@ table.events tr.section-head td {
     height: auto;
     max-width: 100%;
     max-height: 90vh;
-  }
-
-  .pb,
-  .carousel-next {
-    font-size: 16pt;
   }
 }
 </style>
@@ -596,37 +592,37 @@ table.events tr.section-head td {
   </div>
 
   <div class="sheet" id="s10">
-  <h1>12-line</h1>
+    <h1>12-line</h1>
 
-  <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
 
-  <div class="click-carousel">
-    <img
-      class="active"
-      src="Definition_and_Text_Page_1.png"
-      alt="12-line definition and text, page 1"
-    >
+    <div class="click-carousel">
+      <img
+        class="active"
+        src="Definition_and_Text_Page_1.png"
+        alt="12-line definition and text, page 1"
+      >
 
-    <img
-      src="Definition_and_Text_Page_2.png"
-      alt="12-line definition and text, page 2"
-    >
+      <img
+        src="Definition_and_Text_Page_2.png"
+        alt="12-line definition and text, page 2"
+      >
 
-    <img
-      src="drawing.png"
-      alt="12-line drawing"
-    >
+      <img
+        src="drawing.png"
+        alt="12-line drawing"
+      >
 
-    <button
-      class="carousel-next"
-      type="button"
-      onclick="nextCarouselImage(this.parentElement)"
-      aria-label="Show next 12-line image"
-    >
-      CLICK
-    </button>
+      <button
+        class="carousel-next"
+        type="button"
+        onclick="nextCarouselImage(this.parentElement)"
+        aria-label="Show next 12-line image"
+      >
+        CLICK
+      </button>
+    </div>
   </div>
-</div>
 
   <div class="sheet" id="s11">
     <h1>As it rains, the soil gets wet</h1>
@@ -752,8 +748,8 @@ table.events tr.section-head td {
       <tr><td>24.10.2023</td><td>Realitätscheck Lehmbau</td><td>Dipl.-Ing. Ulrich Röhlen (Autor: Lehmbau Praxis, Planung und Ausführung)</td></tr>
       <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
       <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
-      <tr><td>05.12.2023</td><td>Partizipative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
+      <tr><td>05.12.2023</td><td>Partizative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
+      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architekt:innenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
 
       <tr class="section-head">
         <td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td>
