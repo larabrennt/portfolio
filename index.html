@@ -29,7 +29,6 @@ img,
 video {
   display: block;
   max-width: 100%;
-  height: auto;
 }
 
 #sidebar {
@@ -79,22 +78,32 @@ video {
   margin-left: 220px;
 }
 
+/*
+  Each usual project section is exactly one screen high.
+  It is a flex column so text stays visible and media uses
+  the remaining height rather than overflowing below the screen.
+*/
 .sheet {
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
-  padding: 24px 40px 80px;
+  padding: 24px 40px 32px;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
 
+/* Space Time Transect and CV remain naturally scrollable. */
 #s2,
 #s12 {
   height: auto;
   min-height: 100vh;
   max-height: none;
+  display: block;
   overflow: visible;
+  padding-bottom: 80px;
 }
 
 p {
@@ -108,6 +117,7 @@ a {
 }
 
 h1 {
+  flex: 0 0 auto;
   margin-bottom: 16pt;
   font-size: 10pt;
   font-weight: normal;
@@ -120,6 +130,12 @@ h1 {
   margin: 16px 0;
   font-style: italic;
   line-height: 1.6;
+}
+
+.subtitle {
+  flex: 0 0 auto;
+  margin-bottom: 16px;
+  font-style: italic;
 }
 
 /* General rows */
@@ -137,6 +153,7 @@ h1 {
 
 .photo-row {
   align-items: stretch;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -192,22 +209,18 @@ h1 {
   height: 340px;
 }
 
-.row-s5-videos {
-  height: 260px;
-}
-
-.row-s5-photos {
-  height: 320px;
-}
-
+/* Intro */
 .row-intro-images {
-  height: calc(100vh - 155px);
-  max-height: calc(100vh - 155px);
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0 0 10px;
 }
 
+/* Built to fail */
 .row-built-to-fail {
-  height: calc(100vh - 155px);
-  max-height: calc(100vh - 155px);
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0;
 }
 
 /* Video prompt */
@@ -234,8 +247,10 @@ h1 {
 .click-carousel {
   position: relative;
   width: 100%;
+  min-height: 0;
   margin: 20px 0;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .photo-row .click-carousel {
@@ -248,20 +263,19 @@ h1 {
 
 .click-carousel img {
   display: none;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
-  max-height: 90vh;
-  margin: 0;
+  max-height: 100%;
   object-fit: contain;
-  cursor: pointer;
+  object-position: left top;
 }
 
 .photo-row .click-carousel img {
   width: auto;
-  height: auto;
+  height: 100%;
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -273,36 +287,60 @@ h1 {
   display: none;
 }
 
+/* Mapping Damage */
+.mapping-layout {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  gap: 12px;
+}
+
+.mapping-main-image {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  object-position: left top;
+}
+
+.mapping-media-row {
+  flex: 0 1 34%;
+  min-height: 0;
+  height: auto;
+  margin: 0;
+}
+
 /* Date House Report */
 .date-house-layout {
-  height: calc(100vh - 125px);
-  max-height: calc(100vh - 125px);
-  margin-top: 20px;
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0;
   overflow: hidden;
 }
 
 .date-house-layout .click-carousel {
   width: 60%;
+  height: 100%;
   flex: 0 0 60%;
   margin: 0;
 }
 
-.date-house-layout .click-carousel img {
-  max-height: calc(100vh - 125px);
-}
-
 .date-house-layout .text-col {
   width: 40%;
+  height: 100%;
   flex: 0 0 40%;
-  max-height: calc(100vh - 125px);
+  min-width: 0;
   overflow-y: auto;
+  padding-right: 4px;
 }
 
 /* 12-line image-only section */
 .twelve-line-layout {
-  height: calc(100vh - 125px);
-  max-height: calc(100vh - 125px);
-  margin-top: 20px;
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -312,31 +350,28 @@ h1 {
   margin: 0;
 }
 
-.twelve-line-layout .click-carousel img {
-  max-height: calc(100vh - 125px);
-}
-
 /* Perspektiv;wechsel */
 #s6 {
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
-  overflow: hidden;
 }
 
 #s6 .note {
+  flex: 0 0 auto;
   max-width: 900px;
   margin: 0 0 12px;
 }
 
 .pw-flyer-grid {
   display: grid;
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 0 1vw;
-  width: 100%;
-  height: calc(100vh - 150px);
-  max-height: calc(100vh - 150px);
+  column-gap: 1vw;
+  row-gap: 0;
 }
 
 .pw-flyer-front {
@@ -359,7 +394,7 @@ h1 {
   outline-offset: 3px;
 }
 
-/* Transparent perspective;wechsel back-side overlay */
+/* Transparent pop-up for flyer back sides */
 .pw-overlay {
   position: fixed;
   inset: 0;
@@ -382,8 +417,8 @@ h1 {
   max-width: min(90vw, 1000px);
   max-height: 90vh;
   object-fit: contain;
-  pointer-events: auto;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .pw-overlay-close {
@@ -391,6 +426,7 @@ h1 {
   top: 24px;
   right: 40px;
   z-index: 3;
+  padding: 0;
   border: none;
   background: transparent;
   color: #f00;
@@ -410,6 +446,56 @@ h1 {
 .pw-overlay-close:focus-visible {
   outline: 1px solid #f00;
   outline-offset: 4px;
+}
+
+/* Don't close the gap */
+#s7 > img {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  object-position: left top;
+}
+
+#s7 .note {
+  flex: 0 0 auto;
+  margin: 12px 0 0;
+}
+
+/* Why Fence and Click */
+#s8 .click-carousel,
+#s9 .click-carousel {
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0;
+}
+
+/* As it rains */
+.rain-layout {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row;
+  gap: 1vw;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.rain-layout > img {
+  width: 60%;
+  height: 100%;
+  flex: 0 0 60%;
+  object-fit: contain;
+  object-position: left top;
+}
+
+.rain-layout .text-col {
+  width: 40%;
+  height: 100%;
+  flex: 0 0 40%;
+  min-width: 0;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 /* CV */
@@ -459,6 +545,7 @@ table.events tr.section-head td {
   .sheet,
   #s2,
   #s12 {
+    display: block;
     height: auto;
     min-height: 100vh;
     max-height: none;
@@ -466,42 +553,46 @@ table.events tr.section-head td {
     overflow: visible;
   }
 
+  .photo-row,
   .text-row,
   .date-house-layout,
-  .twelve-line-layout {
+  .twelve-line-layout,
+  .rain-layout {
+    display: block;
     height: auto;
     max-height: none;
-    flex-direction: column;
     overflow: visible;
   }
 
-  .text-row img,
-  .text-col,
-  .date-house-layout .click-carousel,
-  .date-house-layout .text-col,
-  .twelve-line-layout .click-carousel {
-    width: 100%;
-    flex: 0 0 auto;
-    max-height: none;
+  .photo-row {
+    margin: 20px 0;
   }
 
-  .photo-row {
+  .photo-row img,
+  .photo-row video,
+  .comp-wrap,
+  .photo-row .click-carousel,
+  .date-house-layout .click-carousel,
+  .date-house-layout .text-col,
+  .rain-layout > img,
+  .rain-layout .text-col {
+    width: 100%;
     height: auto;
-    flex-wrap: wrap;
+    max-height: none;
   }
 
   .row-intro-images,
   .row-built-to-fail {
     height: auto;
-    max-height: none;
   }
 
-  .photo-row .click-carousel {
-    width: 100%;
+  .click-carousel {
     height: auto;
-    flex: 0 0 100%;
+    min-height: 0;
+    margin: 20px 0;
   }
 
+  .click-carousel img,
   .photo-row .click-carousel img {
     width: auto;
     height: auto;
@@ -512,15 +603,13 @@ table.events tr.section-head td {
   #s6 {
     height: auto;
     max-height: none;
-    overflow: visible;
   }
 
   .pw-flyer-grid {
+    display: grid;
+    height: auto;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    height: auto;
-    max-height: none;
-    gap: 0 2vw;
   }
 
   .pw-flyer-front {
@@ -590,7 +679,7 @@ table.events tr.section-head td {
       We drew the line of our transect at the fringe of the city, with the panke in the middle, a strip of autobahn running left and train tracks right of it. As we meandered around our line we saw ourselves walking through time and space, only experiencing the state of our environment at the exact time of our observation. Had this always been peripherie, was it countryside before? We find ourselves unable to see the territory as a fixed condition. Our goal was set to visualize time as an active physical force.
     </p>
 
-    <div class="photo-row row-s2-maps">
+    <div class="photo-row row-s2-maps" style="margin:20px 0">
       <div
         class="comp-wrap"
         onclick="toggleCompVideo(this)"
@@ -630,7 +719,7 @@ table.events tr.section-head td {
   <div class="sheet" id="s3">
     <h1>Built to fail</h1>
 
-    <p style="font-style:italic; margin-bottom:16px">
+    <p class="subtitle">
       with Anika Gercke, supervision: Maria Hudl, Nanni Grau, Silvan Linden
     </p>
 
@@ -652,7 +741,7 @@ table.events tr.section-head td {
   <div class="sheet" id="s4">
     <h1>Mapping Damage</h1>
 
-    <p style="font-style:italic; margin-bottom:16px">
+    <p class="subtitle">
       at ZRS Architekten Ingenieure, Berlin
     </p>
 
@@ -660,24 +749,26 @@ table.events tr.section-head td {
       Damage mapping as preparation for structural assessment and restauration of the remaining Structure. Based on a Holzschutzgutachten, Point cloud scans and personal inspection of the building. Modeling of the Dachstuhl, Cartographic analysis of damage and development of system for representation (IFC DataBases) of damage as part of my working student role at ZRS Architekten, Berlin.
     </p>
 
-    <img
-      src="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.png"
-      alt="Damage mapping isometry"
-      style="margin-bottom:12px"
-    >
+    <div class="mapping-layout">
+      <img
+        class="mapping-main-image"
+        src="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.png"
+        alt="Damage mapping isometry"
+      >
 
-    <div class="photo-row row-s5-videos">
-      <video autoplay loop muted playsinline>
-        <source src="video_zrs_2.mp4" type="video/mp4">
-      </video>
+      <div class="photo-row mapping-media-row">
+        <video autoplay loop muted playsinline>
+          <source src="video_zrs_2.mp4" type="video/mp4">
+        </video>
 
-      <video autoplay loop muted playsinline>
-        <source src="video_zrs_1.mp4" type="video/mp4">
-      </video>
+        <video autoplay loop muted playsinline>
+          <source src="video_zrs_1.mp4" type="video/mp4">
+        </video>
 
-      <img src="image_ZRS_1-Large-3.png" alt="">
-      <img src="image_ZRS_2-Large-4.png" alt="">
-      <img src="Image_ZRS_3-Large-5.png" alt="">
+        <img src="image_ZRS_1-Large-3.png" alt="">
+        <img src="image_ZRS_2-Large-4.png" alt="">
+        <img src="Image_ZRS_3-Large-5.png" alt="">
+      </div>
     </div>
   </div>
 
@@ -782,7 +873,6 @@ table.events tr.section-head td {
     <img
       src="Brenner_schliess_die_luecke_NICHT-4.png"
       alt="Don't close the gap"
-      style="width:100%; max-height:calc(100vh - 48px); object-fit:contain;"
     >
 
     <p class="note">
@@ -793,7 +883,7 @@ table.events tr.section-head td {
   <div class="sheet" id="s8">
     <h1>Why Fence?</h1>
 
-    <p style="font-style:italic; margin-bottom:16px">
+    <p class="subtitle">
       with Leonie Ettmüller, supervision: Hannah Jonas
     </p>
 
@@ -801,7 +891,6 @@ table.events tr.section-head td {
       <img class="active" src="fence_1.jpg" alt="Why Fence, image 1">
       <img src="fence_2.jpg" alt="Why Fence, image 2">
       <img src="fence_3.jpg" alt="Why Fence, image 3">
-
       <div class="carousel-prompt">click to browse</div>
     </div>
   </div>
@@ -809,21 +898,21 @@ table.events tr.section-head td {
   <div class="sheet" id="s9">
     <h1>Click</h1>
 
-    <p style="font-style:italic; margin-bottom:16px">
+    <p class="subtitle">
       with Franz Muenzing and Joshua Haack, supervision: Anupama Kundoo
     </p>
 
     <div class="click-carousel">
       <img class="active" src="click_1.jpg" alt="Click, image 1">
       <img src="click_2.jpg" alt="Click, image 2">
-
       <div class="carousel-prompt">click to browse</div>
     </div>
   </div>
 
   <div class="sheet" id="s10">
     <h1>12-line</h1>
-     <p style="font-style:italic; margin-bottom:16px">
+
+    <p class="subtitle">
       thoughts on democratic space and practice developed in a seminar by Aikaterini Tzouvala
     </p>
 
@@ -832,7 +921,6 @@ table.events tr.section-head td {
         <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
         <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
         <img src="drawing.png" alt="12-line drawing">
-
         <div class="carousel-prompt">click to browse</div>
       </div>
     </div>
@@ -841,18 +929,15 @@ table.events tr.section-head td {
   <div class="sheet" id="s11">
     <h1>As it rains, the soil gets wet</h1>
 
-    <p style="font-style:italic; margin-bottom:16px">
-      with Manuel Rademaker
-    </p>
+    <p class="subtitle">with Manuel Rademaker</p>
 
-    <div class="text-row" style="height:calc(100vh - 155px); max-height:calc(100vh - 155px); overflow:hidden;">
+    <div class="rain-layout">
       <img
         src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png"
         alt="As it rains, the soil gets wet project drawing"
-        style="max-height:100%; width:auto;"
       >
 
-      <div class="text-col" style="height:100%; overflow-y:auto; padding-right:4px;">
+      <div class="text-col">
         <p class="note">
           Es regnet, es regnet,<br>
           die Erde wird nass!<br>
@@ -960,7 +1045,7 @@ table.events tr.section-head td {
       <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
       <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
       <tr><td>05.12.2023</td><td>Partizative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architekt:innenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
+      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
 
       <tr class="section-head">
         <td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td>
@@ -1006,6 +1091,7 @@ function getMostVisibleSheet() {
 
   document.querySelectorAll('.sheet').forEach(sheet => {
     const rectangle = sheet.getBoundingClientRect();
+
     const visibleHeight = Math.max(
       0,
       Math.min(rectangle.bottom, window.innerHeight) -
@@ -1049,7 +1135,7 @@ function toggleCompVideo(wrapper) {
     prompt.style.display = 'none';
   } else {
     video.pause();
-    prompt.style.display = 'flex';
+    prompt.style.display = 'block';
   }
 }
 
@@ -1070,8 +1156,6 @@ function nextCarouselImage(carousel) {
   images[nextIndex].classList.add('active');
 
   carousel.classList.add('started');
-  carousel.onclick = () => nextCarouselImage(carousel);
-  carousel.style.cursor = 'pointer';
 }
 
 function openPwBack(imageSource, altText) {
@@ -1091,6 +1175,7 @@ function closePwBack() {
 
   overlay.classList.remove('open');
   overlay.setAttribute('aria-hidden', 'true');
+
   image.src = '';
   image.alt = '';
 }
@@ -1123,20 +1208,9 @@ document.querySelectorAll('.comp-wrap').forEach(element => {
 });
 
 document.querySelectorAll('.click-carousel').forEach(carousel => {
-  carousel.addEventListener('click', event => {
-    if (
-      event.target.tagName === 'IMG' ||
-      event.target.classList.contains('carousel-prompt')
-    ) {
-      nextCarouselImage(carousel);
-    }
+  carousel.addEventListener('click', () => {
+    nextCarouselImage(carousel);
   });
-});
-
-document.getElementById('pw-overlay').addEventListener('click', event => {
-  if (event.target.id === 'pw-overlay') {
-    closePwBack();
-  }
 });
 
 document.getElementById('pw-overlay-image').addEventListener('click', () => {
