@@ -218,9 +218,9 @@ h1 {
 
 /* CLICKABLE IMAGE CAROUSEL */
 .click-carousel {
+  position: relative;
   width: 100%;
   margin: 20px 0;
-  cursor: pointer;
   overflow: hidden;
 }
 
@@ -232,6 +232,35 @@ h1 {
 
 .click-carousel img.active {
   display: block;
+}
+
+/* Red button over the centre of the carousel image */
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: none;
+  background: transparent;
+  color: #ff0000;
+
+  font: 26pt Arial;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.carousel-next:hover {
+  color: #0000ff;
+}
+
+.carousel-next:focus-visible {
+  outline: 1px solid #0000ff;
+  outline-offset: 4px;
 }
 
 table.events {
@@ -291,6 +320,11 @@ table.events tr.section-head td {
     width: 100%;
     flex: 0 0 auto;
   }
+
+  .pb,
+  .carousel-next {
+    font-size: 16pt;
+  }
 }
 </style>
 </head>
@@ -319,9 +353,12 @@ table.events tr.section-head td {
   <div class="sheet" id="s1">
     <h1>Hi</h1>
 
-    <img src="essence.jpg"
+    <img
+      src="essence.jpg"
       alt="I explore how spatial arrangements shape access and agency, and how they are contested, inhabited and transformed over time"
-      style="max-height: 70vh; width: auto; max-width: 100%;">
+      style="max-height:70vh; width:auto; max-width:100%;"
+    >
+
     <p>
       ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
       <br>
@@ -338,8 +375,7 @@ table.events tr.section-head td {
     <p class="note">
       We drew the line of our transect at the fringe of the city, with the panke in the middle, a strip of autobahn running left and train tracks right of it. As we meandered around our line we saw ourselves walking through time and space, only experiencing the state of our environment at the exact time of our observation. Had this always been peripherie, was it countryside before? Swallowed by Berlin? In our research, the Panke River serves as a primary example of a territory in constant transformation. Shaped first by glacial melt, the landscape remains in motion and the river would slowly erode its own path, were it not for our anthropological impact. We find ourselves unable to see the territory as a fixed condition. Our goal was set to visualize time as an active physical force, one that produces both change and compression.
     </p>
-    
-    
+
     <div class="photo-row row-s2-maps" style="margin-bottom:20px">
 
       <div
@@ -349,7 +385,6 @@ table.events tr.section-head td {
         tabindex="0"
         aria-label="Play or pause intervention video"
       >
-        <!-- Change this filename to the image you want as the video cover. -->
         <video poster="intervention-poster.png" playsinline>
           <source src="intervention.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -357,11 +392,11 @@ table.events tr.section-head td {
 
         <div class="pb">PRESS HERE TO PLAY</div>
       </div>
-      
+
       <video autoplay loop muted playsinline>
         <source src="comp.mp4" type="video/mp4">
       </video>
-      
+
       <video autoplay loop muted playsinline>
         <source src="time_maps.mp4" type="video/mp4">
       </video>
@@ -370,39 +405,44 @@ table.events tr.section-head td {
         <source src="info_Maps.mp4" type="video/mp4">
       </video>
     </div>
+
     <p class="note">
       Exploring this, we developed the space-time transect. This instrument rests on two conceptual operations. First, we flatten spatial depth: the vertical space of a traditional map is compressed until geography becomes a single horizontal line of distance, <em>x</em>. Then we replace the vertical axis with time, <em>t</em>. In this way, we give up spatial depth in order to gain temporal depth. The result is a map that allows historical events and material conditions to be grasped with an intuitive understanding of what we are already used to from reading space-dimensional maps. We imagine Geological strata, ownership patterns, and hydrological traces along a timeline can then be understood and made accessible.
       <br>
       Access the Project site
       <a href="https://larabrennt.github.io/TRANSECT/" target="_blank" rel="noopener noreferrer">HERE</a>
     </p>
+
     <img
       src="TRANSECT.png"
       alt="Space-Time Transect drawing"
       style="width:100%; margin:20px 0"
     >
-
   </div>
 
   <div class="sheet" id="s3">
     <h1>Built to fail</h1>
+
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
       with Anika Gercke
     </p>
-<div
-      class="click-carousel"
-      onclick="nextCarouselImage(this)"
-      role="button"
-      tabindex="0"
-      aria-label="Show next image"
-    >
-      <img class="active" src="P1000502.jpg">
+
+    <div class="click-carousel">
+      <img class="active" src="P1000502.jpg" alt="Built to fail image 1">
       <img src="P1000504.jpg" alt="Built to fail image 2">
       <img src="P1000512.jpg" alt="Built to fail image 3">
       <img src="P1000538.jpg" alt="Built to fail image 4">
       <img src="P1000554.jpg" alt="Built to fail image 5">
+
+      <button
+        class="carousel-next"
+        type="button"
+        onclick="nextCarouselImage(this.parentElement)"
+        aria-label="Show next Built to fail image"
+      >
+        CLICK
+      </button>
     </div>
-      
   </div>
 
   <div class="sheet" id="s4">
@@ -438,29 +478,34 @@ table.events tr.section-head td {
   </div>
 
   <div class="sheet" id="s5">
-    <h1>Date House Report</h1>
+  <h1>Date House Report</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
+  <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
 
-    <!--
-      CLICKABLE IMAGE CAROUSEL:
-      Replace these file names with your own images.
-      Add more <img> lines if you need more images.
-      The first image must keep class="active".
-    -->
-    <div
-      class="click-carousel"
-      onclick="nextCarouselImage(this)"
-      role="button"
-      tabindex="0"
-      aria-label="Show next image"
+  <div class="click-carousel">
+    <img class="active" src="Date_House_Report_Page_01.jpg" alt="Date House Report, page 1">
+    <img src="Date_House_Report_Page_02.jpg" alt="Date House Report, page 2">
+    <img src="Date_House_Report_Page_03.jpg" alt="Date House Report, page 3">
+    <img src="Date_House_Report_Page_04.jpg" alt="Date House Report, page 4">
+    <img src="Date_House_Report_Page_05.jpg" alt="Date House Report, page 5">
+    <img src="Date_House_Report_Page_06.jpg" alt="Date House Report, page 6">
+    <img src="Date_House_Report_Page_07.jpg" alt="Date House Report, page 7">
+    <img src="Date_House_Report_Page_08.jpg" alt="Date House Report, page 8">
+    <img src="Date_House_Report_Page_09.jpg" alt="Date House Report, page 9">
+    <img src="Date_House_Report_Page_10.jpg" alt="Date House Report, page 10">
+    <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
+    <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
+
+    <button
+      class="carousel-next"
+      type="button"
+      onclick="nextCarouselImage(this.parentElement)"
+      aria-label="Show next Date House Report page"
     >
-      <img class="active" src="date-house-01.jpg" alt="Date House Report image 1">
-      <img src="date-house-02.jpg" alt="Date House Report image 2">
-      <img src="date-house-03.jpg" alt="Date House Report image 3">
-    </div>
+      CLICK
+    </button>
   </div>
-
+</div>
   <div class="sheet" id="s6">
     <h1>perspektiv;wechsel</h1>
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
@@ -480,6 +525,7 @@ table.events tr.section-head td {
 
   <div class="sheet" id="s8">
     <h1>Why Fence?</h1>
+
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
       with Leonie Ettmüller
     </p>
@@ -487,6 +533,7 @@ table.events tr.section-head td {
 
   <div class="sheet" id="s9">
     <h1>Click</h1>
+
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
       with Franz Muenzing and Joshua ??
     </p>
@@ -622,7 +669,7 @@ table.events tr.section-head td {
       <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
       <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
       <tr><td>05.12.2023</td><td>Partizipative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
+      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architekt:innenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
 
       <tr class="section-head">
         <td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td>
@@ -747,25 +794,7 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateActiveTab);
 
-document.addEventListener('keydown', event => {
-  const currentId = getMostVisibleSheet();
-
-  if (!currentId) {
-    return;
-  }
-
-  const currentIndex = sheetIds.indexOf(currentId);
-
-  if (event.key === 'ArrowDown' && currentIndex < sheetIds.length - 1) {
-    goToSheet(sheetIds[currentIndex + 1]);
-  }
-
-  if (event.key === 'ArrowUp' && currentIndex > 0) {
-    goToSheet(sheetIds[currentIndex - 1]);
-  }
-});
-
-document.querySelectorAll('.comp-wrap, .click-carousel').forEach(element => {
+document.querySelectorAll('.comp-wrap').forEach(element => {
   element.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
