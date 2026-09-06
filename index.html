@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>larabrennt</title>
+
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; font-size: 10pt; color: #000; background: #fff; display: flex; }
-img, video { display:block; max-width:100%; height:auto; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  color: #000;
+  background: #fff;
+  display: flex;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
 #sidebar {
   position: fixed;
@@ -43,9 +67,15 @@ img, video { display:block; max-width:100%; height:auto; }
   width: 100%;
   line-height: 1.5;
 }
-.tab:hover { color: #555; }
+
+.tab:hover {
+  color: #555;
+}
+
 .tab.active,
-.tab.active:hover { color: #0000ff; }
+.tab.active:hover {
+  color: #0000ff;
+}
 
 #content {
   margin-left: 220px;
@@ -57,10 +87,20 @@ img, video { display:block; max-width:100%; height:auto; }
   padding: 24px 40px 80px;
   min-height: 100vh;
   border-bottom: none;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 
-p { line-height: 1.6; margin-bottom: 10pt; max-width: 800px; }
-a { color: #000; }
+p {
+  line-height: 1.6;
+  margin-bottom: 10pt;
+  max-width: 800px;
+}
+
+a {
+  color: #000;
+}
 
 h1 {
   font-size: 10pt;
@@ -77,7 +117,7 @@ h1 {
   line-height: 1.6;
 }
 
-  .text-row {
+.text-row {
   display: flex;
   flex-direction: row;
   gap: 1vw;
@@ -139,11 +179,25 @@ h1 {
   object-fit: contain;
 }
 
-.row-s2-videos { height: 280px; }
-.row-s2-photos { height: 280px; }
-.row-s2-maps { height: 340px; }
-.row-s5-videos { height: 260px; }
-.row-s5-photos { height: 320px; }
+.row-s2-videos {
+  height: 280px;
+}
+
+.row-s2-photos {
+  height: 280px;
+}
+
+.row-s2-maps {
+  height: 340px;
+}
+
+.row-s5-videos {
+  height: 260px;
+}
+
+.row-s5-photos {
+  height: 320px;
+}
 
 .pb {
   position: absolute;
@@ -162,22 +216,43 @@ h1 {
   text-shadow: none;
 }
 
+/* CLICKABLE IMAGE CAROUSEL */
+.click-carousel {
+  width: 100%;
+  margin: 20px 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.click-carousel img {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.click-carousel img.active {
+  display: block;
+}
+
 table.events {
   border-collapse: collapse;
   font: 10pt Arial;
   max-width: 820px;
   margin-bottom: 10pt;
 }
+
 table.events td {
   padding: 4px 16px 4px 0;
   vertical-align: top;
   font-size: 10pt;
 }
+
 table.events td:first-child {
   width: 160px;
   font-size: 10pt;
   white-space: nowrap;
 }
+
 table.events tr.section-head td {
   font-weight: normal;
   text-transform: uppercase;
@@ -185,12 +260,46 @@ table.events tr.section-head td {
   font-size: 10pt;
   padding-top: 14px;
 }
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+
+  #sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+  }
+
+  #content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sheet {
+    padding: 24px 16px 56px;
+  }
+
+  .text-row {
+    flex-direction: column;
+  }
+
+  .text-row img,
+  .text-col {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <div id="sidebar">
   <div id="sidebar-header">larabrennt</div>
+
   <button class="tab" onclick="goToSheet('s1')">Hi</button>
   <button class="tab" onclick="goToSheet('s2')">Space Time Transect</button>
   <button class="tab" onclick="goToSheet('s3')">Built to fail</button>
@@ -203,205 +312,351 @@ table.events tr.section-head td {
   <button class="tab" onclick="goToSheet('s10')">12-line</button>
   <button class="tab" onclick="goToSheet('s11')">As it rains, the soil gets wet</button>
   <button class="tab" onclick="goToSheet('s12')">Lara Luise Brenner</button>
-  
 </div>
 
 <div id="content">
 
-<div class="sheet" id="s1">
-<h1>Hi</h1>
+  <div class="sheet" id="s1">
+    <h1>Hi</h1>
 
-<img src="essence.jpg" alt="I explore how spatial arrangements shape acces and agency, and how they are contested, inhabitet and transformed over time">
-<p>
-  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
- <br>
-</p>
-</div>
-  
-<div class="sheet" id="s2">
-<h1>Space Time Transect</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:4px">with Eliott Croubalian &nbsp;</p>
+    <img
+      src="essence.jpg"
+      alt="I explore how spatial arrangements shape access and agency, and how they are contested, inhabited and transformed over time"
+    >
 
-<p class="note">We drew the line of our transect at the fringe of the city, with the panke in the middle, a strip of autobahn running left and train tracks right of it. As we meandered around our line we saw ourselves walking through time and space, only experiencing the state of our environment at the exact time of our observation. Had this always been peripherie, was it countryside before? Swallowed by Berlin? In our research, the Panke River serves as a primary example of a territory in constant transformation. Shaped first by glacial melt, the landscape remains in motion and the river would slowly erode its own path, were it not for our anthropological impact. We find ourselves unable to see the territory as a fixed condition. Our goal was set to visualize time as an active physical force, one that produces both change and compression.</p>
-<p class="note">Exploring this, we developed the space-time transect. This instrument rests on two conceptual operations. First, we flatten spatial depth: the vertical space of a traditional map is compressed until geography becomes a single horizontal line of distance, <em>x</em>. Then we replace the vertical axis with time, <em>t</em>. In this way, we give up spatial depth in order to gain temporal depth. The result is a map that allows historical events and material conditions to be grasped with an intuitive understanding of what we are already used to from reading space-dimensional maps. We imagine Geological strata, ownership patterns, and hydrological traces along a timeline can then be understood and made accessible.<br> Access the Project site <a href="https://larabrennt.github.io/TRANSECT/">HERE</a></p>
-
-  <div class="photo-row row-s2-maps" style="margin-bottom: 20px;">
-  <div class="comp-wrap" onclick="toggleCompVideo(this)">
-    <video>
-      <source src="intervention.mp4" type="video/mp4">
-    </video>
-    <div class="pb">PRESS HERE TO PLAY</div>
+    <p>
+      ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+      <br>
+    </p>
   </div>
-  <video autoplay loop muted playsinline><source src="time_maps.mp4" type="video/mp4"></video>
-  <video autoplay loop muted playsinline><source src="info_Maps.mp4" type="video/mp4"></video>
-</div>
 
+  <div class="sheet" id="s2">
+    <h1>Space Time Transect</h1>
 
-<img src="TRANSECT.png" alt="Space-Time Transect drawing" style="width:100%; margin: 20px 0;">
-  
-<p class="note">accompanying literature:</p>
-  
-<div class="photo-row row-s2-videos" style="margin-bottom: 20px;">
-  <img src="IMG_7728.JPG">
-  <img src="IMG_7726.jpg">
-  <img src="IMG_7725.JPG">
-  <img src="IMG_7723.jpeg">
-  <img src="IMG_7722.JPG">
-  <img src="IMG_7721.JPG">
-  <img src="IMG_7724.JPG">
-</div>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:4px">
+      with Eliott Croubalian
+    </p>
 
-<p class="note">Midterm status, SS 2026. The project is still very much a work in Progress</p>
-</div>
+    <p class="note">
+      We drew the line of our transect at the fringe of the city, with the panke in the middle, a strip of autobahn running left and train tracks right of it. As we meandered around our line we saw ourselves walking through time and space, only experiencing the state of our environment at the exact time of our observation. Had this always been peripherie, was it countryside before? Swallowed by Berlin? In our research, the Panke River serves as a primary example of a territory in constant transformation. Shaped first by glacial melt, the landscape remains in motion and the river would slowly erode its own path, were it not for our anthropological impact. We find ourselves unable to see the territory as a fixed condition. Our goal was set to visualize time as an active physical force, one that produces both change and compression.
+    </p>
 
-<div class="sheet" id="s3">
-  <h1>Built to fail</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px">with Anika Gercke</p>
-</div>
+    <p class="note">
+      Exploring this, we developed the space-time transect. This instrument rests on two conceptual operations. First, we flatten spatial depth: the vertical space of a traditional map is compressed until geography becomes a single horizontal line of distance, <em>x</em>. Then we replace the vertical axis with time, <em>t</em>. In this way, we give up spatial depth in order to gain temporal depth. The result is a map that allows historical events and material conditions to be grasped with an intuitive understanding of what we are already used to from reading space-dimensional maps. We imagine Geological strata, ownership patterns, and hydrological traces along a timeline can then be understood and made accessible.
+      <br>
+      Access the Project site
+      <a href="https://larabrennt.github.io/TRANSECT/" target="_blank" rel="noopener noreferrer">HERE</a>
+    </p>
 
-<div class="sheet" id="s4">
-<h1>Mapping Damage</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px">at ZRS Architekten Ingenieure, Berlin</p>
+    <div class="photo-row row-s2-maps" style="margin-bottom:20px">
 
-<p>Damage mapping as preparation for structural assessment and restauration of the remaining Structure. Based on a Holzschutzgutachten, Point cloud scans and personal inspection of the building. Modeling of the Dachstuhl, Cartographic analysis of damage and development of system for representation (IFC DataBases) of damage as part of my working student role at ZRS Architekten, Berlin.</p>
+      <div
+        class="comp-wrap"
+        onclick="toggleCompVideo(this)"
+        role="button"
+        tabindex="0"
+        aria-label="Play or pause intervention video"
+      >
+        <!-- Change this filename to the image you want as the video cover. -->
+        <video poster="intervention-poster.jpg" playsinline>
+          <source src="intervention.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
 
-<img src="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.png" style="margin-bottom:12px;">
+        <div class="pb">PRESS HERE TO PLAY</div>
+      </div>
 
-<div class="photo-row row-s5-videos" style="margin-bottom: 20px;">
-  <video autoplay loop muted playsinline><source src="video_zrs_2.mp4" type="video/mp4"></video>
-  <video autoplay loop muted playsinline><source src="video_zrs_1.mp4" type="video/mp4"></video>
-  <img src="image_ZRS_1-Large-3.png">
-  <img src="image_ZRS_2-Large-4.png">
-  <img src="Image_ZRS_3-Large-5.png">
-</div>
-</div>
+      <video autoplay loop muted playsinline>
+        <source src="time_maps.mp4" type="video/mp4">
+      </video>
 
-<div class="sheet" id="s5">
-<h1>Date House Report</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px"></p>
-</div>
+      <video autoplay loop muted playsinline>
+        <source src="info_Maps.mp4" type="video/mp4">
+      </video>
+    </div>
 
-<div class="sheet" id="s6">
-<h1>perspektiv;wechsel</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px"></p>
-</div>
+    <img
+      src="TRANSECT.png"
+      alt="Space-Time Transect drawing"
+      style="width:100%; margin:20px 0"
+    >
 
-<div class="sheet" id="s7">
-<img src="Brenner_schliess_die_luecke_NICHT-4.png" alt="Don't close the gap" style="width:110%; margin-bottom: 20px;">
-<p class="note">Stegreif project in the course <em>Strategien für nachhaltiges
-Planen und Bauen</em>. The brief called for designing approx. 160 m² of residential floor space in a building gap — including an apartment for 4 people with a private outdoor area, and a separately rentable annexe apartment. The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.</p>
-</div>
-  
-<div class="sheet" id="s8">
-<h1>Why Fence?</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px">with Leonie Ettmüller</p>
-</div>
+    <p class="note">accompanying literature:</p>
 
-<div class="sheet" id="s9">
-<h1>Click</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px">with Franz Muenzing and Joshua ??</p>
-</div>
+    <div class="photo-row row-s2-videos" style="margin-bottom:20px">
+      <img src="IMG_7728.JPG" alt="">
+      <img src="IMG_7726.jpg" alt="">
+      <img src="IMG_7725.JPG" alt="">
+      <img src="IMG_7723.jpeg" alt="">
+      <img src="IMG_7722.JPG" alt="">
+      <img src="IMG_7721.JPG" alt="">
+      <img src="IMG_7724.JPG" alt="">
+    </div>
 
-<div class="sheet" id="s10">
-<h1>12-line</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px"></p>
-</div>
-
-<div class="sheet" id="s11">
-<h1>As it rains, the soil gets wet</h1>
-<p style="font-size:10pt; font-style: italic; margin-bottom:16px">with Manuel Rademaker</p>
-  <div class="text-row">
-  <img src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png" alt="Beschreibung">
-  <div class="text-col">
-    <p class="note">Es regnet, es regnet,<br>die Erde wird nass!<br>Und wenn's genug geregnet hat,<br>dann wächst auch wieder Gras!<br><br>(German nursery rhyme)</p>
-    <p>Es regnet, die Erde wird nass.<br>I’m sitting here looking at this exposed patch of ground.<br>No Thing, no plan, only a beginning.<br>The ground is open again.<br>It could absorb water, hold roots, regulate temperature.<br>Already, a thin green film is spreading across the surface.<br>Accomplished through subtraction rather than addition.<br>The removed material lies beside me—enough to sit, rest, and stay.<br>Nothing here is complete.<br>No promises were given. It is a simple principle:<br>Exposing not condensing.<br>As it rains, the soil gets wet.</p>
+    <p class="note">
+      Midterm status, SS 2026. The project is still very much a work in Progress
+    </p>
   </div>
-</div>
-<p class="note">Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project was not chosen to become reality.</p>
-</div>
 
-<div class="sheet" id="s12">
-<div style="font-size:10pt; font-weight:normal; line-height:1.3; margin-bottom:2px;">LARA<br>BRENNER</div>
-<div style="font-size:10pt; margin-bottom:20px;">*18.07.2000 in Neuruppin &nbsp;·&nbsp; Wiesenstr. 38, 14473 Potsdam &nbsp;·&nbsp; <a href="mailto:l.brenner@campus.tu-berlin.de">l.brenner@campus.tu-berlin.de</a> &nbsp;·&nbsp; 015777797700</div>
+  <div class="sheet" id="s3">
+    <h1>Built to fail</h1>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+      with Anika Gercke
+    </p>
+  </div>
 
-<table class="events">
-  <tr class="section-head"><td colspan="2">Education</td></tr>
-  <tr><td>2019 Abitur</td><td>General university entrance qualification — Evangelisches Gymnasium Hermannswerder, Potsdam. Grade: 1.3</td></tr>
-  <tr><td>2016 – 2017</td><td>Exchange year in Japan, Niigata Prefecture, Shibata (AFS)</td></tr>
-  <tr><td>2019 – 2020</td><td>Grundstudium "MINTgrün", Technische Universität Berlin</td></tr>
-  <tr><td>2020 – 2025</td><td>B.Arch. Architecture and Urban Design, FH Potsdam. Grade: 1.1</td></tr>
-  <tr><td>2022 (winter semester)</td><td>Erasmus+ exchange semester, Politecnico di Milano</td></tr>
-  <tr><td>since 2025</td><td>M.Arch. Architecture program, TU Berlin</td></tr>
+  <div class="sheet" id="s4">
+    <h1>Mapping Damage</h1>
 
-  <tr class="section-head"><td colspan="2">Practice</td></tr>
-  <tr><td>August – October 2023</td><td>Internship at ZRS Architekten Ingenieure, Berlin</td></tr>
-  <tr><td>November 2023 - April 2026</td><td>Working student at ZRS Architekten: Construction documentation, green roof planning, energy-efficient timber retrofit, visualisation, point cloud processing</td></tr>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+      at ZRS Architekten Ingenieure, Berlin
+    </p>
 
-  <tr class="section-head"><td colspan="2">Software</td></tr>
-  <tr><td></td><td>ArchiCAD (+++), Vectorworks (++++)</td></tr>
-  <tr><td></td><td>Blender (+++), Cinema 4D (++) (Corona)</td></tr>
-  <tr><td></td><td>InDesign (+++), Affinity (+), Photoshop (++), Illustrator (+)</td></tr>
-  <tr><td></td><td>Premiere Pro (+), DaVinci Resolve (++)</td></tr>
-  <tr><td></td><td>Nomad Sculpt (++), Procreate (+++)</td></tr>
-  <tr><td></td><td>Microsoft Office Suite (+++)</td></tr>
-  <tr><td></td><td>QGIS (+++)</td></tr>
+    <p>
+      Damage mapping as preparation for structural assessment and restauration of the remaining Structure. Based on a Holzschutzgutachten, Point cloud scans and personal inspection of the building. Modeling of the Dachstuhl, Cartographic analysis of damage and development of system for representation (IFC DataBases) of damage as part of my working student role at ZRS Architekten, Berlin.
+    </p>
 
-  <tr class="section-head"><td colspan="2">Languages</td></tr>
-  <tr><td></td><td>German (native)</td></tr>
-  <tr><td></td><td>English (C1)</td></tr>
-  <tr><td></td><td>Japanese (N4)</td></tr>
-  <tr><td></td><td>Italian (A1)</td></tr>
-  <tr><td></td><td>Latin (Latinum)</td></tr>
+    <img
+      src="30232001001AAR_HD_SK_ISO_Schadenskartierung_Hauptdaach_Isometrie-8.png"
+      alt="Damage mapping isometry"
+      style="margin-bottom:12px"
+    >
 
-  <tr class="section-head"><td colspan="2">Engagement</td></tr>
-  <tr><td>since 2021</td><td>Co-founder of collective perspektiv;wechsel</td></tr>
-  <tr><td>2023 (summer semester)</td><td>Advisory member, department council (FB2), FH Potsdam</td></tr>
-  <tr><td>2023 – 2024</td><td>Elected member, department council (FB2), FH Potsdam</td></tr>
+    <div class="photo-row row-s5-videos" style="margin-bottom:20px">
+      <video autoplay loop muted playsinline>
+        <source src="video_zrs_2.mp4" type="video/mp4">
+      </video>
 
-  <tr class="section-head"><td colspan="2">Honors</td></tr>
-  <tr><td>2023 (summer semester)</td><td>3rd Prize, student competition "Campuswohnen", FH Potsdam</td></tr>
-  <tr><td>2023 – 2024</td><td>Deutschlandstipendium scholarship</td></tr>
-  <tr><td>2025</td><td>Ehrenamtspreis der Fördergesellschaft der Fachhochschule Potsdam, as part of perspektiv;wechsel</td></tr>
+      <video autoplay loop muted playsinline>
+        <source src="video_zrs_1.mp4" type="video/mp4">
+      </video>
 
-  <tr class="section-head"><td colspan="2">Further</td></tr>
-  <tr><td>2013 – 2019</td><td>Layout editor, school newspaper Der Tornowgraph</td></tr>
-  <tr><td>2015 – 2019</td><td>Certified school paramedic</td></tr>
-  <tr><td>2016 – 2018</td><td>Team leader, AFS Intercultural Encounters</td></tr>
-  <tr><td>2018 – 2023</td><td>Minijob, Boulderhalle 7a+</td></tr>
-</table>
+      <img src="image_ZRS_1-Large-3.png" alt="">
+      <img src="image_ZRS_2-Large-4.png" alt="">
+      <img src="Image_ZRS_3-Large-5.png" alt="">
+    </div>
+  </div>
 
-<table class="events">
-  <tr class="section-head"><td colspan="3">Events that I took part in organizing at Collective perspektiv;wechsel</td></tr>
-  <tr><td>24.05.2022</td><td>Gendergerechte Stadtplanung</td><td>Sophia Lenz (M. Urbane Zukunft)</td></tr>
-  <tr><td>30.05.2022</td><td>design für alle — nicht nur barrierefrei, sondern attraktiv und komfortabel für alle</td><td>Matthias Knigge (Grauwert, Büro für Inklusion &amp; demografiefeste Lösungen)</td></tr>
-  <tr><td>07.06.2022</td><td>postcolonial potsdam — kolonialgeschichte und postkoloniales schweigen in potsdam</td><td>Alexandra Wuest (Postcolonial Potsdam)</td></tr>
-  <tr><td>22.11.2022</td><td>HANDWERK × ARCHITEKTUR</td><td>Isabelle Vivianne; Jenny Hamerla &amp; Isabel Schmidt (Baufachfrauen)</td></tr>
-  <tr><td>29.11.2022</td><td>Gendergerechte Stadtplanung — Einblicke aus der Praxis</td><td>Dr. Mary Dellenbaugh-Losse (Urban Policy)</td></tr>
-  <tr><td>13.12.2022</td><td>whose city? — Obdachlosigkeit, Architektur und die Stadt</td><td>Dr. Daniel Talesnik (Architekturhistoriker)</td></tr>
-  <tr><td>25.04.2023</td><td>Architektur und Mensch: Raum in Wechselwirkung mit Wahrnehmung, Körper und Gesundheit</td><td>Alexandra Correll (Fachärztin Neurologie) &amp; Dr. Mathias Ballestrem (Programmdirektor Bauhaus Earth) (Both: Interdisziplinäres Forum Neurourbanistik e.V.)</td></tr>
-  <tr><td>02.05.2023</td><td>Baustelle Gleichstellung — Podiumsdiskussion</td><td>Karin Hartmann (Autorin: Schwarzer Pulli, Hornbrille); Katja Melan &amp; Dagmar Chrobok-Dohmann (AG Gleichstellung der Brandenburgischen Architekt:innenkammer)</td></tr>
-  <tr><td>23.05.2023</td><td>Bezahlbar und Klimagerecht wohnen</td><td>Dr. Lisa Vollmer (Leibnizinstitut für Raumbezogene Sozialforschung)</td></tr>
-  <tr><td>24.10.2023</td><td>Realitätscheck Lehmbau</td><td>Dipl.-Ing. Ulrich Röhlen (Autor: Lehmbau Praxis, Planung und Ausführung)</td></tr>
-  <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
-  <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
-  <tr><td>05.12.2023</td><td>Partizipative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-  <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
-  <tr class="section-head"><td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td></tr>
-  <tr><td>11.10.2023</td><td>Was tun bei zunehmenden Wetterextremen wie Trockenheit und Starkregen? – Das Prinzip „Schwammstadt"!</td><td>Fachreferent: Prof. Dr.-Ing. Gunar Gutzeit (FHP)<br> auf dem Podium mit: Prof. Maren Brakebusch (FHP, Büro VOGT), Dr. Darla Nickel (Regenwasseragentur), Friederike Böttcher (Alumna FHP)</td></tr>
-  <tr><td>24.04.2024</td><td>Die Wärme der Zukunft kommt aus der Erde – Praxisbeispiele und Erfahrungswerte für Geothermie</td><td>Fachreferent: Michael Viernickel (eZeit-Ingenieure)<br> auf dem Podium mit: Eckard Veil (EWP), Prof. Dr. Ingo Sass (GFZ Potsdam)</td></tr>
-  <tr><td>19.06.2024</td><td>Die Natur der Zukunft wächst in der Stadt – an der Wand, auf dem Dach, auf Brachflächen</td><td>Fachreferent: Jakob Nolte (Botaniker und Biodiversitätsspezialist, Dozent)<br> auf dem Podium mit: Marco Schmidt (BBSR), Claus Herrmann (hochC Landschaftsarchitekten)</td></tr>
-  <tr><td>09.10.2024</td><td>Die Baustoffe / Gebäude der Zukunft sind wiederverwendet – Erfahrungen und Beispiele</td><td>Fachreferent: Jurek Brüggen (Architekt)<br> auf dem Podium mit: Carolina Mojto (Freiraum in der Box), Prof. Dr.-Ing. Klaus Pistol (FHP)</td></tr>
-  <tr><td>04.12.2024</td><td>Die Baukultur der Zukunft ist die Umbaukultur – von der „grauen" zur „goldenen" Energie</td><td>Fachreferent: Reiner Nagel (Bundesstiftung Baukultur)<br> auf dem Podium mit: Prof. Silke Straub-Beutin(FHP), Frank Schönert (Hütten und Paläste)</td></tr>
-</table>
+  <div class="sheet" id="s5">
+    <h1>Date House Report</h1>
+
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
+
+    <!--
+      CLICKABLE IMAGE CAROUSEL:
+      Replace these file names with your own images.
+      Add more <img> lines if you need more images.
+      The first image must keep class="active".
+    -->
+    <div
+      class="click-carousel"
+      onclick="nextCarouselImage(this)"
+      role="button"
+      tabindex="0"
+      aria-label="Show next image"
+    >
+      <img class="active" src="date-house-01.jpg" alt="Date House Report image 1">
+      <img src="date-house-02.jpg" alt="Date House Report image 2">
+      <img src="date-house-03.jpg" alt="Date House Report image 3">
+    </div>
+  </div>
+
+  <div class="sheet" id="s6">
+    <h1>perspektiv;wechsel</h1>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
+  </div>
+
+  <div class="sheet" id="s7">
+    <img
+      src="Brenner_schliess_die_luecke_NICHT-4.png"
+      alt="Don't close the gap"
+      style="width:110%; margin-bottom:20px"
+    >
+
+    <p class="note">
+      Stegreif project in the course <em>Strategien für nachhaltiges Planen und Bauen</em>. The brief called for designing approx. 160 m² of residential floor space in a building gap — including an apartment for 4 people with a private outdoor area, and a separately rentable annexe apartment. The aim was to develop strategies for well-lit, energy-efficient housing within challenging parameters. My submission was deemed unassessable and recorded as not completed.
+    </p>
+  </div>
+
+  <div class="sheet" id="s8">
+    <h1>Why Fence?</h1>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+      with Leonie Ettmüller
+    </p>
+  </div>
+
+  <div class="sheet" id="s9">
+    <h1>Click</h1>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+      with Franz Muenzing and Joshua ??
+    </p>
+  </div>
+
+  <div class="sheet" id="s10">
+    <h1>12-line</h1>
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
+  </div>
+
+  <div class="sheet" id="s11">
+    <h1>As it rains, the soil gets wet</h1>
+
+    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+      with Manuel Rademaker
+    </p>
+
+    <div class="text-row">
+      <img
+        src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png"
+        alt="As it rains, the soil gets wet project drawing"
+      >
+
+      <div class="text-col">
+        <p class="note">
+          Es regnet, es regnet,<br>
+          die Erde wird nass!<br>
+          Und wenn's genug geregnet hat,<br>
+          dann wächst auch wieder Gras!<br><br>
+          (German nursery rhyme)
+        </p>
+
+        <p>
+          Es regnet, die Erde wird nass.<br>
+          I’m sitting here looking at this exposed patch of ground.<br>
+          No Thing, no plan, only a beginning.<br>
+          The ground is open again.<br>
+          It could absorb water, hold roots, regulate temperature.<br>
+          Already, a thin green film is spreading across the surface.<br>
+          Accomplished through subtraction rather than addition.<br>
+          The removed material lies beside me—enough to sit, rest, and stay.<br>
+          Nothing here is complete.<br>
+          No promises were given. It is a simple principle:<br>
+          Exposing not condensing.<br>
+          As it rains, the soil gets wet.
+        </p>
+      </div>
+    </div>
+
+    <p class="note">
+      Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project was not chosen to become reality.
+    </p>
+  </div>
+
+  <div class="sheet" id="s12">
+    <div style="font-size:10pt; font-weight:normal; line-height:1.3; margin-bottom:2px">
+      LARA<br>BRENNER
+    </div>
+
+    <div style="font-size:10pt; margin-bottom:20px">
+      *18.07.2000 in Neuruppin
+      &nbsp;·&nbsp;
+      Wiesenstr. 38, 14473 Potsdam
+      &nbsp;·&nbsp;
+      <a href="mailto:l.brenner@campus.tu-berlin.de">
+        l.brenner@campus.tu-berlin.de
+      </a>
+      &nbsp;·&nbsp;
+      015777797700
+    </div>
+
+    <table class="events">
+      <tr class="section-head"><td colspan="2">Education</td></tr>
+      <tr><td>2019 Abitur</td><td>General university entrance qualification — Evangelisches Gymnasium Hermannswerder, Potsdam. Grade: 1.3</td></tr>
+      <tr><td>2016 – 2017</td><td>Exchange year in Japan, Niigata Prefecture, Shibata (AFS)</td></tr>
+      <tr><td>2019 – 2020</td><td>Grundstudium "MINTgrün", Technische Universität Berlin</td></tr>
+      <tr><td>2020 – 2025</td><td>B.Arch. Architecture and Urban Design, FH Potsdam. Grade: 1.1</td></tr>
+      <tr><td>2022 (winter semester)</td><td>Erasmus+ exchange semester, Politecnico di Milano</td></tr>
+      <tr><td>since 2025</td><td>M.Arch. Architecture program, TU Berlin</td></tr>
+
+      <tr class="section-head"><td colspan="2">Practice</td></tr>
+      <tr><td>August – October 2023</td><td>Internship at ZRS Architekten Ingenieure, Berlin</td></tr>
+      <tr><td>November 2023 - April 2026</td><td>Working student at ZRS Architekten: Construction documentation, green roof planning, energy-efficient timber retrofit, visualisation, point cloud processing</td></tr>
+
+      <tr class="section-head"><td colspan="2">Software</td></tr>
+      <tr><td></td><td>ArchiCAD (+++), Vectorworks (++++)</td></tr>
+      <tr><td></td><td>Blender (+++), Cinema 4D (++) (Corona)</td></tr>
+      <tr><td></td><td>InDesign (+++), Affinity (+), Photoshop (++), Illustrator (+)</td></tr>
+      <tr><td></td><td>Premiere Pro (+), DaVinci Resolve (++)</td></tr>
+      <tr><td></td><td>Nomad Sculpt (++), Procreate (+++)</td></tr>
+      <tr><td></td><td>Microsoft Office Suite (+++)</td></tr>
+      <tr><td></td><td>QGIS (+++)</td></tr>
+
+      <tr class="section-head"><td colspan="2">Languages</td></tr>
+      <tr><td></td><td>German (native)</td></tr>
+      <tr><td></td><td>English (C1)</td></tr>
+      <tr><td></td><td>Japanese (N4)</td></tr>
+      <tr><td></td><td>Italian (A1)</td></tr>
+      <tr><td></td><td>Latin (Latinum)</td></tr>
+
+      <tr class="section-head"><td colspan="2">Engagement</td></tr>
+      <tr><td>since 2021</td><td>Co-founder of collective perspektiv;wechsel</td></tr>
+      <tr><td>2023 (summer semester)</td><td>Advisory member, department council (FB2), FH Potsdam</td></tr>
+      <tr><td>2023 – 2024</td><td>Elected member, department council (FB2), FH Potsdam</td></tr>
+
+      <tr class="section-head"><td colspan="2">Honors</td></tr>
+      <tr><td>2023 (summer semester)</td><td>3rd Prize, student competition "Campuswohnen", FH Potsdam</td></tr>
+      <tr><td>2023 – 2024</td><td>Deutschlandstipendium scholarship</td></tr>
+      <tr><td>2025</td><td>Ehrenamtspreis der Fördergesellschaft der Fachhochschule Potsdam, as part of perspektiv;wechsel</td></tr>
+
+      <tr class="section-head"><td colspan="2">Further</td></tr>
+      <tr><td>2013 – 2019</td><td>Layout editor, school newspaper Der Tornowgraph</td></tr>
+      <tr><td>2015 – 2019</td><td>Certified school paramedic</td></tr>
+      <tr><td>2016 – 2018</td><td>Team leader, AFS Intercultural Encounters</td></tr>
+      <tr><td>2018 – 2023</td><td>Minijob, Boulderhalle 7a+</td></tr>
+    </table>
+
+    <table class="events">
+      <tr class="section-head">
+        <td colspan="3">Events that I took part in organizing at Collective perspektiv;wechsel</td>
+      </tr>
+
+      <tr><td>24.05.2022</td><td>Gendergerechte Stadtplanung</td><td>Sophia Lenz (M. Urbane Zukunft)</td></tr>
+      <tr><td>30.05.2022</td><td>design für alle — nicht nur barrierefrei, sondern attraktiv und komfortabel für alle</td><td>Matthias Knigge (Grauwert, Büro für Inklusion &amp; demografiefeste Lösungen)</td></tr>
+      <tr><td>07.06.2022</td><td>postcolonial potsdam — kolonialgeschichte und postkoloniales schweigen in potsdam</td><td>Alexandra Wuest (Postcolonial Potsdam)</td></tr>
+      <tr><td>22.11.2022</td><td>HANDWERK × ARCHITEKTUR</td><td>Isabelle Vivianne; Jenny Hamerla &amp; Isabel Schmidt (Baufachfrauen)</td></tr>
+      <tr><td>29.11.2022</td><td>Gendergerechte Stadtplanung — Einblicke aus der Praxis</td><td>Dr. Mary Dellenbaugh-Losse (Urban Policy)</td></tr>
+      <tr><td>13.12.2022</td><td>whose city? — Obdachlosigkeit, Architektur und die Stadt</td><td>Dr. Daniel Talesnik (Architekturhistoriker)</td></tr>
+      <tr><td>25.04.2023</td><td>Architektur und Mensch: Raum in Wechselwirkung mit Wahrnehmung, Körper und Gesundheit</td><td>Alexandra Correll (Fachärztin Neurologie) &amp; Dr. Mathias Ballestrem (Programmdirektor Bauhaus Earth) (Both: Interdisziplinäres Forum Neurourbanistik e.V.)</td></tr>
+      <tr><td>02.05.2023</td><td>Baustelle Gleichstellung — Podiumsdiskussion</td><td>Karin Hartmann (Autorin: Schwarzer Pulli, Hornbrille); Katja Melan &amp; Dagmar Chrobok-Dohmann (AG Gleichstellung der Brandenburgischen Architekt:innenkammer)</td></tr>
+      <tr><td>23.05.2023</td><td>Bezahlbar und Klimagerecht wohnen</td><td>Dr. Lisa Vollmer (Leibnizinstitut für Raumbezogene Sozialforschung)</td></tr>
+      <tr><td>24.10.2023</td><td>Realitätscheck Lehmbau</td><td>Dipl.-Ing. Ulrich Röhlen (Autor: Lehmbau Praxis, Planung und Ausführung)</td></tr>
+      <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
+      <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
+      <tr><td>05.12.2023</td><td>Partizipative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
+      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
+
+      <tr class="section-head">
+        <td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td>
+      </tr>
+
+      <tr><td>11.10.2023</td><td>Was tun bei zunehmenden Wetterextremen wie Trockenheit und Starkregen? – Das Prinzip „Schwammstadt"!</td><td>Fachreferent: Prof. Dr.-Ing. Gunar Gutzeit (FHP)<br>auf dem Podium mit: Prof. Maren Brakebusch (FHP, Büro VOGT), Dr. Darla Nickel (Regenwasseragentur), Friederike Böttcher (Alumna FHP)</td></tr>
+      <tr><td>24.04.2024</td><td>Die Wärme der Zukunft kommt aus der Erde – Praxisbeispiele und Erfahrungswerte für Geothermie</td><td>Fachreferent: Michael Viernickel (eZeit-Ingenieure)<br>auf dem Podium mit: Eckard Veil (EWP), Prof. Dr. Ingo Sass (GFZ Potsdam)</td></tr>
+      <tr><td>19.06.2024</td><td>Die Natur der Zukunft wächst in der Stadt – an der Wand, auf dem Dach, auf Brachflächen</td><td>Fachreferent: Jakob Nolte (Botaniker und Biodiversitätsspezialist, Dozent)<br>auf dem Podium mit: Marco Schmidt (BBSR), Claus Herrmann (hochC Landschaftsarchitekten)</td></tr>
+      <tr><td>09.10.2024</td><td>Die Baustoffe / Gebäude der Zukunft sind wiederverwendet – Erfahrungen und Beispiele</td><td>Fachreferent: Jurek Brüggen (Architekt)<br>auf dem Podium mit: Carolina Mojto (Freiraum in der Box), Prof. Dr.-Ing. Klaus Pistol (FHP)</td></tr>
+      <tr><td>04.12.2024</td><td>Die Baukultur der Zukunft ist die Umbaukultur – von der „grauen" zur „goldenen" Energie</td><td>Fachreferent: Reiner Nagel (Bundesstiftung Baukultur)<br>auf dem Podium mit: Prof. Silke Straub-Beutin (FHP), Frank Schönert (Hütten und Paläste)</td></tr>
+    </table>
+  </div>
 
 </div>
 
 <script>
-const sheetIds = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12'];
+const sheetIds = [
+  's1',
+  's2',
+  's3',
+  's4',
+  's5',
+  's6',
+  's7',
+  's8',
+  's9',
+  's10',
+  's11',
+  's12'
+];
 
 function setActive(id) {
-  document.querySelectorAll('.tab').forEach((t, i) => {
-    t.classList.toggle('active', sheetIds[i] === id);
+  document.querySelectorAll('.tab').forEach((tab, index) => {
+    tab.classList.toggle('active', sheetIds[index] === id);
   });
 }
 
@@ -409,11 +664,18 @@ function getMostVisibleSheet() {
   let best = null;
 
   document.querySelectorAll('.sheet').forEach(sheet => {
-    const r = sheet.getBoundingClientRect();
-    const visible = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0));
+    const rectangle = sheet.getBoundingClientRect();
 
-    if (!best || visible > best.visible) {
-      best = { id: sheet.id, visible };
+    const visibleHeight = Math.max(
+      0,
+      Math.min(rectangle.bottom, window.innerHeight) - Math.max(rectangle.top, 0)
+    );
+
+    if (!best || visibleHeight > best.visibleHeight) {
+      best = {
+        id: sheet.id,
+        visibleHeight: visibleHeight
+      };
     }
   });
 
@@ -421,51 +683,97 @@ function getMostVisibleSheet() {
 }
 
 function updateActiveTab() {
-  const id = getMostVisibleSheet();
-  if (id) setActive(id);
+  const visibleSectionId = getMostVisibleSheet();
+
+  if (visibleSectionId) {
+    setActive(visibleSectionId);
+  }
 }
 
 function goToSheet(id) {
   setActive(id);
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  document.getElementById(id).scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
 }
 
 function toggleCompVideo(wrapper) {
-  const v = wrapper.querySelector('video');
-  const o = wrapper.querySelector('.pb');
-  if (v.paused) {
-    v.play();
-    o.style.display = 'none';
+  const video = wrapper.querySelector('video');
+  const playText = wrapper.querySelector('.pb');
+
+  if (video.paused) {
+    video.play();
+    playText.style.display = 'none';
   } else {
-    v.pause();
-    o.style.display = 'flex';
+    video.pause();
+    playText.style.display = 'flex';
   }
+}
+
+function nextCarouselImage(carousel) {
+  const images = Array.from(carousel.querySelectorAll('img'));
+
+  if (images.length < 2) {
+    return;
+  }
+
+  const currentIndex = images.findIndex(image =>
+    image.classList.contains('active')
+  );
+
+  const nextIndex = (currentIndex + 1) % images.length;
+
+  images[currentIndex].classList.remove('active');
+  images[nextIndex].classList.add('active');
 }
 
 setActive('s1');
 updateActiveTab();
 
 let ticking = false;
+
 window.addEventListener('scroll', () => {
   if (!ticking) {
     requestAnimationFrame(() => {
       updateActiveTab();
       ticking = false;
     });
+
     ticking = true;
   }
 });
 
 window.addEventListener('resize', updateActiveTab);
 
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', event => {
   const currentId = getMostVisibleSheet();
-  if (!currentId) return;
 
-  const i = sheetIds.indexOf(currentId);
-  if (e.key === 'ArrowDown' && i < sheetIds.length - 1) goToSheet(sheetIds[i + 1]);
-  if (e.key === 'ArrowUp' && i > 0) goToSheet(sheetIds[i - 1]);
+  if (!currentId) {
+    return;
+  }
+
+  const currentIndex = sheetIds.indexOf(currentId);
+
+  if (event.key === 'ArrowDown' && currentIndex < sheetIds.length - 1) {
+    goToSheet(sheetIds[currentIndex + 1]);
+  }
+
+  if (event.key === 'ArrowUp' && currentIndex > 0) {
+    goToSheet(sheetIds[currentIndex - 1]);
+  }
+});
+
+document.querySelectorAll('.comp-wrap, .click-carousel').forEach(element => {
+  element.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      element.click();
+    }
+  });
 });
 </script>
+
 </body>
 </html>
