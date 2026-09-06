@@ -47,7 +47,13 @@ video {
 #sidebar-header {
   font: 10pt Arial;
   line-height: 1.4;
-  margin-bottom: 24px;
+  margin-bottom: auto;
+}
+
+#sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .tab {
@@ -78,11 +84,7 @@ video {
   margin-left: 220px;
 }
 
-/*
-  Each usual project section is exactly one screen high.
-  It is a flex column so text stays visible and media uses
-  the remaining height rather than overflowing below the screen.
-*/
+/* Normal projects occupy one screen. */
 .sheet {
   height: 100vh;
   min-height: 100vh;
@@ -95,7 +97,7 @@ video {
   scroll-snap-stop: normal;
 }
 
-/* Space Time Transect and CV remain naturally scrollable. */
+/* Space Time Transect and CV remain longer. */
 #s2,
 #s12 {
   height: auto;
@@ -223,12 +225,14 @@ h1 {
   margin: 0;
 }
 
-/* Video prompt */
+/* Click and play prompts: centered on their content */
 .pb,
 .carousel-prompt {
   position: absolute;
-  left: 30px;
-  bottom: 20px;
+  top: 50%;
+  left: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
   z-index: 2;
   color: #f00;
   font: 10pt Arial;
@@ -336,7 +340,7 @@ h1 {
   padding-right: 4px;
 }
 
-/* 12-line image-only section */
+/* 12-line */
 .twelve-line-layout {
   flex: 1 1 0;
   min-height: 0;
@@ -394,10 +398,17 @@ h1 {
   outline-offset: 3px;
 }
 
-/* Transparent pop-up for flyer back sides */
+/*
+  Transparent flyer-back overlay.
+  The overlay starts after the 220px sidebar,
+  so the image is centered over your content, not over the sidebar.
+*/
 .pw-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 220px;
   z-index: 2000;
   display: none;
   align-items: center;
@@ -414,15 +425,15 @@ h1 {
 .pw-overlay img {
   width: auto;
   height: auto;
-  max-width: min(90vw, 1000px);
-  max-height: 90vh;
+  max-width: min(72vw, 760px);
+  max-height: 72vh;
   object-fit: contain;
   cursor: pointer;
   pointer-events: auto;
 }
 
 .pw-overlay-close {
-  position: fixed;
+  position: absolute;
   top: 24px;
   right: 40px;
   z-index: 3;
@@ -498,6 +509,41 @@ h1 {
   padding-right: 4px;
 }
 
+/* Dedicated full-screen Transect drawing section */
+#s2-transect {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 24px 40px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+.transect-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+}
+
+.transect-scroll:active {
+  cursor: grabbing;
+}
+
+.transect-scroll img {
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: left center;
+}
+
 /* CV */
 table.events {
   max-width: 820px;
@@ -537,6 +583,10 @@ table.events tr.section-head td {
     padding: 16px;
   }
 
+  #sidebar-header {
+    margin-bottom: 24px;
+  }
+
   #content {
     width: 100%;
     margin-left: 0;
@@ -544,7 +594,8 @@ table.events tr.section-head td {
 
   .sheet,
   #s2,
-  #s12 {
+  #s12,
+  #s2-transect {
     display: block;
     height: auto;
     min-height: 100vh;
@@ -617,17 +668,29 @@ table.events tr.section-head td {
   }
 
   .pw-overlay {
+    inset: 0;
     padding: 16px;
   }
 
   .pw-overlay img {
-    max-width: 94vw;
-    max-height: 88vh;
+    max-width: 82vw;
+    max-height: 72vh;
   }
 
   .pw-overlay-close {
     top: 16px;
     right: 16px;
+  }
+
+  .transect-scroll {
+    height: 80vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .transect-scroll img {
+    height: 100%;
+    min-width: auto;
   }
 }
 </style>
@@ -638,18 +701,20 @@ table.events tr.section-head td {
 <div id="sidebar">
   <div id="sidebar-header">larabrennt</div>
 
-  <button class="tab" onclick="goToSheet('s1')">Hi</button>
-  <button class="tab" onclick="goToSheet('s2')">Space Time Transect</button>
-  <button class="tab" onclick="goToSheet('s3')">Built to fail</button>
-  <button class="tab" onclick="goToSheet('s4')">Mapping Damage</button>
-  <button class="tab" onclick="goToSheet('s5')">Date house report</button>
-  <button class="tab" onclick="goToSheet('s6')">perspektiv;wechsel</button>
-  <button class="tab" onclick="goToSheet('s7')">Don't close the gap!</button>
-  <button class="tab" onclick="goToSheet('s8')">why fence?</button>
-  <button class="tab" onclick="goToSheet('s9')">click</button>
-  <button class="tab" onclick="goToSheet('s10')">12-line</button>
-  <button class="tab" onclick="goToSheet('s11')">As it rains, the soil gets wet</button>
-  <button class="tab" onclick="goToSheet('s12')">Lara Luise Brenner</button>
+  <nav id="sidebar-nav">
+    <button class="tab" onclick="goToSheet('s1')">Hi</button>
+    <button class="tab" onclick="goToSheet('s2')">Space Time Transect</button>
+    <button class="tab" onclick="goToSheet('s3')">Built to fail</button>
+    <button class="tab" onclick="goToSheet('s4')">Mapping Damage</button>
+    <button class="tab" onclick="goToSheet('s5')">Date house report</button>
+    <button class="tab" onclick="goToSheet('s6')">perspektiv;wechsel</button>
+    <button class="tab" onclick="goToSheet('s7')">Don't close the gap!</button>
+    <button class="tab" onclick="goToSheet('s8')">why fence?</button>
+    <button class="tab" onclick="goToSheet('s9')">click</button>
+    <button class="tab" onclick="goToSheet('s10')">12-line</button>
+    <button class="tab" onclick="goToSheet('s11')">As it rains, the soil gets wet</button>
+    <button class="tab" onclick="goToSheet('s12')">Lara Luise Brenner</button>
+  </nav>
 </div>
 
 <div id="content">
@@ -690,6 +755,7 @@ table.events tr.section-head td {
         <video poster="intervention-poster.png" playsinline>
           <source src="intervention.mp4" type="video/mp4">
         </video>
+
         <div class="pb">PRESS HERE TO PLAY</div>
       </div>
 
@@ -712,8 +778,12 @@ table.events tr.section-head td {
       Access the Project site
       <a href="https://larabrennt.github.io/TRANSECT/" target="_blank" rel="noopener noreferrer">HERE</a>
     </p>
+  </div>
 
-    <img src="TRANSECT.png" alt="Space-Time Transect drawing" style="width:100%; margin:20px 0">
+  <div class="sheet" id="s2-transect">
+    <div class="transect-scroll" aria-label="Space Time Transect drawing">
+      <img src="TRANSECT.png" alt="Space-Time Transect drawing">
+    </div>
   </div>
 
   <div class="sheet" id="s3">
@@ -730,7 +800,6 @@ table.events tr.section-head td {
         <img src="P1000512.jpg" alt="Built to fail image 3">
         <img src="P1000538.jpg" alt="Built to fail image 4">
         <img src="P1000554.jpg" alt="Built to fail image 5">
-
         <div class="carousel-prompt">click to browse</div>
       </div>
 
@@ -789,7 +858,6 @@ table.events tr.section-head td {
         <img src="Date_House_Report_Page_10.jpg" alt="Date House Report, page 10">
         <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
         <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
-
         <div class="carousel-prompt">click to browse</div>
       </div>
 
@@ -843,8 +911,8 @@ table.events tr.section-head td {
         <img src="231124_PW_WISE_Werbung_Lehm_A6_Page_1.jpg" alt="Lehmbau flyer, front">
       </button>
 
-      <button class="pw-flyer-front" type="button" onclick="openPwBack('231205_PW_WISE_Werbung_partizipativeplanung_Page_2.jpg', 'Reverse side of Partizipative Planung flyer')">
-        <img src="231205_PW_WISE_Werbung_partizipativeplanung_Page_1.jpg" alt="Partizipative Planung flyer, front">
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('231205_PW_WISE_Werbung_partizipativeplanung_Page_2.jpg', 'Reverse side of Partizative Planung flyer')">
+        <img src="231205_PW_WISE_Werbung_partizipativeplanung_Page_1.jpg" alt="Partizative Planung flyer, front">
       </button>
 
       <button class="pw-flyer-front" type="button" onclick="openPwBack('240423_PW_SOSE_Werbung_Unser_kurzes_leben_Page_2.jpg', 'Reverse side of Unser kurzes Leben flyer')">
@@ -1045,7 +1113,7 @@ table.events tr.section-head td {
       <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
       <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
       <tr><td>05.12.2023</td><td>Partizative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
+      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architekt:innenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
 
       <tr class="section-head">
         <td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td>
@@ -1076,13 +1144,20 @@ table.events tr.section-head td {
 
 <script>
 const sheetIds = [
-  's1', 's2', 's3', 's4', 's5', 's6',
-  's7', 's8', 's9', 's10', 's11', 's12'
+  's1', 's2', 's2-transect', 's3', 's4', 's5',
+  's6', 's7', 's8', 's9', 's10', 's11', 's12'
 ];
 
 function setActive(id) {
+  const tabSheetIds = [
+    's1', 's2', 's3', 's4', 's5', 's6',
+    's7', 's8', 's9', 's10', 's11', 's12'
+  ];
+
+  const activeId = id === 's2-transect' ? 's2' : id;
+
   document.querySelectorAll('.tab').forEach((tab, index) => {
-    tab.classList.toggle('active', sheetIds[index] === id);
+    tab.classList.toggle('active', tabSheetIds[index] === activeId);
   });
 }
 
