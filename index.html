@@ -198,6 +198,12 @@ h1 {
   height: 320px;
 }
 
+/* Intro page: chairs and essence can be 90% of viewport height */
+.row-intro-images {
+  height: 90vh;
+  max-height: 90vh;
+}
+
 .row-built-to-fail {
   height: 90vh;
   max-height: 90vh;
@@ -309,13 +315,34 @@ h1 {
   min-width: 0;
 }
 
+/* 12-LINE: CAROUSEL LEFT, TEXT RIGHT */
+.twelve-line-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  margin: 20px 0;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.twelve-line-layout .click-carousel {
+  width: 60%;
+  flex: 0 0 60%;
+  margin: 0;
+  min-width: 0;
+}
+
+.twelve-line-layout .text-col {
+  width: 40%;
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
 /* PERSPEKTIV;WECHSEL FLYER ROWS */
 .row-pw-flyers {
   height: 360px;
   align-items: stretch;
   overflow: hidden;
-
-  /* No gap between flyer rows */
   margin: 0;
 }
 
@@ -393,14 +420,17 @@ table.events tr.section-head td {
   }
 
   .text-row,
-  .date-house-layout {
+  .date-house-layout,
+  .twelve-line-layout {
     flex-direction: column;
   }
 
   .text-row img,
   .text-col,
   .date-house-layout .click-carousel,
-  .date-house-layout .text-col {
+  .date-house-layout .text-col,
+  .twelve-line-layout .click-carousel,
+  .twelve-line-layout .text-col {
     width: 100%;
     flex: 0 0 auto;
   }
@@ -410,6 +440,7 @@ table.events tr.section-head td {
     flex-wrap: wrap;
   }
 
+  .row-intro-images,
   .row-built-to-fail {
     height: auto;
     max-height: none;
@@ -470,17 +501,19 @@ table.events tr.section-head td {
 
   <div class="sheet" id="s1">
     <h1>Hi</h1>
-  <div class="photo-row row-s2-maps" style="margin-bottom:20px">
-     <img
-      src="chairs.jpeg"
-      alt="chairs"
-    >
-    <img
-      src="essence.jpg"
-      alt="I explore how spatial arrangements shape access and agency, and how they are contested, inhabited and transformed over time"
-      style="max-height:90vh; width:auto; max-width:100%; margin-left:auto;"
-    >
- </div>
+
+    <div class="photo-row row-intro-images" style="margin-bottom:20px">
+      <img
+        src="chairs.jpeg"
+        alt="Chairs"
+      >
+
+      <img
+        src="essence.jpg"
+        alt="I explore how spatial arrangements shape access and agency, and how they are contested, inhabited and transformed over time"
+      >
+    </div>
+
     <p>
       ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
       <br>
@@ -645,8 +678,7 @@ table.events tr.section-head td {
     <h1>perspektiv;wechsel</h1>
 
     <p class="note">
-      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum. Such are intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university.
-      Here are some events I took part in organizing during my time at the collective. Click a flyer to show its reverse side.
+      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum. Such are intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university. Here are some events I took part in organizing during my time at the collective. Click a flyer to show its reverse side.
     </p>
 
     <div class="photo-row row-pw-flyers">
@@ -766,83 +798,48 @@ table.events tr.section-head td {
   <div class="sheet" id="s10">
     <h1>12-line</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
+    <div class="twelve-line-layout">
+      <div class="click-carousel">
+        <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
+        <img src="drawing.png" alt="12-line drawing">
 
-    <div class="click-carousel">
-      <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
-      <img src="drawing.png" alt="12-line drawing">
+        <button
+          class="carousel-next"
+          type="button"
+          onclick="nextCarouselImage(this.parentElement)"
+          aria-label="Show next 12-line image"
+        >
+          CLICK
+        </button>
+      </div>
 
-      <button
-        class="carousel-next"
-        type="button"
-        onclick="nextCarouselImage(this.parentElement)"
-        aria-label="Show next 12-line image"
-      >
-        CLICK
-      </button>
-
-      
       <div class="text-col">
+        <p><strong>12-Lein</strong></p>
+
         <p>
-          <p>
-  <strong>12-Lein</strong>
-</p>
-
-<p>
-  <strong>
-    Was or is or will be again a weekly meeting on the entrance stairs of an
-    abandoned building right opposite of 11-line (pronounced Elflein) - a
-    popular Bar and Café in Potsdams city centre.<br>
-    On Wednesdays a table tennis evening was held there and drew in most
-    of the cities youth. I remember affording one drink (the cheapest beer
-    was 2,90€) and staying hours on hours, nipping on it, rolling Kippe after
-    Kippe, talking to people.
-  </strong>
-</p>
-
-<p>
-  <strong>
-    Across the street something else was developing.<br>
-    I thought that we first went there out of lack of space in the overcrowded
-    bar - to play guitar. Aron, who I must have become acquainted with there,
-    is determined that he was the first, drinking Sternburg Beer (36ct then)
-    as some kind of oppositional protest.<br>
-    However soon enough we had become a weekly gathering, where
-    someone brought a Kasten full of Sterni (most of the times it was Aron
-    and his best friend Jonas), which then we offered to everyone passing
-    by. This lead to the development of quite a circle of friends and many
-    evenings with strangers, sitting down on what we considered now our
-    stairs, to tell some stories of their own for the length of a beer or two.
-  </strong>
-</p>
-
-<p>
-  <strong>
-    Aron was there every week. He got mad, when I went over for a bought
-    drink, back to the 11-line, to my other friends, who were, as he called
-    them “cultured” (they read Hesse and watched Kubrik’s films and loved
-    experimental electronic music) and who, after a couple of visitations to
-    the 12lein decided it was best to stay on their side.<br>
-    Aron was determined to stay on his. Back then I didn’t really realize why.
-  </strong>
-</p>
-
-<p>
-  <strong>
-    After a couple of years, the group dispersed, as the next generation of
-    youth took over the 11-line, the 12-lein became just expanded seating
-    place for the bar.
-  </strong>
-</p>
-
-<p>
-  <strong>
-    Sometimes though I visit the 11-line, reading, nipping on a Beer
-    (cheapest one 3,50€ now) and overhear some kids looking for a place to
-    sit: “sollen wir rüber ins 12lein gehen?”
-  </strong>
-</p>
+          Was or is or will be again a weekly meeting on the entrance stairs of an abandoned building right opposite of 11-line (pronounced Elflein) - a popular Bar and Café in Potsdams city centre.<br>
+          On Wednesdays a table tennis evening was held there and drew in most of the cities youth. I remember affording one drink (the cheapest beer was 2,90€) and staying hours on hours, nipping on it, rolling Kippe after Kippe, talking to people.
         </p>
+
+        <p>
+          Across the street something else was developing.<br>
+          I thought that we first went there out of lack of space in the overcrowded bar - to play guitar. Aron, who I must have become acquainted with there, is determined that he was the first, drinking Sternburg Beer (36ct then) as some kind of oppositional protest.<br>
+          However soon enough we had become a weekly gathering, where someone brought a Kasten full of Sterni (most of the times it was Aron and his best friend Jonas), which then we offered to everyone passing by. This lead to the development of quite a circle of friends and many evenings with strangers, sitting down on what we considered now our stairs, to tell some stories of their own for the length of a beer or two.
+        </p>
+
+        <p>
+          Aron was there every week. He got mad, when I went over for a bought drink, back to the 11-line, to my other friends, who were, as he called them “cultured” (they read Hesse and watched Kubrik’s films and loved experimental electronic music) and who, after a couple of visitations to the 12lein decided it was best to stay on their side.<br>
+          Aron was determined to stay on his. Back then I didn’t really realize why.
+        </p>
+
+        <p>
+          After a couple of years, the group dispersed, as the next generation of youth took over the 11-line, the 12-lein became just expanded seating place for the bar.
+        </p>
+
+        <p>
+          Sometimes though I visit the 11-line, reading, nipping on a Beer (cheapest one 3,50€ now) and overhear some kids looking for a place to sit: “sollen wir rüber ins 12lein gehen?”
+        </p>
+      </div>
     </div>
   </div>
 
