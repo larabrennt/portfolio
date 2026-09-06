@@ -84,7 +84,6 @@ video {
   margin-left: 220px;
 }
 
-/* Normal projects occupy one screen. */
 .sheet {
   height: 100vh;
   min-height: 100vh;
@@ -108,8 +107,10 @@ video {
   padding-bottom: 80px;
 }
 
+/* Paragraphs now always use the full available section width. */
 p {
-  max-width: 800px;
+  width: 100%;
+  max-width: none;
   margin-bottom: 10pt;
   line-height: 1.6;
 }
@@ -128,7 +129,8 @@ h1 {
 }
 
 .note {
-  max-width: 100%;
+  width: 100%;
+  max-width: none;
   margin: 16px 0;
   font-style: italic;
   line-height: 1.6;
@@ -160,7 +162,7 @@ h1 {
 }
 
 .text-row img {
-  width: 100%;
+  width: 60%;
   flex: 0 0 60%;
   object-fit: contain;
 }
@@ -172,7 +174,7 @@ h1 {
 }
 
 .text-col p {
-  max-width: 100%;
+  max-width: none;
 }
 
 .photo-row img,
@@ -225,7 +227,7 @@ h1 {
   margin: 0;
 }
 
-/* Click and play prompts: centered on their content */
+/* Click and play prompts */
 .pb,
 .carousel-prompt {
   position: absolute;
@@ -340,7 +342,7 @@ h1 {
   padding-right: 4px;
 }
 
-/* 12-line */
+/* 12-line: carousel left, drawing right */
 .twelve-line-layout {
   flex: 1 1 0;
   min-height: 0;
@@ -349,9 +351,19 @@ h1 {
 }
 
 .twelve-line-layout .click-carousel {
-  width: 100%;
+  width: 50%;
   height: 100%;
+  flex: 0 0 50%;
   margin: 0;
+}
+
+.twelve-line-drawing {
+  width: 50%;
+  height: 100%;
+  flex: 0 0 50%;
+  min-width: 0;
+  object-fit: contain;
+  object-position: right top;
 }
 
 /* Perspektiv;wechsel */
@@ -363,7 +375,7 @@ h1 {
 
 #s6 .note {
   flex: 0 0 auto;
-  max-width: 900px;
+  max-width: none;
   margin: 0 0 12px;
 }
 
@@ -398,11 +410,7 @@ h1 {
   outline-offset: 3px;
 }
 
-/*
-  Transparent flyer-back overlay.
-  The overlay starts after the 220px sidebar,
-  so the image is centered over your content, not over the sidebar.
-*/
+/* Transparent pop-up for flyer back sides */
 .pw-overlay {
   position: fixed;
   top: 0;
@@ -626,7 +634,9 @@ table.events tr.section-head td {
   .date-house-layout .click-carousel,
   .date-house-layout .text-col,
   .rain-layout > img,
-  .rain-layout .text-col {
+  .rain-layout .text-col,
+  .twelve-line-layout .click-carousel,
+  .twelve-line-drawing {
     width: 100%;
     height: auto;
     max-height: none;
@@ -790,11 +800,13 @@ table.events tr.section-head td {
     <h1>Built to fail</h1>
 
     <p class="subtitle">
-chronicles of a failed transition
-       <br> with Anika Gercke, supervision: Maria Hudl, Nanni Grau, Silvan Linden 
+      chronicles of a failed transition
       <br>
-      <br>Failed transitions are rarely treated as shared knowledge. While successful projects are presented as finished outcomes, the conditions that prevent a project from continuing (conflicting expectations, unclear responsibilities, uneven access to information or economic risk) often remain unspoken.
-      <br>This project traces the story of change and ownership transitions back to the 1880. Meant to be our first real world project we aimed to mediate a generational transition between two parties, that in the end had incompatible interests at heart.
+      with Anika Gercke, supervision: Maria Hudl, Nanni Grau, Silvan Linden
+      <br><br>
+      Failed transitions are rarely treated as shared knowledge. While successful projects are presented as finished outcomes, the conditions that prevent a project from continuing (conflicting expectations, unclear responsibilities, uneven access to information or economic risk) often remain unspoken.
+      <br>
+      This project traces the story of change and ownership transitions back to the 1880. Meant to be our first real world project we aimed to mediate a generational transition between two parties, that in the end had incompatible interests at heart.
     </p>
 
     <div class="photo-row row-built-to-fail">
@@ -847,36 +859,37 @@ chronicles of a failed transition
 
   <div class="sheet" id="s5">
     <h1>Date House Report</h1>
+
     <p class="subtitle">
       with Leonie Ettmüller, supervision: Hiroshi Kato
-      <br>at some point in august we were sent to Sano, Tochigi by Kato. There we lived in a very old House rumored to have been a dating spot for the area's aristocratic youth back in the day. 
+      <br>
+      at some point in august we were sent to Sano, Tochigi by Kato. There we lived in a very old House rumored to have been a dating spot for the area's aristocratic youth back in the day.
       One room was air conditioned, we got to meet many insects and a nice lady cooked lunch for us every day for reasons unkown. Kato said we should find a solution for the old windows and the heavy rotting wall surrounding the house:
     </p>
 
-
-      <div class="click-carousel">
-        <img class="active" src="Date_House_Report_Page_01.jpg" alt="Date House Report, page 1">
-        <img src="Date_House_Report_Page_02.jpg" alt="Date House Report, page 2">
-        <img src="Date_House_Report_Page_03.jpg" alt="Date House Report, page 3">
-        <img src="Date_House_Report_Page_04.jpg" alt="Date House Report, page 4">
-        <img src="Date_House_Report_Page_05.jpg" alt="Date House Report, page 5">
-        <img src="Date_House_Report_Page_06.jpg" alt="Date House Report, page 6">
-        <img src="Date_House_Report_Page_07.jpg" alt="Date House Report, page 7">
-        <img src="Date_House_Report_Page_08.jpg" alt="Date House Report, page 8">
-        <img src="Date_House_Report_Page_09.jpg" alt="Date House Report, page 9">
-        <img src="Date_House_Report_Page_10.jpg" alt="Date House Report, page 10">
-        <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
-        <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
-        <div class="carousel-prompt">click to browse</div>
-      </div>
-
+    <div class="click-carousel">
+      <img class="active" src="Date_House_Report_Page_01.jpg" alt="Date House Report, page 1">
+      <img src="Date_House_Report_Page_02.jpg" alt="Date House Report, page 2">
+      <img src="Date_House_Report_Page_03.jpg" alt="Date House Report, page 3">
+      <img src="Date_House_Report_Page_04.jpg" alt="Date House Report, page 4">
+      <img src="Date_House_Report_Page_05.jpg" alt="Date House Report, page 5">
+      <img src="Date_House_Report_Page_06.jpg" alt="Date House Report, page 6">
+      <img src="Date_House_Report_Page_07.jpg" alt="Date House Report, page 7">
+      <img src="Date_House_Report_Page_08.jpg" alt="Date House Report, page 8">
+      <img src="Date_House_Report_Page_09.jpg" alt="Date House Report, page 9">
+      <img src="Date_House_Report_Page_10.jpg" alt="Date House Report, page 10">
+      <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
+      <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
+      <div class="carousel-prompt">click to browse</div>
+    </div>
   </div>
 
   <div class="sheet" id="s6">
     <h1>perspektiv;wechsel</h1>
 
     <p class="note">
-      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum. Such are intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university. Here are some events I took part in organizing during my time at the collective. <span style="color: #ff0000;">Click a flyer to view its reverse side.</span>
+      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum. Such are intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university. Here are some events I took part in organizing during my time at the collective.
+      <span style="color:#ff0000;">Click a flyer to view its reverse side.</span>
     </p>
 
     <div class="pw-flyer-grid">
@@ -993,9 +1006,14 @@ chronicles of a failed transition
       <div class="click-carousel">
         <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
         <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
-        <img src="drawing.png" alt="12-line drawing">
         <div class="carousel-prompt">click to browse</div>
       </div>
+
+      <img
+        class="twelve-line-drawing"
+        src="drawing.png"
+        alt="12-line drawing"
+      >
     </div>
   </div>
 
@@ -1153,12 +1171,12 @@ const sheetIds = [
   's6', 's7', 's8', 's9', 's10', 's11', 's12'
 ];
 
-function setActive(id) {
-  const tabSheetIds = [
-    's1', 's2', 's3', 's4', 's5', 's6',
-    's7', 's8', 's9', 's10', 's11', 's12'
-  ];
+const tabSheetIds = [
+  's1', 's2', 's3', 's4', 's5', 's6',
+  's7', 's8', 's9', 's10', 's11', 's12'
+];
 
+function setActive(id) {
   const activeId = id === 's2-transect' ? 's2' : id;
 
   document.querySelectorAll('.tab').forEach((tab, index) => {
