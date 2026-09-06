@@ -338,37 +338,96 @@ h1 {
   min-width: 0;
 }
 
-/* PERSPEKTIV;WECHSEL FLYER ROWS */
-.row-pw-flyers {
-  height: 360px;
-  align-items: stretch;
+/* PERSPEKTIV;WECHSEL: 15 FRONTS + LARGE BACK OVERLAY */
+#s6 {
+  min-height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
-  margin: 0;
 }
 
-.flyer-flip {
-  position: relative;
-  height: 100%;
-  flex: 1 1 0;
+#s6 .note {
+  margin: 0 0 12px;
+  max-width: 900px;
+}
+
+.pw-flyer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1vw;
+  height: calc(100vh - 150px);
+  max-height: 720px;
+  width: 100%;
+}
+
+.pw-flyer-front {
+  border: none;
+  background: transparent;
+  padding: 0;
   min-width: 0;
+  min-height: 0;
   cursor: pointer;
 }
 
-.flyer-flip img {
-  display: none;
+.pw-flyer-front img {
   width: 100%;
   height: 100%;
-  max-width: 100%;
   object-fit: contain;
 }
 
-.flyer-flip img.active {
-  display: block;
-}
-
-.flyer-flip:focus-visible {
+.pw-flyer-front:focus-visible {
   outline: 1px solid #0000ff;
   outline-offset: 3px;
+}
+
+/* Full-screen reverse-side viewer */
+.pw-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+}
+
+.pw-overlay.open {
+  display: flex;
+}
+
+.pw-overlay img {
+  max-width: min(90vw, 900px);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+}
+
+.pw-overlay-close {
+  position: fixed;
+  top: 24px;
+  right: 40px;
+  border: none;
+  background: transparent;
+  color: #ff0000;
+  font: 10pt Arial;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pw-overlay-close:hover,
+.pw-overlay-close:focus {
+  color: #ff0000;
+}
+
+.pw-overlay-close:focus-visible {
+  outline: 1px solid #ff0000;
+  outline-offset: 4px;
 }
 
 table.events {
@@ -459,20 +518,29 @@ table.events tr.section-head td {
     max-height: 90vh;
   }
 
-  .row-pw-flyers {
-    height: auto;
-    flex-wrap: nowrap;
-    margin: 0;
+  #s6 {
+    max-height: none;
+    overflow: visible;
   }
 
-  .flyer-flip {
+  .pw-flyer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     height: auto;
+    max-height: none;
+  }
+
+  .pw-flyer-front {
     aspect-ratio: 2 / 3;
   }
 
-  .flyer-flip img {
-    width: 100%;
-    height: 100%;
+  .pw-overlay {
+    padding: 16px;
+  }
+
+  .pw-overlay-close {
+    top: 16px;
+    right: 16px;
   }
 }
 </style>
@@ -678,92 +746,69 @@ table.events tr.section-head td {
     <h1>perspektiv;wechsel</h1>
 
     <p class="note">
-      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum. Such are intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university. Here are some events I took part in organizing during my time at the collective. Click a flyer to show its reverse side.
+      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum. Such are intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university. Here are some events I took part in organizing during my time at the collective. Click a flyer to view its reverse side.
     </p>
 
-    <div class="photo-row row-pw-flyers">
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Gendergerechte Stadtplanung flyer">
-        <img class="active" src="220524_PW_Werbung_Gendergerechte_Stadtplanung_A6_Page_1.jpg" alt="Gendergerechte Stadtplanung flyer, front">
-        <img src="220524_PW_Werbung_Gendergerechte_Stadtplanung_A6_Page_2.jpg" alt="Gendergerechte Stadtplanung flyer, reverse">
-      </div>
+    <div class="pw-flyer-grid">
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('220524_PW_Werbung_Gendergerechte_Stadtplanung_A6_Page_2.jpg', 'Reverse side of Gendergerechte Stadtplanung flyer')">
+        <img src="220524_PW_Werbung_Gendergerechte_Stadtplanung_A6_Page_1.jpg" alt="Gendergerechte Stadtplanung flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Design für Alle flyer">
-        <img class="active" src="220530_PW_Werbung_DesignfuerAlle_A6_Page_1.jpg" alt="Design für Alle flyer, front">
-        <img src="220530_PW_Werbung_DesignfuerAlle_A6_Page_2.jpg" alt="Design für Alle flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('220530_PW_Werbung_DesignfuerAlle_A6_Page_2.jpg', 'Reverse side of Design für Alle flyer')">
+        <img src="220530_PW_Werbung_DesignfuerAlle_A6_Page_1.jpg" alt="Design für Alle flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Postcolonial Potsdam flyer">
-        <img class="active" src="220607_PW_WERBUNG_Postcolonial_Potsdam_A6_Page_1.jpg" alt="Postcolonial Potsdam flyer, front">
-        <img src="220607_PW_WERBUNG_Postcolonial_Potsdam_A6_Page_2.jpg" alt="Postcolonial Potsdam flyer, reverse">
-      </div>
-    </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('220607_PW_WERBUNG_Postcolonial_Potsdam_A6_Page_2.jpg', 'Reverse side of Postcolonial Potsdam flyer')">
+        <img src="220607_PW_WERBUNG_Postcolonial_Potsdam_A6_Page_1.jpg" alt="Postcolonial Potsdam flyer, front">
+      </button>
 
-    <div class="photo-row row-pw-flyers">
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Architektur und Mensch flyer">
-        <img class="active" src="230425_PW_SOSE_architekturundmensch_A6_Page_1.jpg" alt="Architektur und Mensch flyer, front">
-        <img src="230425_PW_SOSE_architekturundmensch_A6_Page_2.jpg" alt="Architektur und Mensch flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('230425_PW_SOSE_architekturundmensch_A6_Page_2.jpg', 'Reverse side of Architektur und Mensch flyer')">
+        <img src="230425_PW_SOSE_architekturundmensch_A6_Page_1.jpg" alt="Architektur und Mensch flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Schwarzer Rolli flyer">
-        <img class="active" src="230502_PW_SOSE_schwarzer_rolli_flyer_Page_1.jpg" alt="Schwarzer Rolli flyer, front">
-        <img src="230502_PW_SOSE_schwarzer_rolli_flyer_Page_2.jpg" alt="Schwarzer Rolli flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('230502_PW_SOSE_schwarzer_rolli_flyer_Page_2.jpg', 'Reverse side of Schwarzer Rolli flyer')">
+        <img src="230502_PW_SOSE_schwarzer_rolli_flyer_Page_1.jpg" alt="Schwarzer Rolli flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Bezahlbar flyer">
-        <img class="active" src="230523_PW_SOSE_bezahlbar_A6_Page_1.jpg" alt="Bezahlbar flyer, front">
-        <img src="230523_PW_SOSE_bezahlbar_A6_Page_2.jpg" alt="Bezahlbar flyer, reverse">
-      </div>
-    </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('230523_PW_SOSE_bezahlbar_A6_Page_2.jpg', 'Reverse side of Bezahlbar flyer')">
+        <img src="230523_PW_SOSE_bezahlbar_A6_Page_1.jpg" alt="Bezahlbar flyer, front">
+      </button>
 
-    <div class="photo-row row-pw-flyers">
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Kindgerechtes Bauen flyer">
-        <img class="active" src="231107_PW_WiSe_Werbung_KindgerechtesBauen_A6_front.jpg" alt="Kindgerechtes Bauen flyer, front">
-        <img src="231107_PW_WiSe_Werbung_KindgerechtesBauen_A6_back.jpg" alt="Kindgerechtes Bauen flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('231107_PW_WiSe_Werbung_KindgerechtesBauen_A6_back.jpg', 'Reverse side of Kindgerechtes Bauen flyer')">
+        <img src="231107_PW_WiSe_Werbung_KindgerechtesBauen_A6_front.jpg" alt="Kindgerechtes Bauen flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Rurale Potenzialräume flyer">
-        <img class="active" src="231121_PW_WISE_Werbung_rurale_Potenzialraeume_A6_Page_1.jpg" alt="Rurale Potenzialräume flyer, front">
-        <img src="231121_PW_WISE_Werbung_rurale_Potenzialraeume_A6_Page_2.jpg" alt="Rurale Potenzialräume flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('231121_PW_WISE_Werbung_rurale_Potenzialraeume_A6_Page_2.jpg', 'Reverse side of Rurale Potenzialräume flyer')">
+        <img src="231121_PW_WISE_Werbung_rurale_Potenzialraeume_A6_Page_1.jpg" alt="Rurale Potenzialräume flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Lehmbau flyer">
-        <img class="active" src="231124_PW_WISE_Werbung_Lehm_A6_Page_1.jpg" alt="Lehmbau flyer, front">
-        <img src="231124_PW_WISE_Werbung_Lehm_A6_Page_2.jpg" alt="Lehmbau flyer, reverse">
-      </div>
-    </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('231124_PW_WISE_Werbung_Lehm_A6_Page_2.jpg', 'Reverse side of Lehmbau flyer')">
+        <img src="231124_PW_WISE_Werbung_Lehm_A6_Page_1.jpg" alt="Lehmbau flyer, front">
+      </button>
 
-    <div class="photo-row row-pw-flyers">
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Partizipative Planung flyer">
-        <img class="active" src="231205_PW_WISE_Werbung_partizipativeplanung_Page_1.jpg" alt="Partizipative Planung flyer, front">
-        <img src="231205_PW_WISE_Werbung_partizipativeplanung_Page_2.jpg" alt="Partizipative Planung flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('231205_PW_WISE_Werbung_partizipativeplanung_Page_2.jpg', 'Reverse side of Partizipative Planung flyer')">
+        <img src="231205_PW_WISE_Werbung_partizipativeplanung_Page_1.jpg" alt="Partizipative Planung flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Unser kurzes Leben flyer">
-        <img class="active" src="240423_PW_SOSE_Werbung_Unser_kurzes_leben_Page_1.jpg" alt="Unser kurzes Leben flyer, front">
-        <img src="240423_PW_SOSE_Werbung_Unser_kurzes_leben_Page_2.jpg" alt="Unser kurzes Leben flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('240423_PW_SOSE_Werbung_Unser_kurzes_leben_Page_2.jpg', 'Reverse side of Unser kurzes Leben flyer')">
+        <img src="240423_PW_SOSE_Werbung_Unser_kurzes_leben_Page_1.jpg" alt="Unser kurzes Leben flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Erfahrungswerte Baustelle flyer">
-        <img class="active" src="240528_PW_SOSE_Werbung_erfahrungswerte_Baustelle_Flyer_vorne.jpg" alt="Erfahrungswerte Baustelle flyer, front">
-        <img src="240528_PW_SOSE_Werbung_erfahrungswerte_Baustelle_Flyer_hinten.jpg" alt="Erfahrungswerte Baustelle flyer, reverse">
-      </div>
-    </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('240528_PW_SOSE_Werbung_erfahrungswerte_Baustelle_Flyer_hinten.jpg', 'Reverse side of Erfahrungswerte Baustelle flyer')">
+        <img src="240528_PW_SOSE_Werbung_erfahrungswerte_Baustelle_Flyer_vorne.jpg" alt="Erfahrungswerte Baustelle flyer, front">
+      </button>
 
-    <div class="photo-row row-pw-flyers">
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Gendergerechte Stadtplanung DIN A6 flyer">
-        <img class="active" src="flyer_gendergerechtestadtplanung_dina6_Page_1.jpg" alt="Gendergerechte Stadtplanung DIN A6 flyer, front">
-        <img src="flyer_gendergerechtestadtplanung_dina6_Page_2.jpg" alt="Gendergerechte Stadtplanung DIN A6 flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('flyer_gendergerechtestadtplanung_dina6_Page_2.jpg', 'Reverse side of Gendergerechte Stadtplanung DIN A6 flyer')">
+        <img src="flyer_gendergerechtestadtplanung_dina6_Page_1.jpg" alt="Gendergerechte Stadtplanung DIN A6 flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Handwerk Architektur flyer">
-        <img class="active" src="flyer_handwerkxarchitektur_dina6_Page_1.jpg" alt="Handwerk Architektur flyer, front">
-        <img src="flyer_handwerkxarchitektur_dina6_Page_2.jpg" alt="Handwerk Architektur flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('flyer_handwerkxarchitektur_dina6_Page_2.jpg', 'Reverse side of Handwerk Architektur flyer')">
+        <img src="flyer_handwerkxarchitektur_dina6_Page_1.jpg" alt="Handwerk Architektur flyer, front">
+      </button>
 
-      <div class="flyer-flip" onclick="nextCarouselImage(this)" role="button" tabindex="0" aria-label="Show reverse side of Obdachlosigkeit flyer">
-        <img class="active" src="flyer_obdachlosigkeit_dina6_Page_1.jpg" alt="Obdachlosigkeit flyer, front">
-        <img src="flyer_obdachlosigkeit_dina6_Page_2.jpg" alt="Obdachlosigkeit flyer, reverse">
-      </div>
+      <button class="pw-flyer-front" type="button" onclick="openPwBack('flyer_obdachlosigkeit_dina6_Page_2.jpg', 'Reverse side of Obdachlosigkeit flyer')">
+        <img src="flyer_obdachlosigkeit_dina6_Page_1.jpg" alt="Obdachlosigkeit flyer, front">
+      </button>
     </div>
   </div>
 
@@ -1007,7 +1052,7 @@ table.events tr.section-head td {
       <tr><td>07.11.2023</td><td>Kindgerechtes Bauen</td><td>Kathia Ecks &amp; Lena Arnold (Baukind)</td></tr>
       <tr><td>21.11.2023</td><td>Rurale Potenzialräume — Zukunftswerkstatt in Luckenwalde</td><td>Kollektiv Variable X (Clara &amp; Lisa)</td></tr>
       <tr><td>05.12.2023</td><td>Partizative Planung</td><td>Fee Kyriakopulos &amp; Helena Rafalsky (Baupiloten)</td></tr>
-      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architektenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
+      <tr><td>28.05.2024</td><td>Erfahrungswerte Baustelle — Podiumsdiskussion</td><td>Claudia Alvino (Architektin in Rothenklempenow) Bioboden und Artemisia); Etta Seifert Etta Seifert (Architektin und Designerin in Potsdam, AG Gleichstellung der Brandenburgischen Architektenkammer); Nicole Fienke (freischaffende Architektin Oranienburg, AG Gleichstellung der Brandenburgischen Architekt:innenkammer); Magdalena Karbach (Architektin in Berlin bei ZRS)</td></tr>
 
       <tr class="section-head">
         <td colspan="3">Me on the panel — Reihe Nachhaltiges Bauen, FH Potsdam</td>
@@ -1021,6 +1066,26 @@ table.events tr.section-head td {
     </table>
   </div>
 
+</div>
+
+<div
+  class="pw-overlay"
+  id="pw-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Flyer reverse side"
+  onclick="closePwBack(event)"
+>
+  <button
+    class="pw-overlay-close"
+    type="button"
+    onclick="closePwBack(event)"
+    aria-label="Close flyer reverse side"
+  >
+    CLOSE
+  </button>
+
+  <img id="pw-overlay-image" src="" alt="">
 </div>
 
 <script>
@@ -1124,6 +1189,27 @@ function nextCarouselImage(carousel) {
   }
 }
 
+function openPwBack(imageSource, altText) {
+  const overlay = document.getElementById('pw-overlay');
+  const image = document.getElementById('pw-overlay-image');
+
+  image.src = imageSource;
+  image.alt = altText;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePwBack(event) {
+  if (
+    event.target.id === 'pw-overlay' ||
+    event.target.classList.contains('pw-overlay-close')
+  ) {
+    const overlay = document.getElementById('pw-overlay');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
 setActive('s1');
 updateActiveTab();
 
@@ -1142,13 +1228,24 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateActiveTab);
 
-document.querySelectorAll('.comp-wrap, .flyer-flip').forEach(element => {
+document.querySelectorAll('.comp-wrap').forEach(element => {
   element.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       element.click();
     }
   });
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    const overlay = document.getElementById('pw-overlay');
+
+    if (overlay.classList.contains('open')) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
 });
 </script>
 
