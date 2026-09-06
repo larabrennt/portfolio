@@ -286,13 +286,36 @@ h1 {
   outline-offset: 4px;
 }
 
+/* DATE HOUSE REPORT: CAROUSEL LEFT, TEXT RIGHT */
+.date-house-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  margin: 20px 0;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.date-house-layout .click-carousel {
+  width: 60%;
+  flex: 0 0 60%;
+  margin: 0;
+  min-width: 0;
+}
+
+.date-house-layout .text-col {
+  width: 40%;
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
 /* PERSPEKTIV;WECHSEL FLYER ROWS */
 .row-pw-flyers {
   height: 360px;
   align-items: stretch;
   overflow: hidden;
 
-  /* Removes the vertical gap between the five flyer rows */
+  /* No gap between flyer rows */
   margin: 0;
 }
 
@@ -369,12 +392,15 @@ table.events tr.section-head td {
     padding: 24px 16px 56px;
   }
 
-  .text-row {
+  .text-row,
+  .date-house-layout {
     flex-direction: column;
   }
 
   .text-row img,
-  .text-col {
+  .text-col,
+  .date-house-layout .click-carousel,
+  .date-house-layout .text-col {
     width: 100%;
     flex: 0 0 auto;
   }
@@ -578,9 +604,7 @@ table.events tr.section-head td {
   <div class="sheet" id="s5">
     <h1>Date House Report</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
-
-    <div class="text-row">
+    <div class="date-house-layout">
       <div class="click-carousel">
         <img class="active" src="Date_House_Report_Page_01.jpg" alt="Date House Report, page 1">
         <img src="Date_House_Report_Page_02.jpg" alt="Date House Report, page 2">
@@ -603,8 +627,12 @@ table.events tr.section-head td {
         >
           CLICK
         </button>
+      </div>
 
-        <p>HERE SHOWCASE TEXT</p>
+      <div class="text-col">
+        <p>
+          HERE SHOWCASE TEXT
+        </p>
       </div>
     </div>
   </div>
@@ -613,8 +641,8 @@ table.events tr.section-head td {
     <h1>perspektiv;wechsel</h1>
 
     <p class="note">
-      Flyers made for events organized through the collective perspektiv;wechsel.
-      Click a flyer to show its reverse side.
+      is a collective founded at FH-Potsdam to focus on topics that are often neglected in the curriculum—such as intersectional feminism, social responsibility in the construction industry, inclusion, ecology, and postcolonial perspectives. The goal is to promote openness, acceptance, and sensitivity within the department and to introduce new role models and thought-provoking ideas to the university.
+      Here are some events I took part in organizing during my time at the collective. Click a flyer to show its reverse side.
     </p>
 
     <div class="photo-row row-pw-flyers">
@@ -736,23 +764,19 @@ table.events tr.section-head td {
 
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
 
-    <div class="text-row">
-      <div class="click-carousel">
-        <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
-        <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
-        <img src="drawing.png" alt="12-line drawing">
+    <div class="click-carousel">
+      <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
+      <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
+      <img src="drawing.png" alt="12-line drawing">
 
-        <button
-          class="carousel-next"
-          type="button"
-          onclick="nextCarouselImage(this.parentElement)"
-          aria-label="Show next 12-line image"
-        >
-          CLICK
-        </button>
-
-        <p>HERE SHOWCASE TEXT</p>
-      </div>
+      <button
+        class="carousel-next"
+        type="button"
+        onclick="nextCarouselImage(this.parentElement)"
+        aria-label="Show next 12-line image"
+      >
+        CLICK
+      </button>
     </div>
   </div>
 
