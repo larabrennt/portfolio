@@ -291,6 +291,9 @@ h1 {
   height: 360px;
   align-items: stretch;
   overflow: hidden;
+
+  /* Removes the vertical gap between the five flyer rows */
+  margin: 0;
 }
 
 .flyer-flip {
@@ -402,6 +405,7 @@ table.events tr.section-head td {
   .row-pw-flyers {
     height: auto;
     flex-wrap: nowrap;
+    margin: 0;
   }
 
   .flyer-flip {
@@ -577,32 +581,32 @@ table.events tr.section-head td {
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
 
     <div class="text-row">
-    
-    <div class="click-carousel">
-      <img class="active" src="Date_House_Report_Page_01.jpg" alt="Date House Report, page 1">
-      <img src="Date_House_Report_Page_02.jpg" alt="Date House Report, page 2">
-      <img src="Date_House_Report_Page_03.jpg" alt="Date House Report, page 3">
-      <img src="Date_House_Report_Page_04.jpg" alt="Date House Report, page 4">
-      <img src="Date_House_Report_Page_05.jpg" alt="Date House Report, page 5">
-      <img src="Date_House_Report_Page_06.jpg" alt="Date House Report, page 6">
-      <img src="Date_House_Report_Page_07.jpg" alt="Date House Report, page 7">
-      <img src="Date_House_Report_Page_08.jpg" alt="Date House Report, page 8">
-      <img src="Date_House_Report_Page_09.jpg" alt="Date House Report, page 9">
-      <img src="Date_House_Report_Page_10.jpg" alt="Date House Report, page 10">
-      <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
-      <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
+      <div class="click-carousel">
+        <img class="active" src="Date_House_Report_Page_01.jpg" alt="Date House Report, page 1">
+        <img src="Date_House_Report_Page_02.jpg" alt="Date House Report, page 2">
+        <img src="Date_House_Report_Page_03.jpg" alt="Date House Report, page 3">
+        <img src="Date_House_Report_Page_04.jpg" alt="Date House Report, page 4">
+        <img src="Date_House_Report_Page_05.jpg" alt="Date House Report, page 5">
+        <img src="Date_House_Report_Page_06.jpg" alt="Date House Report, page 6">
+        <img src="Date_House_Report_Page_07.jpg" alt="Date House Report, page 7">
+        <img src="Date_House_Report_Page_08.jpg" alt="Date House Report, page 8">
+        <img src="Date_House_Report_Page_09.jpg" alt="Date House Report, page 9">
+        <img src="Date_House_Report_Page_10.jpg" alt="Date House Report, page 10">
+        <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
+        <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
 
-      <button
-        class="carousel-next"
-        type="button"
-        onclick="nextCarouselImage(this.parentElement)"
-        aria-label="Show next Date House Report page"
-      >
-        CLICK
-      </button>
-      <p>HERE SHOWCASE TEXT</p>
+        <button
+          class="carousel-next"
+          type="button"
+          onclick="nextCarouselImage(this.parentElement)"
+          aria-label="Show next Date House Report page"
+        >
+          CLICK
+        </button>
+
+        <p>HERE SHOWCASE TEXT</p>
+      </div>
     </div>
-  </div>
   </div>
 
   <div class="sheet" id="s6">
@@ -731,21 +735,23 @@ table.events tr.section-head td {
     <h1>12-line</h1>
 
     <p style="font-size:10pt; font-style:italic; margin-bottom:16px"></p>
-  <div class="text-row">
-    <div class="click-carousel">
-      <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
-      <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
-      <img src="drawing.png" alt="12-line drawing">
 
-      <button
-        class="carousel-next"
-        type="button"
-        onclick="nextCarouselImage(this.parentElement)"
-        aria-label="Show next 12-line image"
-      >
-        CLICK
-      </button>
-      <p>HERE SHOWCASE TEXT</p>
+    <div class="text-row">
+      <div class="click-carousel">
+        <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
+        <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
+        <img src="drawing.png" alt="12-line drawing">
+
+        <button
+          class="carousel-next"
+          type="button"
+          onclick="nextCarouselImage(this.parentElement)"
+          aria-label="Show next 12-line image"
+        >
+          CLICK
+        </button>
+
+        <p>HERE SHOWCASE TEXT</p>
       </div>
     </div>
   </div>
