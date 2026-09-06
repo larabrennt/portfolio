@@ -34,15 +34,13 @@ video {
 
 #sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0 auto 0 0;
   width: 220px;
   height: 100vh;
+  padding: 24px 16px;
   background: #fff;
-  border-right: none;
   display: flex;
   flex-direction: column;
-  padding: 24px 16px;
   z-index: 1000;
   overflow-y: auto;
 }
@@ -51,21 +49,20 @@ video {
   font: 10pt Arial;
   line-height: 1.4;
   margin-bottom: 24px;
-  color: #000;
 }
 
 .tab {
-  font: 10pt Arial;
-  color: #000;
-  background: #fff;
-  border: none;
-  text-align: left;
-  padding: 4px 0;
-  cursor: pointer;
-  user-select: none;
   display: block;
   width: 100%;
+  padding: 4px 0;
+  border: none;
+  background: #fff;
+  color: #000;
+  font: 10pt Arial;
   line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
 }
 
 .tab:hover {
@@ -74,27 +71,36 @@ video {
 
 .tab.active,
 .tab.active:hover {
-  color: #0000ff;
+  color: #00f;
 }
 
 #content {
-  margin-left: 220px;
   width: calc(100% - 220px);
+  margin-left: 220px;
 }
 
 .sheet {
-  display: block;
-  padding: 24px 40px 80px;
+  height: 100vh;
   min-height: 100vh;
-  border-bottom: none;
+  max-height: 100vh;
+  padding: 24px 40px 80px;
+  overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
 
+#s2,
+#s12 {
+  height: auto;
+  min-height: 100vh;
+  max-height: none;
+  overflow: visible;
+}
+
 p {
-  line-height: 1.6;
-  margin-bottom: 10pt;
   max-width: 800px;
+  margin-bottom: 10pt;
+  line-height: 1.6;
 }
 
 a {
@@ -102,34 +108,41 @@ a {
 }
 
 h1 {
+  margin-bottom: 16pt;
   font-size: 10pt;
   font-weight: normal;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 16pt;
+  text-transform: uppercase;
 }
 
 .note {
-  font-style: italic;
-  margin: 16px 0;
   max-width: 100%;
+  margin: 16px 0;
+  font-style: italic;
   line-height: 1.6;
 }
 
-.text-row {
+/* General rows */
+.photo-row,
+.text-row,
+.date-house-layout,
+.twelve-line-layout {
   display: flex;
   flex-direction: row;
-  gap: 1vw;
-  margin: 20px 0;
-  width: 100%;
   align-items: flex-start;
+  gap: 1vw;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.photo-row {
+  align-items: stretch;
+  overflow: hidden;
 }
 
 .text-row img {
   width: 60%;
   flex: 0 0 60%;
-  height: auto;
-  display: block;
   object-fit: contain;
 }
 
@@ -143,38 +156,27 @@ h1 {
   max-width: 100%;
 }
 
-.photo-row {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 1vw;
-  margin: 20px 0;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-}
-
 .photo-row img,
 .photo-row video,
 .comp-wrap {
   display: block;
-  height: 100%;
   width: auto;
-  flex: 0 1 auto;
-  min-width: 0;
+  height: 100%;
   max-width: 100%;
+  min-width: 0;
+  flex: 0 1 auto;
   object-fit: contain;
 }
 
 .comp-wrap {
   position: relative;
-  cursor: pointer;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .comp-wrap video {
-  height: 100%;
   width: auto;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -198,36 +200,37 @@ h1 {
   height: 320px;
 }
 
-/* Intro page: chairs and essence can be 90% of viewport height */
 .row-intro-images {
-  height: 90vh;
-  max-height: 90vh;
+  height: calc(100vh - 155px);
+  max-height: calc(100vh - 155px);
 }
 
 .row-built-to-fail {
-  height: 90vh;
-  max-height: 90vh;
+  height: calc(100vh - 155px);
+  max-height: calc(100vh - 155px);
 }
 
-.pb {
+/* Video prompt */
+.pb,
+.carousel-prompt {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  color: #ff0000;
+  left: 30px;
+  bottom: 20px;
+  z-index: 2;
+  color: #f00;
   font: 10pt Arial;
   font-weight: normal;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-shadow: none;
+  text-transform: lowercase;
   white-space: nowrap;
+  pointer-events: none;
 }
 
-/* CLICKABLE IMAGE CAROUSEL */
+.pb {
+  text-transform: uppercase;
+}
+
+/* General image carousels */
 .click-carousel {
   position: relative;
   width: 100%;
@@ -236,12 +239,11 @@ h1 {
 }
 
 .photo-row .click-carousel {
-  height: 100%;
   width: auto;
-  flex: 0 1 auto;
-  min-width: 0;
+  height: 100%;
   max-width: 100%;
   margin: 0;
+  flex: 0 1 auto;
 }
 
 .click-carousel img {
@@ -252,6 +254,7 @@ h1 {
   max-height: 90vh;
   margin: 0;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .photo-row .click-carousel img {
@@ -266,106 +269,82 @@ h1 {
   display: block;
 }
 
-.carousel-next {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  background: transparent;
-  color: #ff0000;
-  font: 10pt Arial;
-  font-weight: normal;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
+.click-carousel.started .carousel-prompt {
+  display: none;
 }
 
-.carousel-next:hover,
-.carousel-next:focus {
-  color: #ff0000;
-}
-
-.carousel-next:focus-visible {
-  outline: 1px solid #ff0000;
-  outline-offset: 4px;
-}
-
-/* DATE HOUSE REPORT: CAROUSEL LEFT, TEXT RIGHT */
+/* Date House Report */
 .date-house-layout {
-  display: flex;
-  flex-direction: row;
-  gap: 1vw;
-  margin: 20px 0;
-  width: 100%;
-  align-items: flex-start;
+  height: calc(100vh - 125px);
+  max-height: calc(100vh - 125px);
+  margin-top: 20px;
+  overflow: hidden;
 }
 
 .date-house-layout .click-carousel {
   width: 60%;
   flex: 0 0 60%;
   margin: 0;
-  min-width: 0;
+}
+
+.date-house-layout .click-carousel img {
+  max-height: calc(100vh - 125px);
 }
 
 .date-house-layout .text-col {
   width: 40%;
   flex: 0 0 40%;
-  min-width: 0;
+  max-height: calc(100vh - 125px);
+  overflow-y: auto;
 }
 
-/* 12-LINE: CAROUSEL LEFT, TEXT RIGHT */
+/* 12-line image-only section */
 .twelve-line-layout {
-  display: flex;
-  flex-direction: row;
-  gap: 1vw;
-  margin: 20px 0;
-  width: 100%;
-  align-items: flex-start;
+  height: calc(100vh - 125px);
+  max-height: calc(100vh - 125px);
+  margin-top: 20px;
+  overflow: hidden;
 }
 
 .twelve-line-layout .click-carousel {
-  width: 60%;
-  flex: 0 0 60%;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  min-width: 0;
 }
 
-.twelve-line-layout .text-col {
-  width: 40%;
-  flex: 0 0 40%;
-  min-width: 0;
+.twelve-line-layout .click-carousel img {
+  max-height: calc(100vh - 125px);
 }
 
-/* PERSPEKTIV;WECHSEL: 15 FRONTS + LARGE BACK OVERLAY */
+/* Perspektiv;wechsel */
 #s6 {
+  height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
   overflow: hidden;
 }
 
 #s6 .note {
-  margin: 0 0 12px;
   max-width: 900px;
+  margin: 0 0 12px;
 }
 
 .pw-flyer-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 1vw;
-  height: calc(100vh - 150px);
-  max-height: 720px;
+  gap: 0 1vw;
   width: 100%;
+  height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
 }
 
 .pw-flyer-front {
-  border: none;
-  background: transparent;
-  padding: 0;
   min-width: 0;
   min-height: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
   cursor: pointer;
 }
 
@@ -376,11 +355,11 @@ h1 {
 }
 
 .pw-flyer-front:focus-visible {
-  outline: 1px solid #0000ff;
+  outline: 1px solid #00f;
   outline-offset: 3px;
 }
 
-/* Full-screen reverse-side viewer */
+/* Transparent perspective;wechsel back-side overlay */
 .pw-overlay {
   position: fixed;
   inset: 0;
@@ -389,8 +368,8 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.96);
-  cursor: pointer;
+  background: transparent;
+  pointer-events: none;
 }
 
 .pw-overlay.open {
@@ -398,43 +377,47 @@ h1 {
 }
 
 .pw-overlay img {
-  max-width: min(90vw, 900px);
-  max-height: 90vh;
   width: auto;
   height: auto;
+  max-width: min(90vw, 1000px);
+  max-height: 90vh;
   object-fit: contain;
-  cursor: default;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .pw-overlay-close {
   position: fixed;
   top: 24px;
   right: 40px;
+  z-index: 3;
   border: none;
   background: transparent;
-  color: #ff0000;
+  color: #f00;
   font: 10pt Arial;
   font-weight: normal;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: lowercase;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .pw-overlay-close:hover,
 .pw-overlay-close:focus {
-  color: #ff0000;
+  color: #f00;
 }
 
 .pw-overlay-close:focus-visible {
-  outline: 1px solid #ff0000;
+  outline: 1px solid #f00;
   outline-offset: 4px;
 }
 
+/* CV */
 table.events {
-  border-collapse: collapse;
-  font: 10pt Arial;
   max-width: 820px;
   margin-bottom: 10pt;
+  border-collapse: collapse;
+  font: 10pt Arial;
 }
 
 table.events td {
@@ -445,16 +428,15 @@ table.events td {
 
 table.events td:first-child {
   width: 160px;
-  font-size: 10pt;
   white-space: nowrap;
 }
 
 table.events tr.section-head td {
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 10pt;
   padding-top: 14px;
+  font-size: 10pt;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 700px) {
@@ -470,28 +452,37 @@ table.events tr.section-head td {
   }
 
   #content {
-    margin-left: 0;
     width: 100%;
+    margin-left: 0;
   }
 
-  .sheet {
+  .sheet,
+  #s2,
+  #s12 {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
     padding: 24px 16px 56px;
+    overflow: visible;
   }
 
   .text-row,
   .date-house-layout,
   .twelve-line-layout {
+    height: auto;
+    max-height: none;
     flex-direction: column;
+    overflow: visible;
   }
 
   .text-row img,
   .text-col,
   .date-house-layout .click-carousel,
   .date-house-layout .text-col,
-  .twelve-line-layout .click-carousel,
-  .twelve-line-layout .text-col {
+  .twelve-line-layout .click-carousel {
     width: 100%;
     flex: 0 0 auto;
+    max-height: none;
   }
 
   .photo-row {
@@ -519,6 +510,7 @@ table.events tr.section-head td {
   }
 
   #s6 {
+    height: auto;
     max-height: none;
     overflow: visible;
   }
@@ -528,6 +520,7 @@ table.events tr.section-head td {
     grid-template-rows: repeat(5, 1fr);
     height: auto;
     max-height: none;
+    gap: 0 2vw;
   }
 
   .pw-flyer-front {
@@ -536,6 +529,11 @@ table.events tr.section-head td {
 
   .pw-overlay {
     padding: 16px;
+  }
+
+  .pw-overlay img {
+    max-width: 94vw;
+    max-height: 88vh;
   }
 
   .pw-overlay-close {
@@ -570,28 +568,21 @@ table.events tr.section-head td {
   <div class="sheet" id="s1">
     <h1>Hi</h1>
 
-    <div class="photo-row row-intro-images" style="margin-bottom:20px">
-      <img
-        src="chairs.jpeg"
-        alt="Chairs"
-      >
-
+    <div class="photo-row row-intro-images">
+      <img src="chairs.jpeg" alt="Chairs">
       <img
         src="essence.jpg"
         alt="I explore how spatial arrangements shape access and agency, and how they are contested, inhabited and transformed over time"
       >
     </div>
 
-    <p>
-      ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-      <br>
-    </p>
+    <p>↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
   </div>
 
   <div class="sheet" id="s2">
     <h1>Space Time Transect</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:4px">
+    <p style="font-style:italic; margin-bottom:4px">
       with Eliott Croubalian
     </p>
 
@@ -599,7 +590,7 @@ table.events tr.section-head td {
       We drew the line of our transect at the fringe of the city, with the panke in the middle, a strip of autobahn running left and train tracks right of it. As we meandered around our line we saw ourselves walking through time and space, only experiencing the state of our environment at the exact time of our observation. Had this always been peripherie, was it countryside before? Swallowed by Berlin? In our research, the Panke River serves as a primary example of a territory in constant transformation. Shaped first by glacial melt, the landscape remains in motion and the river would slowly erode its own path, were it not for our anthropological impact. We find ourselves unable to see the territory as a fixed condition. Our goal was set to visualize time as an active physical force, one that produces both change and compression.
     </p>
 
-    <div class="photo-row row-s2-maps" style="margin-bottom:20px">
+    <div class="photo-row row-s2-maps">
       <div
         class="comp-wrap"
         onclick="toggleCompVideo(this)"
@@ -609,9 +600,7 @@ table.events tr.section-head td {
       >
         <video poster="intervention-poster.png" playsinline>
           <source src="intervention.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
-
         <div class="pb">PRESS HERE TO PLAY</div>
       </div>
 
@@ -629,27 +618,23 @@ table.events tr.section-head td {
     </div>
 
     <p class="note">
-      Exploring this, we developed the space-time transect. This instrument rests on two conceptual operations. First, we flatten spatial depth: the vertical space of a traditional map is compressed until geography becomes a single horizontal line of distance, <em>x</em>. Then we replace the vertical axis with time, <em>t</em>. In this way, we give up spatial depth in order to gain temporal depth. The result is a map that allows historical events and material conditions to be grasped with an intuitive understanding of what we are already used to from reading space-dimensional maps. We imagine Geological strata, ownership patterns, and hydrological traces along a timeline can then be understood and made accessible.
+      Exploring this, we developed the space-time transect. This instrument rests on two conceptual operations. First, we flatten spatial depth: the vertical space of a traditional map is compressed until geography becomes a single horizontal line of distance, <em>x</em>. Then we replace the vertical axis with time, <em>t</em>. In this way, we give up spatial depth in order to gain temporal depth. The result is a map that allows historical events and material conditions to be grasped with an intuitive understanding of what we are already used to from reading space-dimensional maps. We imagine Geological strata, ownership patterns, and hydrological traces along a timeline.
       <br>
       Access the Project site
       <a href="https://larabrennt.github.io/TRANSECT/" target="_blank" rel="noopener noreferrer">HERE</a>
     </p>
 
-    <img
-      src="TRANSECT.png"
-      alt="Space-Time Transect drawing"
-      style="width:100%; margin:20px 0"
-    >
+    <img src="TRANSECT.png" alt="Space-Time Transect drawing" style="width:100%; margin:20px 0">
   </div>
 
   <div class="sheet" id="s3">
     <h1>Built to fail</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+    <p style="font-style:italic; margin-bottom:16px">
       with Anika Gercke
     </p>
 
-    <div class="photo-row row-built-to-fail" style="margin-bottom:20px">
+    <div class="photo-row row-built-to-fail">
       <div class="click-carousel">
         <img class="active" src="P1000502.jpg" alt="Built to fail image 1">
         <img src="P1000504.jpg" alt="Built to fail image 2">
@@ -657,27 +642,17 @@ table.events tr.section-head td {
         <img src="P1000538.jpg" alt="Built to fail image 4">
         <img src="P1000554.jpg" alt="Built to fail image 5">
 
-        <button
-          class="carousel-next"
-          type="button"
-          onclick="nextCarouselImage(this.parentElement)"
-          aria-label="Show next Built to fail image"
-        >
-          CLICK
-        </button>
+        <div class="carousel-prompt">click to browse</div>
       </div>
 
-      <img
-        src="Brief.png"
-        alt="Built to fail brief"
-      >
+      <img src="Brief.png" alt="Built to fail brief">
     </div>
   </div>
 
   <div class="sheet" id="s4">
     <h1>Mapping Damage</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+    <p style="font-style:italic; margin-bottom:16px">
       at ZRS Architekten Ingenieure, Berlin
     </p>
 
@@ -691,7 +666,7 @@ table.events tr.section-head td {
       style="margin-bottom:12px"
     >
 
-    <div class="photo-row row-s5-videos" style="margin-bottom:20px">
+    <div class="photo-row row-s5-videos">
       <video autoplay loop muted playsinline>
         <source src="video_zrs_2.mp4" type="video/mp4">
       </video>
@@ -724,20 +699,11 @@ table.events tr.section-head td {
         <img src="Date_House_Report_Page_11.jpg" alt="Date House Report, page 11">
         <img src="Date_House_Report_Page_12.jpg" alt="Date House Report, page 12">
 
-        <button
-          class="carousel-next"
-          type="button"
-          onclick="nextCarouselImage(this.parentElement)"
-          aria-label="Show next Date House Report page"
-        >
-          CLICK
-        </button>
+        <div class="carousel-prompt">click to browse</div>
       </div>
 
       <div class="text-col">
-        <p>
-          HERE SHOWCASE TEXT
-        </p>
+        <p>HERE SHOWCASE TEXT</p>
       </div>
     </div>
   </div>
@@ -799,7 +765,7 @@ table.events tr.section-head td {
       </button>
 
       <button class="pw-flyer-front" type="button" onclick="openPwBack('flyer_gendergerechtestadtplanung_dina6_Page_2.jpg', 'Reverse side of Gendergerechte Stadtplanung DIN A6 flyer')">
-        <img src="flyer_gendergerechtestadtplanung_dina6_Page_1.jpg" alt="Gendergerechte Stadtplanung DIN A6 flyer, front">
+        <img src="flyer_gendergerechtestadtplanung_dina6_Page_1.jpg" alt="Gendergerechte Stadtplanung flyer, front">
       </button>
 
       <button class="pw-flyer-front" type="button" onclick="openPwBack('flyer_handwerkxarchitektur_dina6_Page_2.jpg', 'Reverse side of Handwerk Architektur flyer')">
@@ -816,7 +782,7 @@ table.events tr.section-head td {
     <img
       src="Brenner_schliess_die_luecke_NICHT-4.png"
       alt="Don't close the gap"
-      style="width:110%; margin-bottom:20px"
+      style="width:100%; max-height:calc(100vh - 48px); object-fit:contain;"
     >
 
     <p class="note">
@@ -824,154 +790,47 @@ table.events tr.section-head td {
     </p>
   </div>
 
- <div class="sheet" id="s8">
-  <h1>Why Fence?</h1>
+  <div class="sheet" id="s8">
+    <h1>Why Fence?</h1>
 
-  <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
-    with Leonie Ettmüller
-  </p>
+    <p style="font-style:italic; margin-bottom:16px">
+      with Leonie Ettmüller
+    </p>
 
-  <div class="click-carousel">
-    <img
-      class="active"
-      src="fence_1.jpg"
-      alt="Why Fence, image 1"
-    >
+    <div class="click-carousel">
+      <img class="active" src="fence_1.jpg" alt="Why Fence, image 1">
+      <img src="fence_2.jpg" alt="Why Fence, image 2">
+      <img src="fence_3.jpg" alt="Why Fence, image 3">
 
-    <img
-      src="fence_2.jpg"
-      alt="Why Fence, image 2"
-    >
-
-    <img
-      src="fence_3.jpg"
-      alt="Why Fence, image 3"
-    >
-
-    <button
-      class="carousel-next"
-      type="button"
-      onclick="nextCarouselImage(this.parentElement)"
-      aria-label="Show next Why Fence image"
-    >
-      CLICK
-    </button>
+      <div class="carousel-prompt">click to browse</div>
+    </div>
   </div>
-</div>
 
-  
- <div class="sheet" id="s9">
-  <h1>Click</h1>
+  <div class="sheet" id="s9">
+    <h1>Click</h1>
 
-  <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
-    with Franz Muenzing and Joshua Haack
-  </p>
+    <p style="font-style:italic; margin-bottom:16px">
+      with Franz Muenzing and Joshua Haack
+    </p>
 
-  <div class="click-carousel">
-    <img
-      class="active"
-      src="click_1.jpg"
-      alt="Click, image 1"
-    >
+    <div class="click-carousel">
+      <img class="active" src="click_1.jpg" alt="Click, image 1">
+      <img src="click_2.jpg" alt="Click, image 2">
 
-    <img
-      src="click_2.jpg"
-      alt="Click, image 2"
-    >
-
-    <button
-      class="carousel-next"
-      type="button"
-      onclick="nextCarouselImage(this.parentElement)"
-      aria-label="Show next Click image"
-    >
-      CLICK
-    </button>
+      <div class="carousel-prompt">click to browse</div>
+    </div>
   </div>
-</div>
+
   <div class="sheet" id="s10">
     <h1>12-line</h1>
 
     <div class="twelve-line-layout">
       <div class="click-carousel">
-        <img
-          class="active"
-          src="Definition_and_Text_Page_1.png"
-          alt="12-line definition and text, page 1"
-        >
+        <img class="active" src="Definition_and_Text_Page_1.png" alt="12-line definition and text, page 1">
+        <img src="Definition_and_Text_Page_2.png" alt="12-line definition and text, page 2">
+        <img src="drawing.png" alt="12-line drawing">
 
-        <img
-          src="Definition_and_Text_Page_2.png"
-          alt="12-line definition and text, page 2"
-        >
-
-        <img
-          src="drawing.png"
-          alt="12-line drawing"
-        >
-
-        <button
-          class="carousel-next"
-          type="button"
-          onclick="nextCarouselImage(this.parentElement)"
-          aria-label="Show next 12-line image"
-        >
-          CLICK
-        </button>
-      </div>
-
-      <div class="text-col">
-        <p>12-Lein</p>
-
-        <p>
-          Was or is or will be again a weekly meeting on the entrance stairs
-          of an abandoned building right opposite of 11-line (pronounced
-          Elflein) - a popular Bar and Café in Potsdams city centre. On
-          Wednesdays a table tennis evening was held there and drew in most
-          of the cities youth. I remember affording one drink (the cheapest
-          beer was 2,90€) and staying hours on hours, nipping on it, rolling
-          Kippe after Kippe, talking to people.
-        </p>
-
-        <p>
-          Across the street something else was developing. I thought that we
-          first went there out of lack of space in the overcrowded bar - to
-          play guitar. Aron, who I must have become acquainted with there,
-          is determined that he was the first, drinking Sternburg Beer
-          (36ct then) as some kind of oppositional protest.
-        </p>
-
-        <p>
-          However soon enough we had become a weekly gathering, where
-          someone brought a Kasten full of Sterni (most of the times it was
-          Aron and his best friend Jonas), which then we offered to everyone
-          passing by. This lead to the development of quite a circle of
-          friends and many evenings with strangers, sitting down on what we
-          considered now our stairs, to tell some stories of their own for
-          the length of a beer or two.
-        </p>
-
-        <p>
-          Aron was there every week. He got mad, when I went over for a
-          bought drink, back to the 11-line, to my other friends, who were,
-          as he called them “cultured” (they read Hesse and watched Kubrik’s
-          films and loved experimental electronic music) and who, after a
-          couple of visitations to the 12lein decided it was best to stay on
-          their side. Aron was determined to stay on his. Back then I didn’t
-          really realize why.
-        </p>
-
-        <p>
-          After a couple of years, the group dispersed, as the next
-          generation of youth took over the 11-line, the 12-lein became just
-          expanded seating place for the bar.
-        </p>
-
-        <p>
-          Sometimes though I visit the 11-line, reading, nipping on a Beer
-          (cheapest one 3,50€ now) and overhear some kids looking for a place
-          to sit: “sollen wir rüber ins 12lein gehen?”
-        </p>
+        <div class="carousel-prompt">click to browse</div>
       </div>
     </div>
   </div>
@@ -979,17 +838,18 @@ table.events tr.section-head td {
   <div class="sheet" id="s11">
     <h1>As it rains, the soil gets wet</h1>
 
-    <p style="font-size:10pt; font-style:italic; margin-bottom:16px">
+    <p style="font-style:italic; margin-bottom:16px">
       with Manuel Rademaker
     </p>
 
-    <div class="text-row">
+    <div class="text-row" style="height:calc(100vh - 155px); max-height:calc(100vh - 155px); overflow:hidden;">
       <img
         src="Rademaker_Brenner_esregnet_dieERDEwirdnass-6.png"
         alt="As it rains, the soil gets wet project drawing"
+        style="max-height:100%; width:auto;"
       >
 
-      <div class="text-col">
+      <div class="text-col" style="height:100%; overflow-y:auto; padding-right:4px;">
         <p class="note">
           Es regnet, es regnet,<br>
           die Erde wird nass!<br>
@@ -1014,18 +874,14 @@ table.events tr.section-head td {
         </p>
       </div>
     </div>
-
-    <p class="note">
-      Submitted to the competition <em>30 Square Metres of Building Culture</em>. The project was not chosen to become reality.
-    </p>
   </div>
 
   <div class="sheet" id="s12">
-    <div style="font-size:10pt; font-weight:normal; line-height:1.3; margin-bottom:2px">
+    <div style="font-size:10pt; line-height:1.3; margin-bottom:2px">
       LARA<br>BRENNER
     </div>
 
-    <div style="font-size:10pt; margin-bottom:20px">
+    <div style="margin-bottom:20px">
       *18.07.2000 in Neuruppin
       &nbsp;·&nbsp;
       Wiesenstr. 38, 14473 Potsdam
@@ -1117,21 +973,14 @@ table.events tr.section-head td {
 
 </div>
 
-<div
-  class="pw-overlay"
-  id="pw-overlay"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Flyer reverse side"
-  onclick="closePwBack(event)"
->
+<div class="pw-overlay" id="pw-overlay" aria-hidden="true">
   <button
     class="pw-overlay-close"
     type="button"
-    onclick="closePwBack(event)"
+    onclick="closePwBack()"
     aria-label="Close flyer reverse side"
   >
-    CLOSE
+    close
   </button>
 
   <img id="pw-overlay-image" src="" alt="">
@@ -1139,18 +988,8 @@ table.events tr.section-head td {
 
 <script>
 const sheetIds = [
-  's1',
-  's2',
-  's3',
-  's4',
-  's5',
-  's6',
-  's7',
-  's8',
-  's9',
-  's10',
-  's11',
-  's12'
+  's1', 's2', 's3', 's4', 's5', 's6',
+  's7', 's8', 's9', 's10', 's11', 's12'
 ];
 
 function setActive(id) {
@@ -1164,16 +1003,16 @@ function getMostVisibleSheet() {
 
   document.querySelectorAll('.sheet').forEach(sheet => {
     const rectangle = sheet.getBoundingClientRect();
-
     const visibleHeight = Math.max(
       0,
-      Math.min(rectangle.bottom, window.innerHeight) - Math.max(rectangle.top, 0)
+      Math.min(rectangle.bottom, window.innerHeight) -
+      Math.max(rectangle.top, 0)
     );
 
     if (!best || visibleHeight > best.visibleHeight) {
       best = {
         id: sheet.id,
-        visibleHeight: visibleHeight
+        visibleHeight
       };
     }
   });
@@ -1200,20 +1039,19 @@ function goToSheet(id) {
 
 function toggleCompVideo(wrapper) {
   const video = wrapper.querySelector('video');
-  const playText = wrapper.querySelector('.pb');
+  const prompt = wrapper.querySelector('.pb');
 
   if (video.paused) {
     video.play();
-    playText.style.display = 'none';
+    prompt.style.display = 'none';
   } else {
     video.pause();
-    playText.style.display = 'flex';
+    prompt.style.display = 'flex';
   }
 }
 
 function nextCarouselImage(carousel) {
   const images = Array.from(carousel.querySelectorAll('img'));
-  const button = carousel.querySelector('.carousel-next');
 
   if (images.length < 2) {
     return;
@@ -1228,14 +1066,9 @@ function nextCarouselImage(carousel) {
   images[currentIndex].classList.remove('active');
   images[nextIndex].classList.add('active');
 
-  if (button) {
-    button.style.display = 'none';
-  }
-
-  if (carousel.classList.contains('click-carousel')) {
-    carousel.onclick = () => nextCarouselImage(carousel);
-    carousel.style.cursor = 'pointer';
-  }
+  carousel.classList.add('started');
+  carousel.onclick = () => nextCarouselImage(carousel);
+  carousel.style.cursor = 'pointer';
 }
 
 function openPwBack(imageSource, altText) {
@@ -1244,19 +1077,19 @@ function openPwBack(imageSource, altText) {
 
   image.src = imageSource;
   image.alt = altText;
+
   overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  overlay.setAttribute('aria-hidden', 'false');
 }
 
-function closePwBack(event) {
-  if (
-    event.target.id === 'pw-overlay' ||
-    event.target.classList.contains('pw-overlay-close')
-  ) {
-    const overlay = document.getElementById('pw-overlay');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+function closePwBack() {
+  const overlay = document.getElementById('pw-overlay');
+  const image = document.getElementById('pw-overlay-image');
+
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  image.src = '';
+  image.alt = '';
 }
 
 setActive('s1');
@@ -1286,14 +1119,30 @@ document.querySelectorAll('.comp-wrap').forEach(element => {
   });
 });
 
+document.querySelectorAll('.click-carousel').forEach(carousel => {
+  carousel.addEventListener('click', event => {
+    if (
+      event.target.tagName === 'IMG' ||
+      event.target.classList.contains('carousel-prompt')
+    ) {
+      nextCarouselImage(carousel);
+    }
+  });
+});
+
+document.getElementById('pw-overlay').addEventListener('click', event => {
+  if (event.target.id === 'pw-overlay') {
+    closePwBack();
+  }
+});
+
+document.getElementById('pw-overlay-image').addEventListener('click', () => {
+  closePwBack();
+});
+
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
-    const overlay = document.getElementById('pw-overlay');
-
-    if (overlay.classList.contains('open')) {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    closePwBack();
   }
 });
 </script>
